@@ -1,0 +1,159 @@
+
+
+
+.slider
+{
+  width: 100%;
+}
+
+.leftOfSlider
+{
+  position:absolute;
+  float:left;
+  width:5%;
+  text-align:center;
+  font-size : 250%;
+  /*
+  border:1px solid Black;
+  */
+}
+
+.divSlider
+{
+  position:relative;
+  float:right;
+  width:5%;
+  text-align:center;
+  /*
+  border:1px solid Black;
+  */
+  font-size : 250%;
+}
+
+.rightOfSlider{
+  /*
+  border:1px solid Black;
+  */
+  width:85%;
+  margin:auto;
+  font-size : 250%;
+
+}
+
+#chatSection
+{
+  position:absolute;
+  float:left;
+  width:35%;
+  border:1px solid black;
+}
+
+.insideChat
+{
+  margin: 8px;
+}
+
+#insideMsg2
+{
+  width:95%;
+}
+
+
+#videoSection
+{
+  float:right;
+  width:60%;
+  /*
+  border:1px solid Black;
+  */
+}
+
+.insideVideo
+{
+  text-align: center;
+  margin: 1%;
+  /*
+  border:1px solid Black;
+  */
+}
+
+#videos-container
+{
+  width:88%;
+}
+
+.divTitle
+{
+  height: 40px;
+}
+
+#pieInstructions
+{
+  height:15px;
+  float:left;
+  font-size : 300%;
+}
+
+#timerDiv
+{
+  height:15px;
+  float:right;
+  font-size : 400%;
+}
+
+#centerDiv
+{
+  height:15px;
+  margin-left: 30%;
+  margin-right: 30%;
+  text-align: center;
+  font-size : 200%;
+}
+
+#centerDivText
+{
+  height:15px;
+  margin-left: 0%;
+  margin-right: 0%;
+  text-align: center;
+  font-size : 200%;
+  color: white;
+}
+
+.textWaiting
+{
+  font-size : 400%;
+  text-align: center;
+}
+
+.textWaiting2
+{
+  font-size : 200%;
+  text-align: center;
+}
+
+#infoPHP1
+{
+  font-size : 250%;
+}
+
+#infoPHP2
+{
+  font-size : 250%;
+}
+
+.participantTitles
+{
+  font-size : 200%;
+}
+
+.tickmarks1
+{
+  font-size : 300%;
+}
+
+canvas {
+    padding: 0;
+    margin: auto;
+    display: block;
+}

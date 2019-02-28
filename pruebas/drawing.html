@@ -1,0 +1,86 @@
+<html>
+<head>
+<title>Login participant</title>
+<link rel="stylesheet" href="generalConfig.css">
+<script>
+
+
+  //var r=230;
+  //minimim x and y coordinate of circle within the canvas
+  var d=35;
+  //Diameter
+  var xCanvasSize=300;
+  var yCanvasSize=100
+
+
+  var radius=30;
+  var centerNx=0.5*xCanvasSize;
+  var centerNy=radius;
+
+  //var bc=0;
+  //var sc=
+
+  function cirkel(ctx, x, y, r, kleur){
+    ctx.beginPath();
+    ctx.arc(x, y, r, 0, 2 * Math.PI, false);
+    ctx.fillStyle = kleur;
+    ctx.fill();
+    }
+
+
+  function drawIt(){
+    var b_canvas = document.getElementById("canvitas");
+    var b_context = b_canvas.getContext("2d");
+    cirkel(b_context, centerNx, centerNy, radius, "yellow");
+    cirkel(b_context, centerNx-2*radius, centerNy, radius, "red");
+    cirkel(b_context, centerNx+2*radius, centerNy, radius, "green");
+  }
+
+  function drawIt2(){
+    var b_canvas = document.getElementById("canvitas2");
+    var b_context = b_canvas.getContext("2d");
+    cirkel(b_context, centerNx, centerNy, radius, "yellow");
+    cirkel(b_context, centerNx-2*radius, centerNy, radius, "yellow");
+    cirkel(b_context, centerNx+2*radius, centerNy, radius, "green");
+  }
+
+  function disableRefresh(netscape){
+    var F5=(netscape||event).keyCode;
+      if(F5==116||F5==82){
+        if(!netscape){event.keyCode=0}
+        return false;
+        }
+    }
+  //Try that letter r works
+  document.onkeydown=document.onkeypress=disableRefresh;
+
+
+</script>
+
+
+
+</head>
+
+<body>
+
+<div id="entirePage">
+
+  <div class="divTitle" >
+    <div id="pieInstructions">
+      Pie Size is $4
+    </div>
+    <div id="timerDiv">
+      ...
+    </div>
+    <div id="centerDiv">
+      <p> </p>
+      <canvas id=canvitas2 width="300" height="100"></canvas>
+      <script> drawIt2()</script>
+    </div>
+  </div>
+
+</div>
+
+</body>
+
+</html>
