@@ -133,10 +133,12 @@ function process_messsage(ms,ws){
   }
 
   if (mtype == "start"){
-    initialise_ppnr(mp1,mp2,ws, mtrial)
-  } else if (mtype="slider"){
-    update_slider(mp1,mvalue);
-  } else{
+      initialise_ppnr(mp1,mp2,ws, mtrial)
+  } else if (mtype=="slider"){
+      update_slider(mp1,mvalue);
+  } else if(mtype=="error"){
+      error_trial(p1,p2);
+  } else {
     console.log("Type of Messsage from Client not recognised: " + ms)
   }
 }
@@ -197,10 +199,10 @@ function initial_offer_finalized(p1,p2){
 }
 
 // Sends message (dictionary) to ppnr
-function send_to_ppnr_notif(p,message){
-  var dict = {type : "notification", value : message};
+function send_to_ppnr_notif(p,message, message2 = "None"){
+  var dict = {type : "notification", value : message, value2: message2};
   var json_message = JSON.stringify(dict);
-  connection_ppnr = ppnr_clients[p];
+  connection_ppnr = ppnr_dict["client_id"][p];
   connection_ppnr.send(json_message);
 }
 
@@ -208,7 +210,7 @@ function send_to_ppnr_notif(p,message){
 function send_to_ppnr_slider(p,s_value){
   var dict = {type : "slider", value : s_value};
   var json_message = JSON.stringify(dict);
-  connection_ppnr = ppnr_clients[p];
+  connection_ppnr = ppnr_dict["client_id"][p];//123. Might be an error here
   connection_ppnr.send(json_message);
 }
 
@@ -273,7 +275,7 @@ function deal_closed(p1,p2){
   updateTableMany_js("trialInfo", condition2, update2);
 
   //Finalise trial
-  bargaining_finalised(p1,p2);
+  bargaining_finalised(p1,p2,payoff1,payoff2);
 }
 
 
@@ -309,7 +311,28 @@ function no_deal(p1,p2){
   updateTableMany_js("trialInfo", condition2, update2);
 
   //Finalise trial
-  bargaining_finalised(p1,p2);
+  bargaining_finalised(p1,p2,payoff1,payoff2);
+}
+
+function error_trial(p1,p2){
+  // Save NO deal
+  var trial = ppnr_dict["trial"][p1];
+  var condition1 = `ppnr='${p1}' AND trial='${trial}' `;
+  var condition2 = `ppnr='${p2}' AND trial='${trial}' `;
+  var sValue1 = ppnr_dict["slider_pos"][p1];
+  var sValue2 = ppnr_dict["slider_pos"][p2];
+  var errorFlag =2;
+
+  var payoff1 = 0;
+  var payoff2 = 0;
+  var timeEndTrial = new Date().getTime();
+  var update1 = `endTime=${timeEndTrial}, sValue=${sValue1}, agreement='0', payoff = '0', errorFlag=${errorFlag} `;
+  var update2 = `endTime=${timeEndTrial}, sValue=${sValue2]}, agreement='0', payoff = '0', errorFlag=${errorFlag} `;
+  updateTableMany_js("trialInfo", condition1, update1);
+  updateTableMany_js("trialInfo", condition2, update2);
+
+  //Finalise trial
+  bargaining_finalised(p1,p2,payoff1,payoff2);
 }
 
 function get_payoff(pp,deal,sValue,trial){
@@ -330,7 +353,10 @@ function get_payoff(pp,deal,sValue,trial){
   return(payoff);
 }
 
-function bargaining_finalised(p1,p2){
+function bargaining_finalised(p1,p2,payoff1,payoff2);{
+  send_to_ppnr_notif(p1,"payoff",payoff1);
+  send_to_ppnr_notif(p2,"payoff",payoff2);
+
   //Reset dictionaries
   ppnr_dict["client_id"][p1]={};
   ppnr_dict["other_ppnr"][p1]={};

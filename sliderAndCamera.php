@@ -633,7 +633,6 @@ $blocked=lookUp("subjects","ppnr='$ppnr' AND trial='$trial' ","blocked");
 
     function showPayoff(xhttp){
       var pago=xhttp.responseText;
-      //3.0.1
       var str1="<br>The pie size was: $ <?php echo $thePie ?> <br> <br> Your earnings are: $ ";
 
       console.log(pago);
