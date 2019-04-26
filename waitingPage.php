@@ -12,8 +12,8 @@
 
   $trial=lookUp("subjects","ppnr='$ppnr'","trial");
 
-  $payoff=lookUp("trialInfo"," ppnr1='$ppnr' AND trial='$trial' ","payoff");
-  $thePie=pieSize($ppnr,$trial);
+  //$payoff=lookUp("trialInfo"," ppnr1='$ppnr' AND trial='$trial' ","payoff");
+  //$thePie=pieSize($ppnr,$trial);
 
   //Checks if it is the last trial
   if($trial<$totalTrials){
@@ -22,9 +22,7 @@
     $nextTrial =$trial + 1;
     $texto="Next Round: ".$nextTrial." out of ".$totalTrials.".";
     //updateTableOne("subjects","ppnr='$ppnr'","trial","$nextTrial");
-
-    $initialSliderValue=startValue($ppnr,$nextTrial);
-    updateTableMore("subjects","ppnr=$ppnr","sValue=\"$initialSliderValue\", blocked='0', started='0', timeBothStartedVideo='0', trial=\"$nextTrial\"");
+    updateTableMore("subjects","ppnr=$ppnr","trial=\"$nextTrial\"");
 
   } else {
       $texto="This part of the experiment has finalized, please press the button to see your earnings.";
@@ -69,7 +67,7 @@
         setTimeout(function(){document.getElementById("breakTimer").innerHTML = 3;},2000);
         setTimeout(function(){document.getElementById("breakTimer").innerHTML = 2;},3000);
         setTimeout(function(){document.getElementById("breakTimer").innerHTML = 1;},4000);
-        setTimeout(function(){window.location.replace('sliderAndCamera.php');},5000);
+        setTimeout(function(){window.location.replace('bargaining_screen.php');},5000);
       } else {
         document.getElementById("botoncito").style.visibility="visible";
       }

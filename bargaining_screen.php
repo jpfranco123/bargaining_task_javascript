@@ -12,7 +12,7 @@ $trial=lookUp("subjects","ppnr='$ppnr'","trial");
 
 $partner=findPartner($ppnr,$trial);
 
-$start_value=startValue($ppnumber,$trial);
+$start_value=startValue($ppnr,$trial);
 $other_start_value=startValue($partner,$trial);
 
 $iknowPie=knowPie($ppnr,$trial);
@@ -27,7 +27,6 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
 <html onContextMenu="return false;">
   <head>
     <meta http-equi="refresh" content="30">
-
     <title>Efficient Bargaining</title>
 
     <link rel="stylesheet" href="generalConfig.css"/>
@@ -36,8 +35,8 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
     <link rel="stylesheet" href="sliderConfig.css">
     <script src="js-webshim/dev/polyfiller.js"></script>
 
-    <!-- <script>
-    66: Video
+    <script>
+
     //configure before calling webshims.polyfill
 
     webshim.setOptions("forms-ext", {
@@ -50,9 +49,11 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
 
         webshim.polyfill("forms forms-ext");
 
-     </script> -->
+     </script>
+
 
      <!--Camera JS Coding:
+     //66: Video
      > Muaz Khan     - github.com/muaz-khan
      > MIT License   - www.webrtc-experiment.com/licence
      > Documentation - www.RecordRTC.org
@@ -64,8 +65,10 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
 <script>
 
   //Websocket set up.
-  const url = 'ws:/130.56.248.241:8080'
-  const connection = new WebSocket(url)
+  //const url = 'ws:/130.56.248.241:8080'
+  const url = 'ws:/localhost:8080'
+  const connection = new WebSocket(url);
+
 
 
 // Variables Related to Bargaining trial
@@ -77,14 +80,16 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
 
    var ppnr = <?php echo $ppnr;?>;
    var partner = <?php echo $partner; ?>;
-   var trial = <?php echo $ppnr;?>;
+   var trial = <?php echo $trial;?>;
    var know_pie= <?php echo $iknowPie; ?>;
-   var pie = <?php echo $thePie; ?>;
+   var pie_size = <?php echo $thePie; ?>;
    var time_bargaining =<?php echo $Time; ?>/1000;
    var time_initial_offer =<?php echo $timeForIniOffer; ?>/1000;
    var timer;
    var timer_interval;
    var warningTime = <?php echo $timeForWarning;?>;
+   var start_value = <?php echo $start_value;?>;
+   var other_start_value = <?php echo $other_start_value;?>;
 
    var almost_deal_timer;
 
@@ -95,17 +100,19 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
 
 
    connection.onopen = () => {
-     connection.send(`Hey, I am ppnr:${ppnr}. I am in the room.`)
+     send_message("start",1);
+     //66
+     //connection.send(`Hey, I am ppnr:${ppnr}. I am in the room.`);
    }
 
    connection.onerror = (error) => {
-     console.log(`WebSocket error: ${error}`)
+     console.log(`WebSocket error: ${error}`);
    }
 
    connection.onmessage = (ms) => {
      console.log('received: %s', ms.data);
      // Broadcast to everyone else.
-     client_process_messsage(ms);
+     client_process_messsage(ms.data);
    }
 
    function client_process_messsage(ms){
@@ -115,16 +122,16 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
        mvalue=message_dict["value"];
      }
      catch(err){
-       console.log("Error when parsing messsage from server: " + ms)
+       console.log("Error when parsing messsage from server: " + ms);
      }
 
      if (mtype == "notification"){
-        try{mvalue2=message_dict["value2"];} catch(err){console.log("Error when parsing value 2 form notifcation from server: " + ms)}
-        process_notifications(mvalue,mvalue2);
+        try{mvalue2=message_dict["value2"];} catch(err){console.log("Error when parsing value 2 form notifcation from server: " + ms);}
+        process_notification(mvalue,mvalue2);
      } else if (mtype=="slider"){
         update_other_slider(mvalue);
      } else {
-        onsole.log("Type of Messsage from Server not recognised: " + ms)
+        console.log("Type of Messsage from Server not recognised: " + ms);
      }
    }
 
@@ -140,21 +147,27 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
      } else if(notification=="initial_offer_end"){
         startBargaining();
      } else if(notification=="payoff"){
-        try(window.clearTimeout(almost_deal_timer);)
+        try{window.clearTimeout(almost_deal_timer);} catch(err){}
         show_payoff(not2);
-     }else{
+     } else if(notification=="you are connected"){
+        //Correct but do nothing.
+     } else {
        console.log("Notification from Server not recognised: " + notification);
      }
 
    }
 
     function enter_room(){
+      console.log("I am here");
       document.getElementById("entirePage").style.display = "none";
       document.getElementById("waitingPageTexto").innerHTML = "Please wait until all players are ready.";
       document.getElementById("waitingPage").style.display = "block";
     }
 
     function get_started(){
+      update_my_slider(start_value);
+      update_other_slider(other_start_value);
+
       startInitialOffer();
 
       if(robotina==1){
@@ -163,11 +176,13 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
     }
 
     function startInitialOffer(){
+
       //66:Video: Start Recording.
+      console.log("do I know pie: " + know_pie);
       if(know_pie){
-        document.getElementById("pieInstructions").innerHTML = "Pie size is $" + pie ;
+        document.getElementById("pieInstructions").innerHTML = "Pie size is $" + pie_size ;
       } else{
-        document.getElementById("pieInstructions").innerHTML = ""
+        document.getElementById("pieInstructions").innerHTML = "";
       }
 
       document.getElementById("slider2Section").style.visibility = "hidden";
@@ -175,15 +190,17 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
 
       document.getElementById("iniOffer").innerHTML = " &nbsp &nbsp Place your initial offer";
 
-      document.getElementById("entirePage").style.visibility = "hidden";
       document.getElementById("entirePage").style.display = "block";
-      startTimer(time_initial_offer);
+      document.getElementById("entirePage").style.visibility = "visible";
+
+
+      start_timer(time_initial_offer);
     }
 
     function startBargaining(){
       document.getElementById("iniOffer").style.visibility = "hidden";
       document.getElementById("slider2Section").style.visibility = "visible";
-      startTimer(time_bargaining);
+      start_timer(time_bargaining);
     }
 
     function show_payoff(payoff){
@@ -226,7 +243,7 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
     function update_my_slider(value){
       //Update slider
       var slider = $('#slider1');
-      slider.val(valRobotSlider1);
+      slider.val(value);
       //Update text value
       //Send value to server
       send_my_updated_slider(value);
@@ -239,7 +256,7 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
 
     function update_other_slider(value){
       var slider = $('#slider2');
-      slider.val(valRobotSlider1);
+      slider.val(value);
       document.getElementById("infoPHP2").innerHTML = value;
     }
 
@@ -430,7 +447,7 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
       <div class="leftOfSlider" > <?php echo $minValue; ?> </div>
       <div class="divSlider" > <?php echo $maxValue; ?> </div>
       <div class="rightOfSlider" align="center" >
-        <input type="range" id="slider2" class="slider" value=<?php echo $other_start_value);?> min=<?php echo $minValue; ?> max=<?php echo $maxValue; ?> step=<?php echo $Steps;?> list=tickmarks disabled>
+        <input type="range" id="slider2" class="slider" value=<?php echo $other_start_value;?> min=<?php echo $minValue; ?> max=<?php echo $maxValue; ?> step=<?php echo $Steps;?> list=tickmarks disabled>
       </div>
 
 
@@ -438,18 +455,7 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
 
     </div>
 
-    <div id="videoSection" style="visibility:<?php echo $videoVisibility; ?>"  >
-      <!-- Video Conference -->
-      <!--
-      <h2 class="insideVideo"> Video Conference </h2>
-      -->
 
-      <!-- local/remote videos container -->
-      <!-- Fit video in container -->
-      <div class="insideVideo" id="videos-container">
-        <video id="videito" controls muted></video>
-      </div>
-    </div>
 
   </div>
 
@@ -458,48 +464,64 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
     </div>
 
   <script>
+    //console.log("I am here");
     window.onload = enter_room();
+    // 66: Video
+    // //Video v3
+    // var recordingPlayer = document.getElementById('videito');
+    // console.log("este es el recordingPlayer");
+    // console.log(recordingPlayer);
+    //
+    // //Dimensions of the video
+    // function scaleVideos() {
+    //     var videos = document.querySelectorAll('video'),
+    //         length = videos.length,
+    //         video;
+    //     var minus = 130;
+    //     var windowHeight = 700;
+    //     var windowWidth = 600;
+    //     var windowAspectRatio = windowWidth / windowHeight;
+    //     var videoAspectRatio = 4 / 3;
+    //     var blockAspectRatio;
+    //     var tempVideoWidth = 0;
+    //     var maxVideoWidth = 0;
+    //
+    //     //Relocates and scales video panes according to number of videos
+    //     for (var i = length; i > 0; i--) {
+    //         blockAspectRatio = i * videoAspectRatio / Math.ceil(length / i);
+    //         if (blockAspectRatio <= windowAspectRatio) {
+    //             tempVideoWidth = videoAspectRatio * windowHeight / Math.ceil(length / i);
+    //         } else {
+    //             tempVideoWidth = windowWidth / i;
+    //         }
+    //         if (tempVideoWidth > maxVideoWidth)
+    //             maxVideoWidth = tempVideoWidth;
+    //     }
+    //     for (var i = 0; i < length; i++) {
+    //         video = videos[i];
+    //         if (video)
+    //             video.width = maxVideoWidth - minus;
+    //     }
+    // }
+
+    // <!--
+    //   <div id="videoSection" style="visibility:<?php echo $videoVisibility; ?>"  >
+    //     <!-- Video Conference -->
+    //     <!--
+    //     <h2 class="insideVideo"> Video Conference </h2>
+    //     -->
+    //
+    //     <!-- local/remote videos container -->
+    //     <!-- Fit video in container -->
+    //     <div class="insideVideo" id="videos-container">
+    //       <video id="videito" controls muted></video>
+    //     </div>
+    //   </div>
+    // -->
   </script>
 
-  <script>
-  // 66: Video
-  // //Video v3
-  // var recordingPlayer = document.getElementById('videito');
-  // console.log("este es el recordingPlayer");
-  // console.log(recordingPlayer);
-  //
-  // //Dimensions of the video
-  // function scaleVideos() {
-  //     var videos = document.querySelectorAll('video'),
-  //         length = videos.length,
-  //         video;
-  //     var minus = 130;
-  //     var windowHeight = 700;
-  //     var windowWidth = 600;
-  //     var windowAspectRatio = windowWidth / windowHeight;
-  //     var videoAspectRatio = 4 / 3;
-  //     var blockAspectRatio;
-  //     var tempVideoWidth = 0;
-  //     var maxVideoWidth = 0;
-  //
-  //     //Relocates and scales video panes according to number of videos
-  //     for (var i = length; i > 0; i--) {
-  //         blockAspectRatio = i * videoAspectRatio / Math.ceil(length / i);
-  //         if (blockAspectRatio <= windowAspectRatio) {
-  //             tempVideoWidth = videoAspectRatio * windowHeight / Math.ceil(length / i);
-  //         } else {
-  //             tempVideoWidth = windowWidth / i;
-  //         }
-  //         if (tempVideoWidth > maxVideoWidth)
-  //             maxVideoWidth = tempVideoWidth;
-  //     }
-  //     for (var i = 0; i < length; i++) {
-  //         video = videos[i];
-  //         if (video)
-  //             video.width = maxVideoWidth - minus;
-  //     }
-  // }
-  </script>
+
+
 
 
 </body>
