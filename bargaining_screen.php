@@ -176,7 +176,7 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
     }
 
     function startInitialOffer(){
-
+      $(window).trigger('resize');//This is the only way I found to solve an annoying bug in which sliders show up small
       //66:Video: Start Recording.
       console.log("do I know pie: " + know_pie);
       if(know_pie){
@@ -189,7 +189,7 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
       document.getElementById("waitingPage").style.display = "none";
 
       document.getElementById("iniOffer").innerHTML = " &nbsp &nbsp Place your initial offer";
-
+      
       document.getElementById("entirePage").style.display = "block";
       document.getElementById("entirePage").style.visibility = "visible";
 

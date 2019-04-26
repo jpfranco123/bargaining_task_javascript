@@ -360,6 +360,7 @@ function initial_offer_finalized(p1,p2){
   send_to_ppnr_notif(p2,"initial_offer_end");
   ppnr_dict["bargaining_started"][p1]=1;
   ppnr_dict["bargaining_started"][p2]=1;
+  check_match(p1,p2);
   timer_room = Math.min(p1,p2);
   ppnr_dict["bargaining_timer"][timer_room] = setTimeout(function(){bargaining_time_is_up(p1,p2);}, general_vars["bargaining_time"]);
 }
@@ -383,13 +384,26 @@ function send_to_ppnr_slider(p,s_value){
 //Save and send value
 
 function update_slider(p1,value){
+  p2 = ppnr_dict["other_ppnr"][p1];
+
   // Update server dictionary with current slider Values
   ppnr_dict["slider_pos"][p1]=value;
-
   // Send opponent new value of the oSlider.
-  p2 = ppnr_dict["other_ppnr"][p1];
   send_to_ppnr_slider(p2,value);
 
+  check_match(p1,p2);
+
+  //Save Update to database
+  var timeUpdate = new Date().getTime();
+  var trial = ppnr_dict["trial"][p1];
+  var value2 = ppnr_dict["slider_pos"][p2];
+  var names = ["ppnr1","ppnr2","time","sValue1","sValue2","trial"];
+  var values= [p1,p2,timeUpdate,value,value2,trial];
+  insertRecord_js("sliderLog",names,values)
+}
+
+
+function check_match(p1,p2){
   if(ppnr_dict["slider_pos"][p1] == ppnr_dict["slider_pos"][p2] && ppnr_dict["bargaining_started"][p1]==1 && ppnr_dict["bargaining_started"][p2]==1){
     ppnr_dict["almostDeal"][p1] = true;
     ppnr_dict["almostDeal"][p2] = true;
@@ -405,14 +419,6 @@ function update_slider(p1,value){
       send_to_ppnr_notif(p1,"broken_deal");
       send_to_ppnr_notif(p2,"broken_deal");
   }
-
-  //Save Update to database
-  var timeUpdate = new Date().getTime();
-  var trial = ppnr_dict["trial"][p1];
-  var value2 = ppnr_dict["slider_pos"][p2];
-  var names = ["ppnr1","ppnr2","time","sValue1","sValue2","trial"];
-  var values= [p1,p2,timeUpdate,value,value2,trial];
-  insertRecord_js("sliderLog",names,values)
 }
 
 function deal_closed(p1,p2){
@@ -530,6 +536,11 @@ function get_payoff(pp,deal,sValue,trial){
 function bargaining_finalised(p1,p2,payoff1,payoff2){
   send_to_ppnr_notif(p1,"payoff",payoff1);
   send_to_ppnr_notif(p2,"payoff",payoff2);
+
+  ws1 = ppnr_dict["client_id"][p1];
+  ws2 = ppnr_dict["client_id"][p2];
+  ws1.terminate();
+  ws2.terminate();
 
   //Reset dictionaries
   // ppnr_dict["client_id"][p1]={};
