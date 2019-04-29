@@ -273,6 +273,7 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
     function start_timer(total_time){
       window.clearInterval(timer_interval);
       timer = total_time;
+      document.getElementById("timerDiv").innerHTML = timer;
       timer_interval = setInterval(function(){ update_timer(); }, 1000);
       //Math.round(time_left);
     }
