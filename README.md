@@ -8,7 +8,7 @@ During each trial participants negotiate by moving a cursor on a slider that rep
 
 Clicking the mouse on a different part of the slider moves the cursor. A deal is made when both cursors are in the same place for 2 seconds or if both sliders are matching when the time is over. If no deal has been made after 20 the seconds of bargaining, both participants get $0. If a deal is made, the informed participant’s payment is equal to the pie-size minus the negotiated uninformed participant’s payment.
 
-Participants are assigned randomly at the beginning of each session to be either informed or uninformed for the whole experiment. However, both type of participants are shown the same instructions and do not know their role until bargaining starts. Informed and uninformed participants are randomly matched before after trial with a (potentially) different participant. After each trial both participants are informed about the pie-size and their corresponding payments.
+Participants are assigned randomly at the beginning of each session to be either informed or uninformed for the whole experiment. However, both type of participants are shown the same instructions and do not know their role until bargaining starts. Informed and uninformed participants are randomly matched before each trial with a (potentially) different participant. After each trial both participants are informed about the pie-size and their corresponding payments.
 
 ## 1. How to install
 
