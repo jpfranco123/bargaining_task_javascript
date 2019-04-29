@@ -12,7 +12,7 @@ else {
 updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
 
 if ($startexp==1) {
-                header("Location: sliderAndCamera.php");
+                header("Location: bargaining_screen.php");
                 exit();}
 ?>
 <html>

@@ -70,6 +70,27 @@ background:lightgrey;
 </style>
 
 <script type="text/javascript">
+
+//WEBSOCKET
+	const url = 'ws:/localhost:8080'
+	const connection = new WebSocket(url);
+
+	connection.onopen = () => {
+		send_message_mon("connected",1);
+		send_message_mon("update_game_vars",1)
+	}
+
+	connection.onerror = (error) => {
+		console.log(`WebSocket error: ${error}`);
+	}
+
+	connection.onmessage = (ms) => {
+		console.log('received message from Server (This shouldnt happen!) %s', ms.data);
+		// Broadcast to everyone else.
+		//client_process_messsage(ms.data);
+	}
+
+// Monitor Functions
 	var SPOtherFilled = <?php echo $SPOtherFilled; ?>;
 
 	function loadDoc3(funcion, url, value1,value2,value3) {
@@ -99,7 +120,8 @@ background:lightgrey;
 	function doorgaan(){
 		if(confirm("Are you sure you want to continue the experiment?")){
 			var tiempo = new Date().getTime();
-			loadDoc3(nada,'startExpTimer.php',tiempo,1,1);
+			//loadDoc3(nada,'startExpTimer.php',tiempo,1,1);
+			send_message_mon("start_experiment",1);
 			return true;
 		} else {
 			return false;
@@ -107,8 +129,9 @@ background:lightgrey;
 	}
 
 	function stampTime(){
-			var tiempo = new Date().getTime();
-			loadDoc3(nada,'startExpTimer.php',tiempo,2,2);
+			//var tiempo = new Date().getTime();
+			//loadDoc3(nada,'startExpTimer.php',tiempo,2,2);
+			send_message_mon("time_marks",1);
 	}
 
 	function SPFinished(){
@@ -123,6 +146,13 @@ background:lightgrey;
 		} else {
 			return false;
 		}
+	}
+
+	function send_message_mon(mtype,mvalue){
+		var dict = {"p1":"monitor", "p2":"monitor", "trial":"monitor", "type":mtype, "value":mvalue};
+		var json_message = JSON.stringify(dict);
+		console.log(`message sent: ${json_message}`);
+		connection.send(json_message);
 	}
 
 </script>

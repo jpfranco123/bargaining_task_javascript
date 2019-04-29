@@ -114,34 +114,34 @@ if (isset($_REQUEST['send'])) {
 function funktie() {
 
 
-if(document.form1.tjekA.checked){document.form1.mgroupsize.disabled=false;}else{document.form1.mgroupsize.disabled=true;}
-if(document.form1.tjekB.checked){document.form1.NPlayers.disabled=false;}else{document.form1.NPlayers.disabled=true;}
-if(document.form1.tjekC.checked){document.form1.maxValue.disabled=false;}else{document.form1.maxValue.disabled=true;}
-if(document.form1.tjekD.checked){document.form1.session.disabled=false;}else{document.form1.session.disabled=true;}
-if(document.form1.tjekE.checked){document.form1.showUpFee.disabled=false;}else{document.form1.showUpFee.disabled=true;}
-if(document.form1.tjekF.checked){document.form1.showVideo.disabled=false;}else{document.form1.showVideo.disabled=true;}
-if(document.form1.tjekG.checked){document.form1.showVideoOther.disabled=false;}else{document.form1.showVideoOther.disabled=true;}
-if(document.form1.tjekH.checked){document.form1.Steps.disabled=false;}else{document.form1.Steps.disabled=true;}
-if(document.form1.tjekI.checked){document.form1.Time.disabled=false;}else{document.form1.Time.disabled=true;}
-if(document.form1.tjekJ.checked){document.form1.totalTrials.disabled=false;}else{document.form1.totalTrials.disabled=true;}
+	if(document.form1.tjekA.checked){document.form1.mgroupsize.disabled=false;}else{document.form1.mgroupsize.disabled=true;}
+	if(document.form1.tjekB.checked){document.form1.NPlayers.disabled=false;}else{document.form1.NPlayers.disabled=true;}
+	if(document.form1.tjekC.checked){document.form1.maxValue.disabled=false;}else{document.form1.maxValue.disabled=true;}
+	if(document.form1.tjekD.checked){document.form1.session.disabled=false;}else{document.form1.session.disabled=true;}
+	if(document.form1.tjekE.checked){document.form1.showUpFee.disabled=false;}else{document.form1.showUpFee.disabled=true;}
+	if(document.form1.tjekF.checked){document.form1.showVideo.disabled=false;}else{document.form1.showVideo.disabled=true;}
+	if(document.form1.tjekG.checked){document.form1.showVideoOther.disabled=false;}else{document.form1.showVideoOther.disabled=true;}
+	if(document.form1.tjekH.checked){document.form1.Steps.disabled=false;}else{document.form1.Steps.disabled=true;}
+	if(document.form1.tjekI.checked){document.form1.Time.disabled=false;}else{document.form1.Time.disabled=true;}
+	if(document.form1.tjekJ.checked){document.form1.totalTrials.disabled=false;}else{document.form1.totalTrials.disabled=true;}
 
-if(document.form1.tjekJJ.checked){document.form1.totalPayTrials.disabled=false;}else{document.form1.totalPayTrials.disabled=true;}
+	if(document.form1.tjekJJ.checked){document.form1.totalPayTrials.disabled=false;}else{document.form1.totalPayTrials.disabled=true;}
 
-if(document.form1.tjekK.checked){document.form1.minValue.disabled=false;}else{document.form1.minValue.disabled=true;}
-if(document.form1.tjekL.checked){document.form1.showChat.disabled=false;}else{document.form1.showChat.disabled=true;}
-if(document.form1.tjekM.checked){document.form1.updateRateMS.disabled=false;}else{document.form1.updateRateMS.disabled=true;}
-if(document.form1.tjekN.checked){document.form1.lowValuePie.disabled=false;}else{document.form1.lowValuePie.disabled=true;}
-if(document.form1.tjekO.checked){document.form1.highValuePie.disabled=false;}else{document.form1.highValuePie.disabled=true;}
-if(document.form1.tjekP.checked){document.form1.timeForDeal.disabled=false;}else{document.form1.timeForDeal.disabled=true;}
-if(document.form1.tjekQ.checked){document.form1.timeForWarning.disabled=false;}else{document.form1.timeForWarning.disabled=true;}
-if(document.form1.tjekR.checked){document.form1.timeForIniOffer.disabled=false;}else{document.form1.timeForIniOffer.disabled=true;}
+	if(document.form1.tjekK.checked){document.form1.minValue.disabled=false;}else{document.form1.minValue.disabled=true;}
+	if(document.form1.tjekL.checked){document.form1.showChat.disabled=false;}else{document.form1.showChat.disabled=true;}
+	if(document.form1.tjekM.checked){document.form1.updateRateMS.disabled=false;}else{document.form1.updateRateMS.disabled=true;}
+	if(document.form1.tjekN.checked){document.form1.lowValuePie.disabled=false;}else{document.form1.lowValuePie.disabled=true;}
+	if(document.form1.tjekO.checked){document.form1.highValuePie.disabled=false;}else{document.form1.highValuePie.disabled=true;}
+	if(document.form1.tjekP.checked){document.form1.timeForDeal.disabled=false;}else{document.form1.timeForDeal.disabled=true;}
+	if(document.form1.tjekQ.checked){document.form1.timeForWarning.disabled=false;}else{document.form1.timeForWarning.disabled=true;}
+	if(document.form1.tjekR.checked){document.form1.timeForIniOffer.disabled=false;}else{document.form1.timeForIniOffer.disabled=true;}
 
-if(document.form1.tjekS.checked){document.form1.robot.disabled=false;}else{document.form1.robot.disabled=true;}
+	if(document.form1.tjekS.checked){document.form1.robot.disabled=false;}else{document.form1.robot.disabled=true;}
 
-if(document.form1.tjekT.checked){document.form1.SPe.disabled=false;}else{document.form1.SPe.disabled=true;}
-if(document.form1.tjekU.checked){document.form1.SPg.disabled=false;}else{document.form1.SPg.disabled=true;}
-if(document.form1.tjekV.checked){document.form1.SPs.disabled=false;}else{document.form1.SPs.disabled=true;}
-if(document.form1.tjekW.checked){document.form1.SPt.disabled=false;}else{document.form1.SPt.disabled=true;}
+	if(document.form1.tjekT.checked){document.form1.SPe.disabled=false;}else{document.form1.SPe.disabled=true;}
+	if(document.form1.tjekU.checked){document.form1.SPg.disabled=false;}else{document.form1.SPg.disabled=true;}
+	if(document.form1.tjekV.checked){document.form1.SPs.disabled=false;}else{document.form1.SPs.disabled=true;}
+	if(document.form1.tjekW.checked){document.form1.SPt.disabled=false;}else{document.form1.SPt.disabled=true;}
 
 
 }
@@ -167,7 +167,7 @@ if (is_int(grgrootte)==true && is_int(totrounds1)==true && is_int(numbersubj)==t
     					return false;
     				}
 } else {
-	if(alert("The number of subjects ant trials should be integers!")){
+	if(alert("The number of subjects and trials should be integers!")){
       			return true;
     				} else {
       					return false;

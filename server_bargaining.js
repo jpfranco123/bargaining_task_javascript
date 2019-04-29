@@ -48,89 +48,19 @@ con.connect(function(err) {
   //const bargaining_time =  lookUp_js("commonParameters","Name='Time'","Value", var_to_update, data_type, ppnr_dict="none")//.then(function(value){return(value);});
   //const general_vars["initial_offer_time"] = lookUp_js("commonParameters","Name='timeForIniOffer'","Value");
   //var deal_confirmation_time = lookUp_js("commonParameters","Name='timeForDeal'","Value");
-
-  lookUp_js("commonParameters","Name='Time'","Value","general_vars", "bargaining_time", "integer");//.then(function(value){return(value);});
-  lookUp_js("commonParameters","Name='timeForIniOffer'","Value","general_vars", "initial_offer_time", "integer");
-  lookUp_js("commonParameters","Name='timeForDeal'","Value", "general_vars", "deal_confirmation_time", "integer");
+  load_game_parameters();
 
   //parseInt(l
   //bargaining_time.then(function(value){console.log("bargtime = ")});
   //bargaining_time.then(function(value){console.log(value)});
-  console.log("initial_offer_time is ");
-  console.log(general_vars["bargaining_time"]);
-
-  // bargaining_time.then(function(value) {
-  // console.log("VALUE!!!");
-  // console.log(value);
-  // console.log(parseInt(value));
-  // // expected output: "foo"
-  // });
-
-  setTimeout(function(){  console.log(general_vars["bargaining_time"]+1); },4000);
 });
 
+function load_game_parameters(){
+  lookUp_js("commonParameters","Name='Time'","Value","general_vars", "bargaining_time", "integer");//.then(function(value){return(value);});
+  lookUp_js("commonParameters","Name='timeForIniOffer'","Value","general_vars", "initial_offer_time", "integer");
+  lookUp_js("commonParameters","Name='timeForDeal'","Value", "general_vars", "deal_confirmation_time", "integer");
+}
 
-//lookUp("subjects","ppnr='$ppnr'","sValue");
-//function lookUp($table_name,$condition,$name){
-//$sql="SELECT $name FROM $table_name WHERE ($condition)";
-// async function lookUp_js(table_name,condition,name){
-//   var sql = `SELECT ${name} FROM ${table_name} WHERE (${condition})`;
-//   var clean_result;
-//   //"SELECT ?? FROM ?? WHERE (?)"
-//   //con.query(sql, [name, table_name, condition], function (err, result) {
-//
-//   function_query = function (err, result,fields) {
-//     console.log(sql);//123: Remove if working
-//     console.log(result);//123: Remove if working
-//     if (err) throw err;
-//     var name_var = fields[0].name;
-//     clean_result = result[0][name_var];
-//     console.log(typeof clean_result);
-//     console.log(clean_result);
-//     return(clean_result);
-//   }
-//
-//   let response = await new Promise(con.query(sql, function_query));
-//
-//
-//
-//   console.log("I reached this place in the function lookup");
-//   console.log(response.result);
-//   console.log(clean_result);
-//   return(clean_result);
-//
-// }
-
-// // Condition for it to be integer...
-// async function lookUp_js(table_name,condition,name){
-//   var sql = `SELECT ${name} FROM ${table_name} WHERE (${condition})`;
-//   var cc;
-//   //var clean_result;
-//   //"SELECT ?? FROM ?? WHERE (?)"
-//   //con.query(sql, [name, table_name, condition], function (err, result) {
-//
-//   let promise = new Promise( function(resolve,reject){
-//     con.query(sql, function (err, result,fields) {
-//     console.log(sql);//123: Remove if working
-//     console.log(result);//123: Remove if working
-//     if (err) throw err;
-//     var name_var = fields[0].name;
-//     var clean_result = result[0][name_var];
-//     console.log(typeof clean_result);
-//     console.log(clean_result);
-//     cc=clean_result;
-//     resolve(clean_result);
-//     });
-//   });
-//
-//   let results = await promise;
-//   results = parseInt(results);
-//   console.log("the lookup result is "+ results);
-//
-//   console.log("the lookup result iss "+ cc);
-//   return(results);
-//
-// }
 
 // Condition for it to be integer...
 async function lookUp_js(table_name,condition,name, dictionary, var_to_update, data_type, ppnr_d=0){
@@ -268,11 +198,11 @@ console.log('Server Running');
 function process_messsage(ms,ws){
   var message_dict = extract_message(ms);
   try{
-    mp1=message_dict["p1"];
-    mp2=message_dict["p2"];
-    mtrial=message_dict["trial"];
-    mtype=message_dict["type"];
-    mvalue=message_dict["value"];
+    var mp1=message_dict["p1"];
+    var mp2=message_dict["p2"];
+    var mtrial=message_dict["trial"];
+    var mtype=message_dict["type"];
+    var mvalue=message_dict["value"];
   }
   catch(err){
     console.log("Error when parsing messsage from client: " + ms);
@@ -284,8 +214,27 @@ function process_messsage(ms,ws){
       update_slider(mp1,mvalue);
   } else if(mtype=="error"){
       error_trial(p1,p2);
+  } else if(mp1=="monitor"){
+      process_message_from_monitor(mtype,mvalue);
   } else {
       console.log("Type of Messsage from Client not recognised: " + ms);
+  }
+}
+
+//66. Modify monitor to process messages!
+process_message_from_monitor(mtype,mvalue){
+  if (mtype="connected"){
+     console.log("Monitor connected")
+  } else if(mtype=="start_experiment"){
+      var tiempo = new Date().getTime();
+      insertRecord_js("timeMarks","timeStamp, name",` '${tiempo}', 'start_exp' `);
+  } else if(mtype=="time_marks"){
+      var tiempo = new Date().getTime();
+      insertRecord_js("timeMarks","timeStamp, name",` '${tiempo}', 'stamp' `);
+  } else if(mtype=="update_game_vars"){
+      load_game_parameters();
+  } else {
+     console.log("Type of Messsage from Monitor not recognised: " + mtype);
   }
 }
 
