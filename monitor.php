@@ -55,7 +55,7 @@
 
 <html>
 <head>
-<meta http-equiv="Refresh" content="5">
+<!-- <meta http-equiv="Refresh" content="5"> -->
 <link rel="stylesheet" type="text/css" href="beleggensns.css" />
 <link rel="stylesheet" type="text/css" href="buttons.css" />
 <style>
@@ -85,13 +85,16 @@ background:lightgrey;
 	}
 
 	connection.onmessage = (ms) => {
-		console.log('received message from Server (This shouldnt happen!) %s', ms.data);
+
+
+		console.log('received message from Server %s', ms.data);
 		// Broadcast to everyone else.
 		//client_process_messsage(ms.data);
 	}
 
 // Monitor Functions
 	var SPOtherFilled = <?php echo $SPOtherFilled; ?>;
+	var refreshTime = 5000
 
 	function loadDoc3(funcion, url, value1,value2,value3) {
 		var xhttp;
@@ -155,6 +158,19 @@ background:lightgrey;
 		connection.send(json_message);
 	}
 
+	function getUpdatedTable(){
+		var table = document.getElementById("table").innerHTML;
+		loadDoc3(updateTable,'update_monitor_table.php',1,1,1);
+		return document.getElementById("table").innerHTML;
+
+	}
+
+	function updateTable(xhttp){
+		document.getElementById("table").innerHTML = xhttp.responseText;
+	}
+
+	window.onload =  setInterval("getUpdatedTable();",refreshTime);
+
 </script>
 </head>
 
@@ -162,7 +178,10 @@ background:lightgrey;
 <p align=center> 	<a href="setup.php" class="buttonoranje">Go to setup</a></p>
 <p align=center>	<a href="startexp.php" class="buttonblauw" onclick="return doorgaan()">Start Experiment</a></p>
 
-<?php echo $tabel; ?>
+
+<p id="table"> <?php echo $tabel; ?> </p>
+
+<p>
 
 </br>
 </br>

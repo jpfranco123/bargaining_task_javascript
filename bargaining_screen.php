@@ -26,7 +26,7 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
 <!doctype html>
 <html onContextMenu="return false;">
   <head>
-    <meta http-equi="refresh" content="30">
+    <!-- <meta http-equi="refresh" content="30"> -->
     <title>Efficient Bargaining</title>
 
     <link rel="stylesheet" href="generalConfig.css"/>
@@ -189,7 +189,7 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
       document.getElementById("waitingPage").style.display = "none";
 
       document.getElementById("iniOffer").innerHTML = " &nbsp &nbsp Place your initial offer";
-      
+
       document.getElementById("entirePage").style.display = "block";
       document.getElementById("entirePage").style.visibility = "visible";
 

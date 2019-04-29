@@ -110,7 +110,7 @@ $chatVisibility= ($showChat == 1 ? "visible" : "hidden");
     var initiated=0;
     var bargainingTime = 0;
     var warningTime = <?php echo $timeForWarning;?>;
-    var dealTime = <?php echo $timeForDeal;?>;
+    //var dealTime = <?php echo $timeForDeal;?>;
     //66
     var slider1 = <?php echo $valueDeal1; ?>;
     var slider2 = <?php echo $valueDeal2; ?>;
@@ -278,7 +278,7 @@ $chatVisibility= ($showChat == 1 ? "visible" : "hidden");
     }
 
     function startTimer(initialTime){
-      timer=initialTime;
+      timer=initialTime/1000;
       clearInterval(timerInterval);
       document.getElementById("timerDiv").innerHTML = timer;
       timerInterval = setInterval(function(){hp2();},1000);

@@ -213,8 +213,9 @@ function process_messsage(ms,ws){
   } else if (mtype=="slider"){
       update_slider(mp1,mvalue);
   } else if(mtype=="error"){
-      error_trial(p1,p2);
+      error_trial(mp1,mp2);
   } else if(mp1=="monitor"){
+      console.log("processing message from monitor"+mtype);
       process_message_from_monitor(mtype,mvalue);
   } else {
       console.log("Type of Messsage from Client not recognised: " + ms);
@@ -222,9 +223,9 @@ function process_messsage(ms,ws){
 }
 
 //66. Modify monitor to process messages!
-process_message_from_monitor(mtype,mvalue){
-  if (mtype="connected"){
-     console.log("Monitor connected")
+function process_message_from_monitor(mtype,mvalue){
+  if (mtype=="connected"){
+     console.log("Monitor connected");
   } else if(mtype=="start_experiment"){
       var tiempo = new Date().getTime();
       insertRecord_js("timeMarks","timeStamp, name",` '${tiempo}', 'start_exp' `);
@@ -232,6 +233,7 @@ process_message_from_monitor(mtype,mvalue){
       var tiempo = new Date().getTime();
       insertRecord_js("timeMarks","timeStamp, name",` '${tiempo}', 'stamp' `);
   } else if(mtype=="update_game_vars"){
+      console.log("updating_game_vars");
       load_game_parameters();
   } else {
      console.log("Type of Messsage from Monitor not recognised: " + mtype);
