@@ -61,25 +61,25 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
 
 		function nextEmotion(){
 			emotion=emotion+1;
-			if (emotion==2) {
-				emotionText="Anger";
-			}
-			else if (emotion==3){
-				emotionText="Fear";
-			}
-			else if (emotion==4){
-				emotionText="Joy";
-			}
-			else if (emotion==5){
-				emotionText="Disgust";
-			}
-			else if (emotion==6){
-				emotionText="Sadness";
-			}
-			else if (emotion==7){
-				emotionText="Surprise";
-			}
-			else if (emotion==8){
+			// if (emotion==2) {
+			// 	emotionText="Anger";
+			// }
+			// else if (emotion==3){
+			// 	emotionText="Fear";
+			// }
+			// else if (emotion==4){
+			// 	emotionText="Joy";
+			// }
+			// else if (emotion==5){
+			// 	emotionText="Disgust";
+			// }
+			// else if (emotion==6){
+			// 	emotionText="Sadness";
+			// }
+			// else if (emotion==7){
+			// 	emotionText="Surprise";
+			// }
+			if (emotion==2){
 				emotionText="";
 				document.getElementById("breakTimer").innerHTML = emotionText;
 				//stopRec();

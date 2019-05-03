@@ -21,8 +21,9 @@ $initialSliderValue=startValue($pp2,1);
 $IPA=$_SERVER['REMOTE_ADDR'];
 
 insertRecord("subjects","ppnr,sValue,session,blocked,trial,started,subID","\"$pp2\",\"$initialSliderValue\",\"$session\",'0','1','0','$IPA' ");
+//insertRecord("subjects","ppnr,sValue,session,blocked,trial,started,subID","\"$pp2\",\"$initialSliderValue\",\"$session\",'0','1','0','$IPA' ");
 
-insertRecord("paymentSession","ppnr"," \"$ppnr\" ");
+insertRecord("paymentSession","ppnr"," \"$pp2\" ");
 
 $begininstructies="Location: instructions1.php";
 header($begininstructies);

@@ -1,4 +1,6 @@
 <?php
+// Generates cookie and goes directly to bargaining screen.
+// To be used for task testing.
 //Start Experiment
 include("commonSlider.inc");
 
@@ -16,7 +18,7 @@ if ($row=mysql_fetch_array($result)) {
 
 
 if ($pp2>$NPlayers){
-	header("Location: relogin.php");
+	header("Location: relogin2.php");
 	exit();
 //Not TO DO!
 } else {

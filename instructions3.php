@@ -104,9 +104,9 @@ $insPrevPage=  instructionsPrevPage($_SERVER['PHP_SELF'], $ppnr, $part);
     <p align=center><?php echo $menu; ?></p>
     <H1 align=center> Basics 2 </H1>
 
-    <p> <b> During the first <?php echo $timeForIniOffer; ?>  seconds, participants select their initial offers</b>. During this period, your slider will not be seen by the other participant. Note that the initial location of the cursors is random. </p>
+    <p> <b> During the first <?php echo $timeForIniOffer/1000; ?>  seconds, participants select their initial offers</b>. During this period, your slider will not be seen by the other participant. Note that the initial location of the cursors is random. </p>
 
-    <p> <b> In the following <?php echo $Time; ?> seconds you will bargain with the other participant. </b> Clicking the mouse on a different part of the slider moves the cursor. A <b>deal</b> is made when <b>both cursors are in the same place for <?php echo $timeForDeal/1000; ?> second<?php echo ($timeForDeal == 1000 ? "" : "s"); ?> </b> or if <b> both sliders are matching when the time is over.</b></p>
+    <p> <b> In the following <?php echo $Time/1000; ?> seconds you will bargain with the other participant. </b> Clicking the mouse on a different part of the slider moves the cursor. A <b>deal</b> is made when <b>both cursors are in the same place for <?php echo $timeForDeal/1000; ?> second<?php echo ($timeForDeal == 1000 ? "" : "s"); ?> </b> or if <b> both sliders are matching when the time is over.</b></p>
 
     <p> When the position of both cursors on the slider match, a green circle will appear: </p>
 
