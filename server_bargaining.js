@@ -320,6 +320,7 @@ function initial_offer_finalized(p1,p2){
 function send_to_ppnr_notif(p,message, message2 = "None"){
   var dict = {type : "notification", value : message, value2: message2};
   var json_message = JSON.stringify(dict);
+  console.log(json_message);
   connection_ppnr = ppnr_dict["client_id"][p];
   connection_ppnr.send(json_message);
 }
@@ -355,7 +356,7 @@ function update_slider(p1,value){
 
 
 function check_match(p1,p2){
-  if(ppnr_dict["slider_pos"][p1] == ppnr_dict["slider_pos"][p2] && ppnr_dict["bargaining_started"][p1]==1 && ppnr_dict["bargaining_started"][p2]==1){
+  if(ppnr_dict["slider_pos"][p1] == ppnr_dict["slider_pos"][p2] && ppnr_dict["bargaining_started"][p1]==1 && ppnr_dict["bargaining_started"][p2]==1 && !ppnr_dict["almostDeal"][p1]){
     ppnr_dict["almostDeal"][p1] = true;
     ppnr_dict["almostDeal"][p2] = true;
     timer_room = Math.min(p1,p2);
@@ -373,6 +374,7 @@ function check_match(p1,p2){
 }
 
 function deal_closed(p1,p2){
+
   //Clear timer
   timer_room = Math.min(p1,p2);
   try {
@@ -400,6 +402,7 @@ function deal_closed(p1,p2){
   updateTableMany_js("trialInfo", condition2, update2);
 
   console.log("Deal");
+  console.log("p1:",p1," p2:",p2);
   //Finalise trial
   bargaining_finalised(p1,p2,payoff1,payoff2);
 }
