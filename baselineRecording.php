@@ -23,7 +23,7 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
 
   <script>
 		var emotion=1;
-    var recordingTime=10000;
+    var recordingTime=8000;
 		//var timeBeforeStarting=15000;
     var ppnr= <?php echo $ppnr; ?>;
 		var timeStartVideo;

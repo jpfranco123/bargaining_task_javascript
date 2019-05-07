@@ -230,8 +230,8 @@ function process_message_from_monitor(mtype,mvalue){
       var tiempo = new Date().getTime();
       insertRecord_js("timeMarks","timeStamp, name",` '${tiempo}', 'start_exp' `);
   } else if(mtype=="time_marks"){
-      var tiempo = new Date().getTime();
-      insertRecord_js("timeMarks","timeStamp, name",` '${tiempo}', 'stamp' `);
+      var tiempo_server = new Date().getTime();
+      insertRecord_js("timeMarks","timeStamp,timeStampLocal, name",` '${tiempo_server}', '${mvalue}', 'stamp' `);
   } else if(mtype=="update_game_vars"){
       console.log("updating_game_vars");
       load_game_parameters();

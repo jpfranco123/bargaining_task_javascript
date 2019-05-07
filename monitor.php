@@ -135,7 +135,8 @@ background:lightgrey;
 	function stampTime(){
 			//var tiempo = new Date().getTime();
 			//loadDoc3(nada,'startExpTimer.php',tiempo,2,2);
-			send_message_mon("time_marks",1);
+			var time_local = new Date().getTime();
+			send_message_mon("time_marks",time_local);
 	}
 
 	function SPFinished(){
