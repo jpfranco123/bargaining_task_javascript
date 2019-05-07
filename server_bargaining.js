@@ -21,20 +21,20 @@ const WebSocket = require('ws');
 const wss = new WebSocket.Server({ port: 8080 });
 
 //MySQL connection
-// var con = mysql.createConnection({
-//   host: "localhost",
-//   user: "root",
-//   password: "bargaining_mysql",
-//   database: "sliders"
-// });
+ var con = mysql.createConnection({
+   host: "localhost",
+   user: "root",
+   password: "bargaining_mysql",
+   database: "sliders"
+ });
 
-var con = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "root",
-  database: "sliders",
-  port:'8889'
-});
+//var con = mysql.createConnection({
+//  host: "localhost",
+//  user: "root",
+//  password: "root",
+//  database: "sliders",
+//  port:'8889'
+//});
 
 
 

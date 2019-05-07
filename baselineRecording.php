@@ -23,7 +23,7 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
 
   <script>
 		var emotion=1;
-    var recordingTime=1000;
+    var recordingTime=10000;
 		//var timeBeforeStarting=15000;
     var ppnr= <?php echo $ppnr; ?>;
 		var timeStartVideo;
@@ -230,7 +230,7 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
 <div id=instrucciones>
 <H1 align="center">Before we start the experiment we will record your face. </H1>
 
-<h3 align=center>Seven different words will appear one by one on the screen. We ask you to please express the emotion described while it appears on the screen.</h3>
+<h3 align=center>We ask you to please express a neutral face while the word "neutral" appears on the screen.</h3>
 <!--
 <h3 align=center>Do not start this part until you have been called to the front and your picture has been taken.</h3> -->
 

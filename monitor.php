@@ -72,7 +72,8 @@ background:lightgrey;
 <script type="text/javascript">
 
 //WEBSOCKET
-	const url = 'ws:/localhost:8080'
+	//const url = 'ws:/localhost:8080';
+	const url = 'ws:/130.56.248.241:8080';
 	const connection = new WebSocket(url);
 
 	connection.onopen = () => {

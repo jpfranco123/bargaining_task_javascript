@@ -65,8 +65,8 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
 <script>
 
   //Websocket set up.
-  //const url = 'ws:/130.56.248.241:8080'
-  const url = 'ws:/localhost:8080'
+  const url = 'ws:/130.56.248.241:8080'
+  //const url = 'ws:/localhost:8080'
   const connection = new WebSocket(url);
 
 

@@ -6,8 +6,8 @@ define ("DBNAME","sliders");
 // fill in correct loginname/password
 define ("ADMIN","root");
 
-define ("WWOORD","root");
-//define ("WWOORD","bargaining_mysql");
+//define ("WWOORD","root");
+define ("WWOORD","bargaining_mysql");
 
 //define ("ADMIN","pablo");
 //define ("WWOORD","pablo-ssel123");
