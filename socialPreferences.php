@@ -233,8 +233,8 @@ $eVar=$SPe;
 
   <table id="decision" width="80%" border="2px" cellpadding="2px" cellspacing="0" align="center">
     <tr>
-      <td> <h2 align=center id="stair"> You receive: $<?php echo $eVar-$tVar*$sVar; ?><br><br> The other receives: $<?php echo $eVar+$gVar; ?> <br> </h2> <br> <p align=center><a id="left" onclick="unequal()" class="buttonblauw" > Left </a> </td>
-      <td> <h2 align=center> You receive: $<?php echo $eVar; ?><br><br> The other receives: $<?php echo $eVar; ?> <br> </h2> <br> <p align=center><a id="right" onclick="equal()" class="buttonblauw" > Right </a> </td>
+      <td> <h2 align=center id="stair"> You receive: $<?php echo round($eVar-$tVar*$sVar,2); ?><br><br> The other receives: $<?php echo round($eVar+$gVar,2); ?> <br> </h2> <br> <p align=center><a id="left" onclick="unequal()" class="buttonblauw" > Left </a> </td>
+      <td> <h2 align=center> You receive: $<?php echo round($eVar,2); ?><br><br> The other receives: $<?php echo round($eVar,2); ?> <br> </h2> <br> <p align=center><a id="right" onclick="equal()" class="buttonblauw" > Right </a> </td>
     </tr>
 
   </table>
