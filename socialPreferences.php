@@ -34,10 +34,10 @@ $eVar=$SPe;
   <script>
   //66
   var ts=0;
-  var tVar=<?php echo $tVar; ?>;
-  var eVar=<?php echo $eVar; ?>;
-  var sVar=<?php echo $sVar; ?>;
-  var gVar=<?php echo $gVar; ?>;
+  var tVar=<?php echo round($tVar,2); ?>;
+  var eVar=<?php echo round($eVar,2); ?>;
+  var sVar=<?php echo round($sVar,2); ?>;
+  var gVar=<?php echo round($gVar,2); ?>;
   var answersUnequal= [];
   var part=1;
   var interTime=600;
@@ -146,6 +146,7 @@ $eVar=$SPe;
     if (ts<2*tVar){
       ts++;
       var newStep = eVar-tVar*sVar+sVar*ts;
+      newStep= Math.round(newStep*100)/100;
       if (part==1){
         //first part is with e+g
         var otherPayoff = eVar + gVar;
@@ -153,6 +154,7 @@ $eVar=$SPe;
         //second part is with e-g
         var otherPayoff = eVar - gVar;
       }
+      otherPayoff=Math.round(otherPayoff*100)/100;
 
       var texto= "You receive: $".concat(newStep,"<br><br> The other receives: $",otherPayoff);
       //document.getElementById("decisionSec").style.background = "#000066";
