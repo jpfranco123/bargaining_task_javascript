@@ -37,15 +37,31 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
 ?>
 <html>
   <head>
-	  <title>Wait To Be Called</title>
+	  <title> Part 3 of the experiment </title>
 	  <link rel="stylesheet" href="beleggensns.css"/>
 
   </head>
 
   <body>
 	</br>
-  <h1 align="center"> Thank you for your participation.</h1>
-  <h2 align="center"> Please remain seated in order to continue with part 3 of the experiment. </h2>
+
+	<H1 align=center>Part III</H1>
+
+	<h3 align=center> Welcome to the final part of the experiment.</h3>
+
+	<p align=center> For the last part of the experiement you will need to wear the headphones provided. </p>
+
+  <p align=center> On/near the right wall of the cubicle where you are sitted there is a set of headohones. Please put them on at this moment.</p>
+
+	<p align=center> The following task is called the Balloon Analogue Risk Task (BART). In this task you will earn BART$ money depending on your performance.
+		Each BART$ unit is quivalent to $0.5 Australian Dollars.</p>
+
+ 	<p> When you are ready to start please click on CONTINUE.</p>
+
+	<br>
+	<p align=center><a href="https://mili2nd.co/cfnb" class="buttonblauw">Continue</a>
+  <!-- <h1 align="center"> Thank you for your participation.</h1>
+  <h2 align="center"> Please remain seated in order to continue with part 3 of the experiment. </h2> -->
 
 		<!-- until you are called to receive your payment. </h2> -->
 
