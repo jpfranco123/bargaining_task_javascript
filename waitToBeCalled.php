@@ -38,7 +38,8 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
 <html>
   <head>
 	  <title> Part 3 of the experiment </title>
-	  <link rel="stylesheet" href="beleggensns.css"/>
+		<link rel="stylesheet" type="text/css" href="beleggensns.css" />
+		<link rel="stylesheet" type="text/css" href="buttons.css" />
 
   </head>
 
@@ -53,10 +54,13 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
 
   <p align=center> On/near the right wall of the cubicle where you are sitted there is a set of headohones. Please put them on at this moment.</p>
 
+	<br>
+	<br>
+
 	<p align=center> The following task is called the Balloon Analogue Risk Task (BART). In this task you will earn BART$ money depending on your performance.
 		Each BART$ unit is quivalent to $0.5 Australian Dollars.</p>
 
- 	<p> When you are ready to start please click on CONTINUE.</p>
+ 	<p align=center> When you are ready to start please click on CONTINUE.</p>
 
 	<br>
 	<p align=center><a href="https://mili2nd.co/cfnb" class="buttonblauw">Continue</a>
