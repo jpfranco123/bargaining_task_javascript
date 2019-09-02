@@ -223,7 +223,7 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
         document.getElementById("report2").style.visibility = "hidden";
         document.getElementById("report6").style.visibility = "hidden";
       } else{
-        document.getElementById("pieInstructions").innerHTML = "The informed participant has reported a pie size of $" + value ;
+        document.getElementById("pieInstructions").innerHTML = "The informed participant has reported a pie size of $" + pie_report_val ;
       }
       document.getElementById("slider2Section").style.visibility = "visible";
       start_timer(time_bargaining);
