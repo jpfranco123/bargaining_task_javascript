@@ -15,6 +15,8 @@
 
     // Trials are replicated for each trial_type. Overall trial order is randomised
     $totalTrials_per_game_type = intval($totalTrials/2);
+    echo "I got this far";
+    echo $totalTrials_per_game_type;
 
     $nbmg2=floor($NPlayers/$mgroupsize);
     $ppnummer=array();
@@ -105,7 +107,7 @@
                 updateTableOne("matching","sjnr=$arie2[$f] and trial=$trial_shuffle[$trial_index2]","sjnrother","$arie2[$k]");
                 updateTableOne("matching","sjnr=$arie2[$f] and trial=$trial_shuffle[$trial_index2]","informed",'1');
                 updateTableOne("matching","sjnr=$arie2[$f] and trial=$trial_shuffle[$trial_index2]","piesize",$piesize);
-                updateTableOne("matching","sjnr=$arie2[$f] and trial=$trial_shuffle[2*($i-1)+1]","trial_type",2);
+                updateTableOne("matching","sjnr=$arie2[$f] and trial=$trial_shuffle[$trial_index2]","trial_type",2);
                 }
     }
 }
