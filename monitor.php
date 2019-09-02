@@ -78,7 +78,7 @@ background:lightgrey;
 
 	connection.onopen = () => {
 		send_message_mon("connected",1);
-		send_message_mon("update_game_vars",1)
+		send_message_mon("update_game_vars",1);
 	}
 
 	connection.onerror = (error) => {

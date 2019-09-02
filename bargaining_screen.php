@@ -67,7 +67,7 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
 <script>
 
   //Websocket set up.
-  const url = 'ws:/45.113.235.169:8080'// 'ws:/130.56.248.241:8080'
+  const url = 'ws:/45.113.235.169:8080';// 'ws:/130.56.248.241:8080'
   //const url = 'ws:/localhost:8080'
   const connection = new WebSocket(url);
 
@@ -492,8 +492,8 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
 
     <!-- pie_size report -->
     <div align="center">
-      <button align="center" id="report2" onclick="report_pie(2)" style="visibility:hidden" class="buttonoranje"> NEXT </button>
-      <button align="center" id="report6" onclick="report_pie(6)" style="visibility:hidden" class="buttonoranje"> NEXT </button>
+      <button align="center" id="report2" onclick="report_pie" style="visibility:hidden" class="buttonoranje"> NEXT </button>
+      <button align="center" id="report6" onclick="report_pie" style="visibility:hidden" class="buttonoranje"> NEXT </button>
     </div>
 
 
