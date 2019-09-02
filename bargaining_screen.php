@@ -30,7 +30,7 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
   <head>
     <!-- <meta http-equi="refresh" content="30"> -->
     <title>Efficient Bargaining</title>
-
+    <link rel="stylesheet" type="text/css" href="buttons.css" /> <!--confirm-->
     <link rel="stylesheet" href="generalConfig.css"/>
     <script src="jquery-1.11.3.min.js"></script>
 
@@ -100,6 +100,7 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
    var almost_deal_timer;
 
    var resultsTime = <?php echo $results_time;?>//5000;
+   var pie_report_val;
 
    //Modifiable variables (in database)
    var robotina = <?php echo $robot; ?>;
@@ -166,6 +167,8 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
         show_payoff(not2,not3);
      } else if(notification=="you are connected"){
         //Correct but do nothing.
+     } else if(notification=="pie_report"){
+        //Correct but do nothing.
      } else {
        console.log("Notification from Server not recognised: " + notification);
      }
@@ -196,6 +199,8 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
       console.log("do I know pie: " + know_pie);
       if(know_pie){
         document.getElementById("pieInstructions").innerHTML = "Pie size is $" + pie_size ;
+        document.getElementById("report2").style.visibility = "visible";
+        document.getElementById("report6").style.visibility = "visible";
       } else{
         document.getElementById("pieInstructions").innerHTML = "";
       }
@@ -214,9 +219,13 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
 
     function startBargaining(){
       document.getElementById("iniOffer").style.visibility = "hidden";
+      if(know_pie){
+        document.getElementById("report2").style.visibility = "hidden";
+        document.getElementById("report6").style.visibility = "hidden";
+      } else{
+        document.getElementById("pieInstructions").innerHTML = "The informed participant has reported a pie size of $" + value ;
+      }
       document.getElementById("slider2Section").style.visibility = "visible";
-      document.getElementById("report2").style.visibility = "visible";
-      document.getElementById("report6").style.visibility = "visible";
       start_timer(time_bargaining);
     }
 
@@ -285,11 +294,7 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
     }
 
     function update_pie_report(value){
-      if(!know_pie){
-        //TODO 333
-        document.getElementById("pieInstructions").innerHTML = "The informed participant has reported a pie size of $" + value ;
-      }
-
+      pie_report_val =value;
     }
 
     //if yes==1: disables Slider1 and other relevant things
