@@ -170,6 +170,9 @@ ppnr_dict["bargaining_started"]={};
 ppnr_dict["bargaining_timer"]={};
 ppnr_dict["deal_timer"]={};
 
+ppnr_dict["reported_pie"]={};
+ppnr_dict["trial_type"]={};
+
 var general_vars={};
 
 
@@ -247,7 +250,7 @@ async function initialise_ppnr(mp1,mp2,ws,mtrial){
 
   var condition = `sjnr='${mp1}' AND trial='${mtrial}' `;
   lookUp_js("matching",condition,"informed","ppnr_dict", "know_pie", "integer",mp1);
-  lookUp_js("matching",condition,"trial_type","ppnr_dict", "trial_type", "integer",mp1); //table_name,condition,name, dictionary, var_to_update, data_type, ppnr_d=0)
+  lookUp_js("matching",condition,"trial_type","ppnr_dict", "trial_type", "integer",mp1);//.then(function(type){ppnr_dict["trial_type"][mp1]=trial_type;}); //table_name,condition,name, dictionary, var_to_update, data_type, ppnr_d=0)
   lookUp_js("matching",condition,"startvalue","ppnr_dict", "initial_val", "numeric",mp1).then(function(s_value){ppnr_dict["slider_pos"][mp1]=s_value;});
   let promise = lookUp_js("matching",condition,"piesize","ppnr_dict", "pie_size", "integer",mp1);
 
@@ -257,7 +260,7 @@ async function initialise_ppnr(mp1,mp2,ws,mtrial){
   ppnr_dict["other_ppnr"][mp1]=mp2;
   //ppnr_dict["slider_pos"][mp1]= get_slider_initial_val(mp1,mtrial);
   ppnr_dict["trial"][mp1]= mtrial;
-  ppnr_dict["reported_pie"][mp1] = 0
+  ppnr_dict["reported_pie"][mp1] = 0;
 
 
   if(mp2 in ppnr_dict["bargaining_started"]){
