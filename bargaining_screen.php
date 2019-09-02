@@ -215,6 +215,8 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
     function startBargaining(){
       document.getElementById("iniOffer").style.visibility = "hidden";
       document.getElementById("slider2Section").style.visibility = "visible";
+      document.getElementById("report2").style.visibility = "visible";
+      document.getElementById("report6").style.visibility = "visible";
       start_timer(time_bargaining);
     }
 
