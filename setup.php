@@ -44,7 +44,9 @@ if (isset($_REQUEST['showUpFee'])) 		{$nieuwshowupfee=$_REQUEST['showUpFee'];} 	
 if (isset($_REQUEST['showVideo'])) 		{$nieuwshowVideo=$_REQUEST['showVideo'];} 			else {$nieuwshowVideo=$showVideo;}
 if (isset($_REQUEST['showVideoOther'])) {$nieuwshowVideoOther=$_REQUEST['showVideoOther'];}	else {$nieuwshowVideoOther=$showVideoOther;}
 if (isset($_REQUEST['Steps']))			{$nieuwSteps=$_REQUEST['Steps'];} 					else {$nieuwSteps=$Steps;}
-if (isset($_REQUEST['Time']))			{$nieuwTime=$_REQUEST['Time'];} 					else {$nieuwTime=$Time;}
+if (isset($_REQUEST['time_barg_normal']))			{$nieuwTime_normal=$_REQUEST['time_barg_normal'];} 					else {$nieuwTime_normal=$time_barg_normal;}
+if (isset($_REQUEST['time_barg_mechanism']))			{$nieuwTime_mechanism=$_REQUEST['time_barg_mechanism'];} 					else {$nieuwTime_mechanism=$time_barg_mechanism;}
+if (isset($_REQUEST['results_time']))			{$nieuwTime_results=$_REQUEST['results_time'];} 					else {$nieuwTime_results=$results_time;}
 if (isset($_REQUEST['totalTrials']))	{$nieuwtotalTrials=$_REQUEST['totalTrials'];} 		else {$nieuwtotalTrials=$totalTrials;}
 
 if (isset($_REQUEST['totalPayTrials']))	{$nieuwtotalPayTrials=$_REQUEST['totalPayTrials'];} 		else {$nieuwtotalPayTrials=$totalPayTrials;}
@@ -75,7 +77,9 @@ if (isset($_REQUEST['send'])) {
 	updateTableOne("commonParameters","Name='showVideo'","Value",$nieuwshowVideo);
 	updateTableOne("commonParameters","Name='showVideoOther'","Value",$nieuwshowVideoOther);
 	updateTableOne("commonParameters","Name='Steps'","Value",$nieuwSteps);
-	updateTableOne("commonParameters","Name='Time'","Value",$nieuwTime);
+	updateTableOne("commonParameters","Name='time_barg_normal'","Value",$nieuwTime_normal);
+	updateTableOne("commonParameters","Name='time_barg_mechanism'","Value",$nieuwTime_mechanism);
+	updateTableOne("commonParameters","Name='results_time'","Value",$nieuwTime_results);
 	updateTableOne("commonParameters","Name='totalTrials'","Value",$nieuwtotalTrials);
 
 	updateTableOne("commonParameters","Name='totalPayTrials'","Value",$nieuwtotalPayTrials);
@@ -122,7 +126,9 @@ function funktie() {
 	if(document.form1.tjekF.checked){document.form1.showVideo.disabled=false;}else{document.form1.showVideo.disabled=true;}
 	if(document.form1.tjekG.checked){document.form1.showVideoOther.disabled=false;}else{document.form1.showVideoOther.disabled=true;}
 	if(document.form1.tjekH.checked){document.form1.Steps.disabled=false;}else{document.form1.Steps.disabled=true;}
-	if(document.form1.tjekI.checked){document.form1.Time.disabled=false;}else{document.form1.Time.disabled=true;}
+	if(document.form1.tjekI.checked){document.form1.time_barg_normal.disabled=false;}else{document.form1.time_barg_normal.disabled=true;}
+	if(document.form1.tjekI.checked){document.form1.time_barg_mechanism.disabled=false;}else{document.form1.time_barg_mechanism.disabled=true;}
+	if(document.form1.tjekI.checked){document.form1.results_time.disabled=false;}else{document.form1.results_time.disabled=true;}
 	if(document.form1.tjekJ.checked){document.form1.totalTrials.disabled=false;}else{document.form1.totalTrials.disabled=true;}
 
 	if(document.form1.tjekJJ.checked){document.form1.totalPayTrials.disabled=false;}else{document.form1.totalPayTrials.disabled=true;}
@@ -254,7 +260,15 @@ if(confirm("All unsaved data will be lost.\nMake sure that you exported the data
 	</tr>
 
 	<tr><td><input type="checkbox" name=tjekI value="ON" onclick="funktie()"></td>
-		<td align=right>Time per trial:</td><td><input type="text" name="Time" value=<?php echo $Time; ?> size=5 AUTOCOMPLETE="OFF" disabled></td>
+		<td align=right>Time per trial normal bargaining:</td><td><input type="text" name="time_barg_normal" value=<?php echo $time_barg_normal; ?> size=5 AUTOCOMPLETE="OFF" disabled></td>
+	</tr>
+
+	<tr><td><input type="checkbox" name=tjekI value="ON" onclick="funktie()"></td>
+		<td align=right>Time per trial mechanism:</td><td><input type="text" name="time_barg_mechanism" value=<?php echo $time_barg_mechanism; ?> size=5 AUTOCOMPLETE="OFF" disabled></td>
+	</tr>
+
+	<tr><td><input type="checkbox" name=tjekI value="ON" onclick="funktie()"></td>
+		<td align=right>Results Time:</td><td><input type="text" name="results_time" value=<?php echo $results_time; ?> size=5 AUTOCOMPLETE="OFF" disabled></td>
 	</tr>
 
 	<tr><td><input type="checkbox" name=tjekJ value="ON" onclick="funktie()"></td>

@@ -25,7 +25,7 @@ const wss = new WebSocket.Server({ port: 8080 });
    host: "localhost",
    user: "root",
    password: "bargaining_mysql",
-   database: "sliders"
+   database: "bargaining_mechanism_p1"
  });
 
 //var con = mysql.createConnection({
