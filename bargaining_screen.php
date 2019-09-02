@@ -19,7 +19,7 @@ $iknowPie=knowPie($ppnr,$trial);
 
 $thePie=pieSize($ppnr,$trial);
 
-$trial_type = trialType($ppnr,$trial)
+$trial_type = trialType($ppnr,$trial);
 
 updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
 
@@ -489,13 +489,13 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
       <p id="infoPHP2" align="center"> Waiting for Connection... </p>
 
     </div>
-
+<!--
     <!-- pie_size report -->
     <div align="center">
       <button align="center" id="report2" onclick="report_pie" style="visibility:hidden" class="buttonoranje"> NEXT </button>
       <button align="center" id="report6" onclick="report_pie" style="visibility:hidden" class="buttonoranje"> NEXT </button>
     </div>
-
+-->
 
   </div>
 
