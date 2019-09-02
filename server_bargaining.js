@@ -56,8 +56,8 @@ con.connect(function(err) {
 });
 
 function load_game_parameters(){
-  lookUp_js("commonParameters","Name='Time'","Value","general_vars", "time_barg_normal", "integer");//Time for normal bargaining trials
-  lookUp_js("commonParameters","Name='Time'","Value","general_vars", "time_barg_mechanism", "integer");//Time for mechanism bargaining trials
+  lookUp_js("commonParameters","Name='time_barg_normal'","Value","general_vars", "time_barg_normal", "integer");//Time for normal bargaining trials
+  lookUp_js("commonParameters","Name='time_barg_mechanism'","Value","general_vars", "time_barg_mechanism", "integer");//Time for mechanism bargaining trials
   lookUp_js("commonParameters","Name='timeForIniOffer'","Value","general_vars", "initial_offer_time", "integer");
   lookUp_js("commonParameters","Name='timeForDeal'","Value", "general_vars", "deal_confirmation_time", "integer");
 }
