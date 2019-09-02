@@ -59,6 +59,11 @@ function startValue($ppnumber,$trial){
 	return $startValue;
 }
 
+function trialType($ppnumber,$trial){
+	$trial_type=lookUp("matching","sjnr='$ppnumber' and trial='$trial'","trial_type");
+	return $trial_type;
+}
+
 
 //reads one common parameter
 //example: $startexperiment=readCommonParameter("startexperiment");

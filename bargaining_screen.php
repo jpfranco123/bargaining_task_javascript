@@ -19,6 +19,8 @@ $iknowPie=knowPie($ppnr,$trial);
 
 $thePie=pieSize($ppnr,$trial);
 
+$trial_type = trialType($ppnr,$trial)
+
 updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
 
 ?>
@@ -65,7 +67,7 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
 <script>
 
   //Websocket set up.
-  const url = 'ws:/130.56.248.241:8080'
+  const url = 'ws:/45.113.235.169:8080'// 'ws:/130.56.248.241:8080'
   //const url = 'ws:/localhost:8080'
   const connection = new WebSocket(url);
 
@@ -81,9 +83,13 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
    var ppnr = <?php echo $ppnr;?>;
    var partner = <?php echo $partner; ?>;
    var trial = <?php echo $trial;?>;
+   var trial_type = <?php echo $trial_type;?>;
    var know_pie= <?php echo $iknowPie; ?>;
    var pie_size = <?php echo $thePie; ?>;
-   var time_bargaining =<?php echo $Time; ?>/1000;
+   //var time_bargaining =<?php echo $Time; ?>/1000;
+   var time_bargaining;
+   var time_barg_normal =<?php echo $time_barg_normal; ?>/1000;
+   var time_barg_mechanism =<?php echo $time_barg_mechanism; ?>/1000;
    var time_initial_offer =<?php echo $timeForIniOffer; ?>/1000;
    var timer;
    var timer_interval;
@@ -93,10 +99,16 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
 
    var almost_deal_timer;
 
-   var resultsTime = 5000;
+   var resultsTime = <?php echo $results_time;?>//5000;
 
    //Modifiable variables (in database)
    var robotina = <?php echo $robot; ?>;
+
+   if(trial_type==1){
+     time_bargaining = time_barg_normal;
+   }else if(trial_type==2){
+     time_bargaining = time_barg_mechanism;
+   }
 
 
    connection.onopen = () => {
@@ -127,15 +139,18 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
 
      if (mtype == "notification"){
         try{mvalue2=message_dict["value2"];} catch(err){console.log("Error when parsing value 2 form notifcation from server: " + ms);}
-        process_notification(mvalue,mvalue2);
+        try{mvalue3=message_dict["value3"];} catch(err){console.log("Error when parsing value 3 form notifcation from server: " + ms);}
+        process_notification(mvalue,mvalue2,mvalue3);
      } else if (mtype=="slider"){
         update_other_slider(mvalue);
+     } else if(notification=="pie_report"){
+        update_pie_report(value);
      } else {
         console.log("Type of Messsage from Server not recognised: " + ms);
      }
    }
 
-   function process_notification(notification,not2){
+   function process_notification(notification,not2,not3="None"){
      if(notification == "start"){
         get_started();
      } else if(notification=="almost_deal"){
@@ -148,7 +163,7 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
         startBargaining();
      } else if(notification=="payoff"){
         try{window.clearTimeout(almost_deal_timer);} catch(err){}
-        show_payoff(not2);
+        show_payoff(not2,not3);
      } else if(notification=="you are connected"){
         //Correct but do nothing.
      } else {
@@ -203,9 +218,16 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
       start_timer(time_bargaining);
     }
 
-    function show_payoff(payoff){
+    function show_payoff(payoff, agreement){
       disable_sliders(1);
-      var text=`<br>The pie size was: $ ${pie_size} <br> <br> Your earnings are: $ ${payoff}`;
+
+      if(agreement==0 && trial_type==2){
+        var text=`<br>The pie size was: $ ${pie_size} <br> <br> Your earnings will be determined based on the results of the mechanism.`;
+      } else {
+        var text=`<br>The pie size was: $ ${pie_size} <br> <br> Your earnings are: $ ${payoff}`;
+      }
+
+
       console.log(text);
 
       document.getElementById("entirePage").style.display = "none";
@@ -260,6 +282,14 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
       document.getElementById("infoPHP2").innerHTML = value;
     }
 
+    function update_pie_report(value){
+      if(!know_pie){
+        //TODO 333
+        document.getElementById("pieInstructions").innerHTML = "The informed participant has reported a pie size of $" + value ;
+      }
+
+    }
+
     //if yes==1: disables Slider1 and other relevant things
     // if yes==0: enables Slider1 and the other relvant things (timers...)
     function disable_sliders(yes){
@@ -293,6 +323,10 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
       var valRobotSlider1 = Math.round(Math.random()*6);
       update_my_slider(valRobotSlider1);
       //slider.val(valRobotSlider1);
+    }
+
+    function report_pie(pie){
+      send_message("pie_report",pie);
     }
 
 
@@ -456,6 +490,11 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
 
     </div>
 
+    <!-- pie_size report -->
+    <div align="center">
+      <button align="center" id="report2" onclick="report_pie(2)" style="visibility:hidden" class="buttonoranje"> NEXT </button>
+      <button align="center" id="report6" onclick="report_pie(6)" style="visibility:hidden" class="buttonoranje"> NEXT </button>
+    </div>
 
 
   </div>
