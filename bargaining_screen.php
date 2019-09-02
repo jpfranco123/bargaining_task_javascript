@@ -489,13 +489,12 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
       <p id="infoPHP2" align="center"> Waiting for Connection... </p>
 
     </div>
-<!--
+
     <!-- pie_size report -->
     <div align="center">
-      <button align="center" id="report2" onclick="report_pie" style="visibility:hidden" class="buttonoranje"> NEXT </button>
-      <button align="center" id="report6" onclick="report_pie" style="visibility:hidden" class="buttonoranje"> NEXT </button>
+      <button align="center" id="report2" value=2 onclick="report_pie(this.value)" style="visibility:hidden" class="buttonoranje"> 2 </button>
+      <button align="center" id="report6" value=6 onclick="report_pie(this.value)" style="visibility:hidden" class="buttonoranje"> 6 </button>
     </div>
--->
 
   </div>
 
