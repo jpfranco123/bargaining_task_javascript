@@ -323,9 +323,9 @@ function initial_offer_finalized(p1,p2){
   check_match(p1,p2);
   timer_room = Math.min(p1,p2);
   // Is it a trial type 1: Normal or 2: mechanism
-  if(ppnr_dict["trial_type"]==1){
+  if(ppnr_dict["trial_type"][p1]==1){
     var time_trial = general_vars["time_barg_normal"]
-  }else if(ppnr_dict["trial_type"]==1){
+  }else if(ppnr_dict["trial_type"][p1]==1){
     var time_trial = general_vars["time_barg_mechanism"]
   }
 
@@ -333,7 +333,7 @@ function initial_offer_finalized(p1,p2){
 }
 
 // Sends message (dictionary) to ppnr
-function send_to_ppnr_notif(p,message, message2 = "None", message3= "None" ){
+function send_to_ppnr_notif(p,message, message2 = "None", message3= "None"){
   var dict = {type : "notification", value : message, value2: message2, value3: message3};
   var json_message = JSON.stringify(dict);
   console.log(json_message);
