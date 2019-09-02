@@ -324,9 +324,11 @@ function initial_offer_finalized(p1,p2){
   timer_room = Math.min(p1,p2);
   // Is it a trial type 1: Normal or 2: mechanism
   if(ppnr_dict["trial_type"][p1]==1){
-    var time_trial = general_vars["time_barg_normal"]
-  }else if(ppnr_dict["trial_type"][p1]==1){
-    var time_trial = general_vars["time_barg_mechanism"]
+    var time_trial = general_vars["time_barg_normal"];
+  }else if(ppnr_dict["trial_type"][p1]==2){
+    var time_trial = general_vars["time_barg_mechanism"];
+  }else{
+    console.log("Error! trial_type not recognised");
   }
 
   ppnr_dict["bargaining_timer"][timer_room] = setTimeout(function(){bargaining_time_is_up(p1,p2);}, time_trial);
