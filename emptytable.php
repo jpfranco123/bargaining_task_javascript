@@ -7,6 +7,7 @@
 	$table_name6="paymentSession";
 	$table_name7="socialPref";
 	$table_name8="timeMarks";
+	$table_name9="reported_pies";
 
 	$connection = @mysql_connect(HOST,ADMIN, WWOORD) or die(mysql_error());
 	$db = @mysql_select_db(DBNAME,$connection) or die(mysql_error());
@@ -27,6 +28,9 @@
 
 		$query8="TRUNCATE TABLE $table_name8";
 		mysql_query($query8);
+
+		$query9="TRUNCATE TABLE $table_name9";
+		mysql_query($query9);
 
 	//Sets the startexp to 0 (false)
 	updateTableOne("commonParameters","Name='startexp' ","Value","0");

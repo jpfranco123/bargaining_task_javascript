@@ -79,31 +79,32 @@
                   $piesize=$lowValuePie;
                 }
 
-
+                $trial_index1 = 2*($i-1);
                 // trial_type=1
-                updateTableOne("matching","sjnr=$arie2[$k] and trial=$trial_shuffle[2*($i-1)]","submatch",$l);
-                updateTableOne("matching","sjnr=$arie2[$k] and trial=$trial_shuffle[2*($i-1)]","sjnrother","$arie2[$f]");
-                updateTableOne("matching","sjnr=$arie2[$k] and trial=$trial_shuffle[2*($i-1)]","informed",'0');
-                updateTableOne("matching","sjnr=$arie2[$k] and trial=$trial_shuffle[2*($i-1)]","piesize",$piesize);
-                updateTableOne("matching","sjnr=$arie2[$k] and trial=$trial_shuffle[2*($i-1)]","trial_type",1);
+                updateTableOne("matching","sjnr=$arie2[$k] and trial=$trial_shuffle[$trial_index1]","submatch",$l);
+                updateTableOne("matching","sjnr=$arie2[$k] and trial=$trial_shuffle[$trial_index1]","sjnrother","$arie2[$f]");
+                updateTableOne("matching","sjnr=$arie2[$k] and trial=$trial_shuffle[$trial_index1]","informed",'0');
+                updateTableOne("matching","sjnr=$arie2[$k] and trial=$trial_shuffle[$trial_index1]","piesize",$piesize);
+                updateTableOne("matching","sjnr=$arie2[$k] and trial=$trial_shuffle[$trial_index1]","trial_type",1);
 
-                updateTableOne("matching","sjnr=$arie2[$f] and trial=$trial_shuffle[2*($i-1)]","submatch",$l);
-                updateTableOne("matching","sjnr=$arie2[$f] and trial=$trial_shuffle[2*($i-1)]","sjnrother","$arie2[$k]");
-                updateTableOne("matching","sjnr=$arie2[$f] and trial=$trial_shuffle[2*($i-1)]","informed",'1');
-                updateTableOne("matching","sjnr=$arie2[$f] and trial=$trial_shuffle[2*($i-1)]","piesize",$piesize);
-                updateTableOne("matching","sjnr=$arie2[$f] and trial=$trial_shuffle[2*($i-1)]","trial_type",1);
+                updateTableOne("matching","sjnr=$arie2[$f] and trial=$trial_shuffle[$trial_index1]","submatch",$l);
+                updateTableOne("matching","sjnr=$arie2[$f] and trial=$trial_shuffle[$trial_index1]","sjnrother","$arie2[$k]");
+                updateTableOne("matching","sjnr=$arie2[$f] and trial=$trial_shuffle[$trial_index1]","informed",'1');
+                updateTableOne("matching","sjnr=$arie2[$f] and trial=$trial_shuffle[$trial_index1]","piesize",$piesize);
+                updateTableOne("matching","sjnr=$arie2[$f] and trial=$trial_shuffle[$trial_index1]","trial_type",1);
 
                 // trial_type=2
-                updateTableOne("matching","sjnr=$arie2[$k] and trial=$trial_shuffle[2*($i-1)+1]","submatch",$l);
-                updateTableOne("matching","sjnr=$arie2[$k] and trial=$trial_shuffle[2*($i-1)+1]","sjnrother","$arie2[$f]");
-                updateTableOne("matching","sjnr=$arie2[$k] and trial=$trial_shuffle[2*($i-1)+1]","informed",'0');
-                updateTableOne("matching","sjnr=$arie2[$k] and trial=$trial_shuffle[2*($i-1)+1]","piesize",$piesize);
-                updateTableOne("matching","sjnr=$arie2[$k] and trial=$trial_shuffle[2*($i-1)+1]","trial_type",2);
+                $trial_index2 = 2*($i-1)+1;
+                updateTableOne("matching","sjnr=$arie2[$k] and trial=$trial_shuffle[$trial_index2]","submatch",$l);
+                updateTableOne("matching","sjnr=$arie2[$k] and trial=$trial_shuffle[$trial_index2]","sjnrother","$arie2[$f]");
+                updateTableOne("matching","sjnr=$arie2[$k] and trial=$trial_shuffle[$trial_index2]","informed",'0');
+                updateTableOne("matching","sjnr=$arie2[$k] and trial=$trial_shuffle[$trial_index2]","piesize",$piesize);
+                updateTableOne("matching","sjnr=$arie2[$k] and trial=$trial_shuffle[$trial_index2]","trial_type",2);
 
-                updateTableOne("matching","sjnr=$arie2[$f] and trial=$trial_shuffle[2*($i-1)+1]","submatch",$l);
-                updateTableOne("matching","sjnr=$arie2[$f] and trial=$trial_shuffle[2*($i-1)+1]","sjnrother","$arie2[$k]");
-                updateTableOne("matching","sjnr=$arie2[$f] and trial=$trial_shuffle[2*($i-1)+1]","informed",'1');
-                updateTableOne("matching","sjnr=$arie2[$f] and trial=$trial_shuffle[2*($i-1)+1]","piesize",$piesize);
+                updateTableOne("matching","sjnr=$arie2[$f] and trial=$trial_shuffle[$trial_index2]","submatch",$l);
+                updateTableOne("matching","sjnr=$arie2[$f] and trial=$trial_shuffle[$trial_index2]","sjnrother","$arie2[$k]");
+                updateTableOne("matching","sjnr=$arie2[$f] and trial=$trial_shuffle[$trial_index2]","informed",'1');
+                updateTableOne("matching","sjnr=$arie2[$f] and trial=$trial_shuffle[$trial_index2]","piesize",$piesize);
                 updateTableOne("matching","sjnr=$arie2[$f] and trial=$trial_shuffle[2*($i-1)+1]","trial_type",2);
                 }
     }
