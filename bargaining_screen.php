@@ -198,9 +198,9 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
     // We inform players here about what type of trial is is (Mechanism vs normal)
     function start_pre_initial_offer(){
       if(trial_type==1){
-        document.getElementById("pieInstructions").innerHTML = "Normal Bargaining Trial" ;
+        document.getElementById("waitingPageTexto").innerHTML = "Normal Bargaining Trial" ;
       }else if(trial_type==2){
-        document.getElementById("pieInstructions").innerHTML = "Mechanism Trial"
+        document.getElementById("waitingPageTexto").innerHTML = "Mechanism Trial"
       }
       setTimeout(function(){ startInitialOffer(); }, pre_initial_offer_time);
     }
