@@ -95,6 +95,10 @@ $insPrevPage=  instructionsPrevPage($_SERVER['PHP_SELF'], $ppnr, $part);
       }
     }
 
+    function report_pie(pie){
+      document.getElementById("pie_report").innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $" + pie + " &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+    }
+
    </script>
 </HEAD>
 
@@ -106,7 +110,19 @@ $insPrevPage=  instructionsPrevPage($_SERVER['PHP_SELF'], $ppnr, $part);
 
     <p> <b> During the first <?php echo $timeForIniOffer/1000; ?>  seconds, participants select their initial offers</b>. During this period, your slider will not be seen by the other participant. Note that the initial location of the cursors is random. </p>
 
-    <p> <b> In the following <?php echo $Time/1000; ?> seconds you will bargain with the other participant. </b> Clicking the mouse on a different part of the slider moves the cursor. A <b>deal</b> is made when <b>both cursors are in the same place for <?php echo $timeForDeal/1000; ?> second<?php echo ($timeForDeal == 1000 ? "" : "s"); ?> </b> or if <b> both sliders are matching when the time is over.</b></p>
+    <p> Additionally, during this period the informed player decides whether to report a pie size of $6 or $2 to the uninformed player by clicking in one of 2 orange buttons: </p>
+
+    <br>
+    <div align="center">
+      <button align="center" id="report2" value=2 onclick="report_pie(this.value)" style="visibility:hidden;height:120px;width:120px;font-size:60px;display: inline-block;" class="buttonoranje"> $2 </button>
+      <p align="center" id="pie_report" style="visibility:hidden;font-size:60px;display: inline-block;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>
+      <button align="center" id="report6" value=6 onclick="report_pie(this.value)" style="visibility:hidden;height:120px;width:120px;font-size:60px;display: inline-block;" class="buttonoranje"> $6 </button>
+    </div>
+    <br>
+
+    <p> <b>The informed player MUST click on an orange button. </b> If the informed player doesn't report a pie-size, then $0.3 will be subtracted from their final earnings.</p>
+
+    <p> <b> In the following <?php echo $time_barg_normal/1000; ?> seconds you will bargain with the other participant. </b> Clicking the mouse on a different part of the slider moves the cursor. A <b>deal</b> is made when <b>both cursors are in the same place for <?php echo $timeForDeal/1000; ?> second<?php echo ($timeForDeal == 1000 ? "" : "s"); ?> </b> or if <b> both sliders are matching when the time is over.</b></p>
 
     <p> When the position of both cursors on the slider match, a green circle will appear: </p>
 
@@ -115,7 +131,7 @@ $insPrevPage=  instructionsPrevPage($_SERVER['PHP_SELF'], $ppnr, $part);
         <canvas id=canvitas width="300" height="100"></canvas>
         <script> drawAlertCircle1(1); </script>
 
-    <p>When both cursors have been in the same place for <?php echo $timeForWarning/1000; ?> second<?php echo ($timeForWarning == 1000 ? "" : "s"); ?>, two additional circles will appear: </p>
+    <p> When both cursors have been in the same place for <?php echo $timeForWarning/1000; ?> second<?php echo ($timeForWarning == 1000 ? "" : "s"); ?>, two additional circles will appear: </p>
 
     <br>
 

@@ -1,4 +1,4 @@
-<?php
+participant<?php
 //No es necesario incluirlo todavia
 include("commonSlider.inc");
 if (!$_COOKIE['theCookie']){
@@ -179,7 +179,7 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
     function enter_room(){
       console.log("I am here");
       document.getElementById("entirePage").style.display = "none";
-      document.getElementById("waitingPageTexto").innerHTML = "Please wait until all players are ready.";
+      document.getElementById("waitingPageTexto").innerHTML = "Please wait until all participants are ready.";
       document.getElementById("waitingPage").style.display = "block";
     }
 
@@ -195,12 +195,12 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
       }
     }
 
-    // We inform players here about what type of trial is is (Mechanism vs normal)
+    // We inform participants here about what type of trial is is (Mechanism vs normal)
     function start_pre_initial_offer(){
       if(trial_type==1){
         document.getElementById("waitingPageTexto").innerHTML = "Normal Bargaining Trial" ;
       }else if(trial_type==2){
-        document.getElementById("waitingPageTexto").innerHTML = "Mechanism Trial"
+        document.getElementById("waitingPageTexto").innerHTML = "Mediation Trial"
       }
       setTimeout(function(){ startInitialOffer(); }, pre_initial_offer_time);
     }
@@ -245,9 +245,9 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
       }
 
       if(pie_report_val == 0){
-        document.getElementById("pie_report_text").innerHTML = "No pie reported by the informed player." ;
+        document.getElementById("pie_report_text").innerHTML = "No pie reported by the informed participant." ;
       } else{
-        document.getElementById("pie_report_text").innerHTML = "The informed player reported a pie size of $" + pie_report_val ;
+        document.getElementById("pie_report_text").innerHTML = "The informed participant reported a pie size of $" + pie_report_val ;
       }
       document.getElementById("pie_report_text").style.visibility = "visible";
 
@@ -260,7 +260,7 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
       disable_sliders(1);
 
       if(agreement==0 && trial_type==2){
-        var text=`<br>The pie size was: $ ${pie_size} <br> <br> Your earnings will be determined based on the results of the mechanism.`;
+        var text=`<br>The pie size was: $ ${pie_size} <br> <br> Your earnings will be determined based on the results of the mediation.`;
       } else {
         var text=`<br>The pie size was: $ ${pie_size} <br> <br> Your earnings are: $ ${payoff}`;
       }

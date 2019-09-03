@@ -115,7 +115,7 @@ $chatVisibility= ($showChat == 1 ? "visible" : "hidden");
     var slider1 = <?php echo $valueDeal1; ?>;
     var slider2 = <?php echo $valueDeal2; ?>;
     var timerDealAlert;
-    var timeB =<?php echo $Time; ?>;
+    var timeB =<?php echo $time_barg_normal; ?>;
     var timeIni =<?php echo $timeForIniOffer; ?>;
     var timer;
     var timerInterval;
