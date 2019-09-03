@@ -100,7 +100,7 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
    var almost_deal_timer;
 
    var resultsTime = <?php echo $results_time;?>;//5000;
-   var pie_report_val;
+   var pie_report_val = 0;
 
    //Modifiable variables (in database)
    var robotina = <?php echo $robot; ?>;
@@ -227,9 +227,20 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
       if(know_pie){
         document.getElementById("report2").style.visibility = "hidden";
         document.getElementById("report6").style.visibility = "hidden";
+        document.getElementById("pie_report_text").style.visibility = "hidden";
+        document.getElementById("pie_report").style.visibility = "hidden";
       } else{
-        document.getElementById("pieInstructions").innerHTML = "The other reports a pie of $" + pie_report_val ;
+
       }
+
+      if(pie_report_val == 0){
+        document.getElementById("pie_reported_both").innerHTML = "No pie reported by the informed player." ;
+      } else{
+        document.getElementById("pie_reported_both").innerHTML = "The informed player reported a pie of $" + pie_report_val ;
+      }
+      document.getElementById("pie_reported_both").style.visibility = "visible";
+
+
       document.getElementById("slider2Section").style.visibility = "visible";
       start_timer(time_bargaining);
     }
@@ -510,14 +521,13 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
 
     <!-- pie_size report -->
     <div align="center">
-      <button align="center" id="report2" value=2 onclick="report_pie(this.value)" style="visibility:hidden;height=200px;width=200px;" class="buttonoranje"> 2 </button>
-      <button align="center" id="report6" value=6 onclick="report_pie(this.value)" style="visibility:hidden;height=200px;width=200px;" class="buttonoranje"> 6 </button>
+      <button align="center" id="report2" value=2 onclick="report_pie(this.value)" style="visibility:hidden;height:200px;width:200px;" class="buttonoranje"> 2 </button>
+      <button align="center" id="report6" value=6 onclick="report_pie(this.value)" style="visibility:hidden;height:200px;width:200px;" class="buttonoranje"> 6 </button>
+      <p id="pie_reported_both" style="visibility:hidden;font-size:100px;"> </p>
+      <p id="pie_report_text" style="visibility:hidden;font-size:60px;"> Please report a pie size </p>
+      <p id="pie_report" style="visibility:hidden;font-size:60px;"> -- </p>
     </div>
 
-    <div align="center">
-      <p id="pie_report_text" style="visibility:hidden;font-size:250px;"> Please report a pie size </p>
-      <p id="pie_report" style="visibility:hidden;font-size:250px;"> -- </p>
-    </div>
 
   </div>
 
