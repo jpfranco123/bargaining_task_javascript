@@ -10,7 +10,7 @@ if (!$_COOKIE['theCookie']){
 $koek=readcookie("theCookie");
 $ppnr=$koek[0];
 updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
-$part=$showChat*(-1)+2;
+$part=1;
 $menu=instructionMenu($_SERVER['PHP_SELF'], $ppnr,$part);
 
 $insNextPage = instructionsNextPage($_SERVER['PHP_SELF'], $ppnr, $part);
@@ -101,7 +101,7 @@ $correctA2b=$valueDeal2;
   		<tr><td><br></td></tr>
 
       <tr>
-        <td><b> You are in a mediation trial. An agreement is NOT reached and the time ends. The informed participant reported a pie-size of $2 and the algorithm predicted $6.</b></td>
+        <td><b> You are in a mediation trial. An agreement is NOT reached and the time ends. The informed participant reported a pie size of $2 and the algorithm predicts a pie-size of $6.</b></td>
       </tr>
       <tr>
 
@@ -111,14 +111,18 @@ $correctA2b=$valueDeal2;
 
         <tr><td><br></td></tr>
 
-        <td>How much does the <b>informed participant </b> get? <input type="radio" name="q1b" value="incorrect"> $1.6 <br><input type="radio" name="q1b" value="incorrect"> $-2.4 <br><input type="radio" name="q1b" value="correct"> Depends on the pie size  </td>
+        <td>How much does the <b>informed participant </b> get?  </td>
+
+          <td><input type="radio" name="q1b" value="incorrect"> $1.6 <br><input type="radio" name="q1b" value="incorrect"> $-2.4 <br><input type="radio" name="q1b" value="correct"> Depends on the pie size </td>
+
+          <tr><td><br></td></tr>
 
       </tr>
 
 
 
       <tr>
-  			<td><b> You are in a mediation trial. An agreement is reached before the time ends. If the informed participant reported a pie-size of $6 and the algorithm predicted $6, what will be the payment to the uninformed participant? </b></td>
+  			<td><b> You are in a mediation trial. An agreement is reached before the time ends. If the informed participant reported a pie size of $6 and the algorithm predicts a pie-size of $6, what will be the payment of the uninformed participant? </b></td>
   		</tr>
       <tr>
   			<td><input type="radio" name="q2" value="incorrect"> Depends on the pie size <br><input type="radio" name="q2" value="correct"> Depends on the final agreement values <br><input type="radio" name="q2" value="incorrect"> $1.73 </td>

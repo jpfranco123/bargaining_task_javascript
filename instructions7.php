@@ -10,7 +10,7 @@ if (!$_COOKIE['theCookie']){
 $koek=readcookie("theCookie");
 $ppnr=$koek[0];
 updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
-$part=$showChat*(-1)+2;
+$part=1;
 $menu=instructionMenu($_SERVER['PHP_SELF'], $ppnr,$part);
 
 $insNextPage=  instructionsNextPage($_SERVER['PHP_SELF'], $ppnr, $part);
@@ -43,7 +43,7 @@ $insPrevPage=  instructionsPrevPage($_SERVER['PHP_SELF'], $ppnr, $part);
     <p> Before each trial you will be informed whether the trial is a <b>normal bargaining trial</b> or a <b>mediation trial</b>.
 
     <br>
-    
+
     <h2> Mediation protocol </h2>
 
     <p>For this type of trials, if no agreement is made, mediation is imposed. Under the mediation protocol the payoff to each participant will depend on:

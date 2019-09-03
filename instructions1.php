@@ -10,7 +10,7 @@ if (!$_COOKIE['theCookie']){
 $koek=readcookie("theCookie");
 $ppnr=$koek[0];
 updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
-$part=$showChat*(-1)+2;
+$part=1;
 $menu=instructionMenu($_SERVER['PHP_SELF'], $ppnr,$part);
 
 $insNextPage=  instructionsNextPage($_SERVER['PHP_SELF'], $ppnr, $part);

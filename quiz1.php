@@ -10,7 +10,7 @@ if (!$_COOKIE['theCookie']){
 $koek=readcookie("theCookie");
 $ppnr=$koek[0];
 updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
-$part=$showChat*(-1)+2;
+$part=1;
 $menu=instructionMenu($_SERVER['PHP_SELF'], $ppnr,$part);
 
 $insNextPage = instructionsNextPage($_SERVER['PHP_SELF'], $ppnr, $part);
@@ -104,8 +104,8 @@ $insNextPage = instructionsNextPage($_SERVER['PHP_SELF'], $ppnr, $part);
 
   <form name="form1" action=<?php echo $insNextPage; ?> onsubmit="return controleren(this)">
   	<table width="90%" border="0" cellpadding="0" align=center>
-  		<tr><td>Before the experiment starts, we will ask you some questions to check your understanding. You can go back to the instructions by clicking on the menu at the top of the screen.</td></tr>
-  		<tr><td><br></td></tr>
+  		<!-- <tr><td>Before the experiment starts, we will ask you some questions to check your understanding. You can go back to the instructions by clicking on the menu at the top of the screen.</td></tr>
+  		<tr><td><br></td></tr> -->
 
   		<tr>
   			<td><b>What is the maximum amount you can earn every round?</b></td></tr>

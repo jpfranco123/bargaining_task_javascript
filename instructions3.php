@@ -10,7 +10,7 @@ if (!$_COOKIE['theCookie']){
 $koek=readcookie("theCookie");
 $ppnr=$koek[0];
 updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
-$part=$showChat*(-1)+2;
+$part=1;
 $menu=instructionMenu($_SERVER['PHP_SELF'], $ppnr,$part);
 
 $insNextPage=  instructionsNextPage($_SERVER['PHP_SELF'], $ppnr, $part);
@@ -114,8 +114,8 @@ $insPrevPage=  instructionsPrevPage($_SERVER['PHP_SELF'], $ppnr, $part);
 
     <br>
     <div align="center">
-      <button align="center" id="report2" value=2 onclick="report_pie(this.value)" style="visibility:hidden;height:120px;width:120px;font-size:60px;display: inline-block;" class="buttonoranje"> $2 </button>
-      <p align="center" id="pie_report" style="visibility:hidden;font-size:60px;display: inline-block;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>
+      <button align="center" id="report2" value=2 onclick="report_pie(this.value)" style="height:120px;width:120px;font-size:60px;display: inline-block;" class="buttonoranje"> $2 </button>
+      <p align="center" id="pie_report" style="font-size:60px;display: inline-block;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>
       <button align="center" id="report6" value=6 onclick="report_pie(this.value)" style="visibility:hidden;height:120px;width:120px;font-size:60px;display: inline-block;" class="buttonoranje"> $6 </button>
     </div>
     <br>

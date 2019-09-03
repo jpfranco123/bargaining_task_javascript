@@ -10,7 +10,7 @@ if (!$_COOKIE['theCookie']){
 $koek=readcookie("theCookie");
 $ppnr=$koek[0];
 updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
-$part=$showChat*(-1)+2;
+$part=1;
 $menu=instructionMenu($_SERVER['PHP_SELF'], $ppnr,$part);
 
 $insNextPage = instructionsNextPage($_SERVER['PHP_SELF'], $ppnr, $part);
@@ -32,7 +32,7 @@ $insNextPage = instructionsNextPage($_SERVER['PHP_SELF'], $ppnr, $part);
     var answer2=document.forms['form1'].q2.value;
 \
     var nextP = "<?php echo $insNextPage; ?>";
-  	if (answer1== <?php echo $maxValue; ?> && answer2== <?php echo $totalTrials; ?> && answer3=="correct" && answer4=="correct" && answer5=="correct") {
+  	if (answer1== "correct" && answer2== "correct") {
       if(nextP=="waittostart.php"){
           alert("Correct!\nYou have finished the instructions and the quiz questions.");
           return true;
@@ -47,11 +47,11 @@ $insNextPage = instructionsNextPage($_SERVER['PHP_SELF'], $ppnr, $part);
       //This is the code if you want to show which questions are wrong
       var incorrectQuestions = "";
       var hints = "";
-      if (answer1 != <?php echo $maxValue; ?>){
+      if (answer1 != "correct">){
         incorrectQuestions += "1";
         hints = "The informed participant only gets a penalty if he does NOT report a pie-size. As long as the participant presses at least one orange button there will be no penalty." + hints
       }
-      if (answer2 != <?php echo $totalTrials; ?>){
+      if (answer2 != "correct"){
         if (incorrectQuestions != ""){
           incorrectQuestions += ", 2";
         } else {
@@ -89,7 +89,7 @@ $insNextPage = instructionsNextPage($_SERVER['PHP_SELF'], $ppnr, $part);
   		<tr><td><br></td></tr>
 
       <tr>
-        <td><b>The informed participant sees a pie size of $2 and he clicks on the orange button to report a pie of $6. Is there any penalty for reporting a different pie-size?</b></td>
+        <td><b>The informed participant sees a pie size of $2 and he clicks on the orange button to report a pie size of $6. Is there any penalty for reporting a different pie size?</b></td>
       </tr>
       <tr>
         <td><input type="radio" name="q1" value="incorrect"> Yes <br><input type="radio" name="q1" value="correct"> No <br><input type="radio" name="q1" value="incorrect"> Cannot tell with the information given.</td>
