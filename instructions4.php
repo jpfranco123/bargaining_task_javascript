@@ -122,7 +122,7 @@ $chatVisibility= ($showChat == 1 ? "visible" : "hidden");
     var chatHistory = "Other: Hello "
 
     function uninformedPlayer(){
-      ocument.getElementById("pie_report").style.visibility = "hidden";
+      document.getElementById("pie_report").style.visibility = "hidden";
       document.getElementById("pie_report_text").style.visibility = "hidden";
       document.getElementById("report2").style.visibility = "hidden";
       document.getElementById("report6").style.visibility = "hidden";
@@ -333,7 +333,7 @@ $chatVisibility= ($showChat == 1 ? "visible" : "hidden");
     if(showChat==1){
         document.onkeyup=enterChat;
     }
-    
+
     function report_pie(pie){
       document.getElementById("pie_report").innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $" + pie + " &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
     }

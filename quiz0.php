@@ -30,7 +30,7 @@ $insNextPage = instructionsNextPage($_SERVER['PHP_SELF'], $ppnr, $part);
   function controleren(form) {
     var answer1=document.forms['form1'].q1.value;
     var answer2=document.forms['form1'].q2.value;
-    
+
     var nextP = "<?php echo $insNextPage; ?>";
   	if (answer1== "correct" && answer2== "correct") {
       if(nextP=="waittostart.php"){
@@ -68,7 +68,6 @@ $insNextPage = instructionsNextPage($_SERVER['PHP_SELF'], $ppnr, $part);
       //alert("You did not answer all questions correctly. Please look at the instructions again or raise your hand if you need any help. \n\nHint: Roles are fixed through the <?php echo $totalTrials; ?>  rounds of the experiment. Additionally, the role you get in the first round will remain the same during the whole experiment.");
   		return false;
   	}
-  }
   </script>
 
 
