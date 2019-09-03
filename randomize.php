@@ -26,22 +26,22 @@
     $groepen=array();
     $positie=array();
 
-    for ($i=0; $i < $NPlayers*$totalTrials_per_game_type; $i++) {
+    for ($i=0; $i < $NPlayers*$totalTrials; $i++) {
         $ub=$maxValue/$Steps;
         $wil=mt_rand(0,$ub);
         $sv=$wil*$Steps;
         array_push($willekeur,$sv);
         $wil2=mt_rand(1,999999);
         array_push($willekeur2,$wil2);
-        $pp=floor($i/($totalTrials_per_game_type))+1;
+        $pp=floor($i/($totalTrials))+1;
         array_push($ppnummer,$pp);
-        $blockje=$i+1-$totalTrials_per_game_type*($pp-1);
+        $blockje=$i+1-$totalTrials*($pp-1);
         array_push($blocks,$blockje);
         $groepje=floor(($pp-1)/$mgroupsize)+1;
         array_push($groepen,$groepje);
     }
 
-    for ($i=0; $i < $NPlayers*$totalTrials_per_game_type; $i++) {
+    for ($i=0; $i < $NPlayers*$totalTrials; $i++) {
         insertRecord("matching","trial, sjnr, startvalue, mgroup, randomnr","'$blocks[$i]', '$ppnummer[$i]', '$willekeur[$i]', '$groepen[$i]', '$willekeur2[$i]'");
     }
 
