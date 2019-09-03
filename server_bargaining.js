@@ -192,7 +192,10 @@ wss.on('connection', function connection(ws) {
   });
   var dict = {type : "notification", value : "you are connected", value2: "None"};
   var json_message = JSON.stringify(dict);
-  ws.send(json_message);
+  try {
+    ws.send(json_message);
+  } catch(err)
+  {console.log("Error when sending messsage to client: " + json_message);}
 
 
 });
@@ -340,7 +343,11 @@ function send_to_ppnr_notif(p,message, message2 = "None", message3= "None"){
   var json_message = JSON.stringify(dict);
   console.log(json_message);
   connection_ppnr = ppnr_dict["client_id"][p];
-  connection_ppnr.send(json_message);
+  try {
+    connection_ppnr.send(json_message);
+  } catch(err)
+  {console.log("Error when sending messsage to client: " + p + " / " + json_message);}
+
 }
 
 // Sends message (dictionary) to ppnr
@@ -348,7 +355,11 @@ function send_to_ppnr_slider(p,s_value){
   var dict = {type : "slider", value : s_value};
   var json_message = JSON.stringify(dict);
   connection_ppnr = ppnr_dict["client_id"][p];//123. Might be an error here
-  connection_ppnr.send(json_message);
+  try {
+    connection_ppnr.send(json_message);
+  } catch(err)
+  {console.log("Error when sending messsage to client: " + p + " / " + json_message);}
+
 }
 
 // Sends message (dictionary) to ppnr
@@ -356,7 +367,10 @@ function send_to_ppnr_report_pie(p,value){
   var dict = {type : "pie_report", value : value};
   var json_message = JSON.stringify(dict);
   connection_ppnr = ppnr_dict["client_id"][p];//123. Might be an error here
-  connection_ppnr.send(json_message);
+  try {
+    connection_ppnr.send(json_message);
+  } catch(err)
+  {console.log("Error when sending messsage to client: " + p + " / " + json_message);}
 }
 
 // Report value to p2
