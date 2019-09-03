@@ -99,7 +99,7 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
 
    var almost_deal_timer;
 
-   var resultsTime = <?php echo $results_time;?>//5000;
+   var resultsTime = <?php echo $results_time;?>;//5000;
    var pie_report_val;
 
    //Modifiable variables (in database)
@@ -144,8 +144,8 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
         process_notification(mvalue,mvalue2,mvalue3);
      } else if (mtype=="slider"){
         update_other_slider(mvalue);
-     } else if(notification=="pie_report"){
-        update_pie_report(value);
+     } else if(mtype=="pie_report"){
+        update_pie_report(mvalue);
      } else {
         console.log("Type of Messsage from Server not recognised: " + ms);
      }
@@ -223,7 +223,7 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
         document.getElementById("report2").style.visibility = "hidden";
         document.getElementById("report6").style.visibility = "hidden";
       } else{
-        document.getElementById("pieInstructions").innerHTML = "The informed participant has reported a pie size of $" + pie_report_val ;
+        document.getElementById("pieInstructions").innerHTML = "The informed participant reports a pie of $" + pie_report_val ;
       }
       document.getElementById("slider2Section").style.visibility = "visible";
       start_timer(time_bargaining);

@@ -362,7 +362,7 @@ function send_to_ppnr_report_pie(p,value){
 // Report value to p2
 function report_pie_server(p1,value){
   p2 = ppnr_dict["other_ppnr"][p1];
-  ppnr_dict["reported_pie"][p1]= value;
+  ppnr_dict["reported_pie"][p1] = value;
   send_to_ppnr_report_pie(p2,value);
 
   var timeUpdate = new Date().getTime();
