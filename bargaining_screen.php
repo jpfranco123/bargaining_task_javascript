@@ -355,7 +355,7 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
     function update_pie_report_inf(pie){
       pie_report_val = pie;
       document.getElementById("pie_report_text").innerHTML = "Pie Size to Report:"
-      document.getElementById("pie_report").innerHTML = pie;
+      document.getElementById("pie_report").innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $" + pie + " &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
     }
 
 
@@ -523,9 +523,9 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
     <div align="center">
       <!-- <p id="pie_reported_both" style="visibility:hidden;font-size:40px;"> </p> -->
       <p id="pie_report_text" style="visibility:hidden;font-size:40px;"> Please report a pie size </p>
-      <button align="center" id="report2" value=2 onclick="report_pie(this.value)" style="visibility:hidden;height:120px;width:120px;;font-size:60px;display: inline-block;" class="buttonoranje"> 2 </button>
-      <p align="center" id="pie_report" style="visibility:hidden;font-size:60px;display: inline-block;"> -- </p>
-      <button align="center" id="report6" value=6 onclick="report_pie(this.value)" style="visibility:hidden;height:120px;width:120px;;font-size:60px;display: inline-block;" class="buttonoranje"> 6 </button>
+      <button align="center" id="report2" value=2 onclick="report_pie(this.value)" style="visibility:hidden;height:120px;width:120px;font-size:60px;display: inline-block;" class="buttonoranje"> $2 </button>
+      <p align="center" id="pie_report" style="visibility:hidden;font-size:60px;display: inline-block;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>
+      <button align="center" id="report6" value=6 onclick="report_pie(this.value)" style="visibility:hidden;height:120px;width:120px;font-size:60px;display: inline-block;" class="buttonoranje"> $6 </button>
     </div>
 
 
