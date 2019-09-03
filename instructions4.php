@@ -67,6 +67,8 @@ $chatVisibility= ($showChat == 1 ? "visible" : "hidden");
   var centerNx=0.5*xCanvasSize;
   var centerNy=radius;
 
+  var part_type = -1;//1 if inf / 0 if not
+
   function cirkel(ctx, x, y, r, kleur){
     ctx.beginPath();
     ctx.arc(x, y, r, 0, 2 * Math.PI, false);
@@ -122,6 +124,7 @@ $chatVisibility= ($showChat == 1 ? "visible" : "hidden");
     var chatHistory = "Other: Hello "
 
     function uninformedPlayer(){
+      part_type = 0;
       document.getElementById("pie_report").style.visibility = "hidden";
       document.getElementById("pie_report_text").style.visibility = "hidden";
       document.getElementById("report2").style.visibility = "hidden";
@@ -151,6 +154,7 @@ $chatVisibility= ($showChat == 1 ? "visible" : "hidden");
     }
 
     function informedPlayer(){
+      part_type = 1;
       document.getElementById("pie_report_text").style.visibility = "visible";
       document.getElementById("pie_report_text").innerHTML = "Please report a pie size" ;
       document.getElementById("pie_report").style.visibility = "visible";
@@ -207,7 +211,19 @@ $chatVisibility= ($showChat == 1 ? "visible" : "hidden");
       drawAlertCircle(0);
       clearTimeout(timerDealAlert);
 
-
+      if(part_type==1){
+        document.getElementById("pie_report_text").style.visibility = "visible";
+        document.getElementById("pie_report_text").innerHTML = "Please report a pie size" ;
+        document.getElementById("pie_report").style.visibility = "visible";
+        document.getElementById("report2").style.visibility = "visible";
+        document.getElementById("report6").style.visibility = "visible";
+      }
+      if(part_type==0){
+        document.getElementById("pie_report").style.visibility = "hidden";
+        document.getElementById("pie_report_text").style.visibility = "hidden";
+        document.getElementById("report2").style.visibility = "hidden";
+        document.getElementById("report6").style.visibility = "hidden";
+      }
       document.getElementById("slider2Section").style.visibility = "hidden";
       document.getElementById("chatSection").style.visibility = "hidden";
       document.getElementById("videoSection").style.visibility = "hidden";
