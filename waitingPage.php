@@ -62,12 +62,12 @@
     function startNextTrial(){
       if (totalTrials > trial){
         document.getElementById("reminder").style.visibility="visible";
-        setTimeout(function(){document.getElementById("breakTimer").innerHTML = 5;},0);
-        setTimeout(function(){document.getElementById("breakTimer").innerHTML = 4;},1000);
-        setTimeout(function(){document.getElementById("breakTimer").innerHTML = 3;},2000);
-        setTimeout(function(){document.getElementById("breakTimer").innerHTML = 2;},3000);
-        setTimeout(function(){document.getElementById("breakTimer").innerHTML = 1;},4000);
-        setTimeout(function(){window.location.replace('bargaining_screen.php');},5000);
+        //setTimeout(function(){document.getElementById("breakTimer").innerHTML = 5;},0);
+        setTimeout(function(){document.getElementById("breakTimer").innerHTML = 4;},0);
+        setTimeout(function(){document.getElementById("breakTimer").innerHTML = 3;},1000);
+        setTimeout(function(){document.getElementById("breakTimer").innerHTML = 2;},2000);
+        setTimeout(function(){document.getElementById("breakTimer").innerHTML = 1;},3000);
+        setTimeout(function(){window.location.replace('bargaining_screen.php');},4000);
       } else {
         document.getElementById("botoncito").style.visibility="visible";
       }

@@ -299,7 +299,8 @@ function extract_message(ms){
 function start_trial(mp1,mp2){
   send_to_ppnr_notif(mp1,"start");
   send_to_ppnr_notif(mp2,"start");
-  setTimeout(function(){initial_offer_finalized(mp1,mp2);}, general_vars["initial_offer_time"]);
+  var pre_barg_time = general_vars["initial_offer_time"] + general_vars["pre_initial_offer_time"];
+  setTimeout(function(){initial_offer_finalized(mp1,mp2);}, pre_barg_time);
   var timeStarted = new Date().getTime();
   var trial = ppnr_dict["trial"][mp1];
   //var condition = `sjnr='${mp1}' AND trial='${trial}' `;

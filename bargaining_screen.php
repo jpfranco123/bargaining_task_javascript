@@ -101,6 +101,7 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
 
    var resultsTime = <?php echo $results_time;?>;//5000;
    var pie_report_val = 0;
+   var pre_initial_offer_time = <?php echo $pre_initial_offer_time;?>;//5000;
 
    //Modifiable variables (in database)
    var robotina = <?php echo $robot; ?>;
@@ -186,11 +187,22 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
       update_my_slider(start_value);
       update_other_slider(other_start_value);
 
-      startInitialOffer();
+      start_pre_initial_offer()
+      //startInitialOffer();
 
       if(robotina==1){
         robotina1();
       }
+    }
+
+    // We inform players here about what type of trial is is (Mechanism vs normal)
+    function start_pre_initial_offer(){
+      if(trial_type==1){
+        document.getElementById("pieInstructions").innerHTML = "Normal Bargaining Trial" ;
+      }else if(trial_type==2){
+        document.getElementById("pieInstructions").innerHTML = "Mechanism Trial"
+      }
+      setTimeout(function(){ startInitialOffer(); }, pre_initial_offer_time);
     }
 
     function startInitialOffer(){
