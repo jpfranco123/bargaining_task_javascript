@@ -227,18 +227,17 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
       if(know_pie){
         document.getElementById("report2").style.visibility = "hidden";
         document.getElementById("report6").style.visibility = "hidden";
-        document.getElementById("pie_report_text").style.visibility = "hidden";
         document.getElementById("pie_report").style.visibility = "hidden";
       } else{
-
+        document.getElementById("pie_report_text").style.visibility = "visible";
       }
 
       if(pie_report_val == 0){
-        document.getElementById("pie_reported_both").innerHTML = "No pie reported by the informed player." ;
+        document.getElementById("pie_report_text").innerHTML = "No pie reported by the informed player." ;
       } else{
-        document.getElementById("pie_reported_both").innerHTML = "The informed player reported a pie of $" + pie_report_val ;
+        document.getElementById("pie_report_text").innerHTML = "The informed player reported a pie of $" + pie_report_val ;
       }
-      document.getElementById("pie_reported_both").style.visibility = "visible";
+      document.getElementById("pie_report_text").style.visibility = "visible";
 
 
       document.getElementById("slider2Section").style.visibility = "visible";
@@ -354,6 +353,7 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
     }
 
     function update_pie_report_inf(pie){
+      pie_report_val = pie;
       document.getElementById("pie_report_text").innerHTML = "Pie Size to Report:"
       document.getElementById("pie_report").innerHTML = pie;
     }
@@ -521,11 +521,11 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
 
     <!-- pie_size report -->
     <div align="center">
-      <button align="center" id="report2" value=2 onclick="report_pie(this.value)" style="visibility:hidden;height:200px;width:200px;" class="buttonoranje"> 2 </button>
-      <button align="center" id="report6" value=6 onclick="report_pie(this.value)" style="visibility:hidden;height:200px;width:200px;" class="buttonoranje"> 6 </button>
-      <p id="pie_reported_both" style="visibility:hidden;font-size:100px;"> </p>
-      <p id="pie_report_text" style="visibility:hidden;font-size:60px;"> Please report a pie size </p>
-      <p id="pie_report" style="visibility:hidden;font-size:60px;"> -- </p>
+      <!-- <p id="pie_reported_both" style="visibility:hidden;font-size:40px;"> </p> -->
+      <p id="pie_report_text" style="visibility:hidden;font-size:40px;"> Please report a pie size </p>
+      <button align="center" id="report2" value=2 onclick="report_pie(this.value)" style="visibility:hidden;height:120px;width:120px;;font-size:60px;" class="buttonoranje"> 2 </button>
+      <p align="center" id="pie_report" style="visibility:hidden;font-size:60px;"> -- </p>
+      <button align="center" id="report6" value=6 onclick="report_pie(this.value)" style="visibility:hidden;height:120px;width:120px;;font-size:60px;" class="buttonoranje"> 6 </button>
     </div>
 
 
