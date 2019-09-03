@@ -1,4 +1,4 @@
-participant<?php
+<?php
 //No es necesario incluirlo todavia
 include("commonSlider.inc");
 if (!$_COOKIE['theCookie']){
