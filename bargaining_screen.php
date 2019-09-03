@@ -145,7 +145,7 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
      } else if (mtype=="slider"){
         update_other_slider(mvalue);
      } else if(mtype=="pie_report"){
-        update_pie_report(mvalue);
+        update_pie_report_uninf(mvalue);
      } else {
         console.log("Type of Messsage from Server not recognised: " + ms);
      }
@@ -199,8 +199,13 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
       console.log("do I know pie: " + know_pie);
       if(know_pie){
         document.getElementById("pieInstructions").innerHTML = "Pie size is $" + pie_size ;
+
         document.getElementById("report2").style.visibility = "visible";
         document.getElementById("report6").style.visibility = "visible";
+
+        document.getElementById("pie_report_text").style.visibility = "visible";
+        document.getElementById("pie_report").style.visibility = "visible";
+
       } else{
         document.getElementById("pieInstructions").innerHTML = "";
       }
@@ -223,7 +228,7 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
         document.getElementById("report2").style.visibility = "hidden";
         document.getElementById("report6").style.visibility = "hidden";
       } else{
-        document.getElementById("pieInstructions").innerHTML = "The informed participant reports a pie of $" + pie_report_val ;
+        document.getElementById("pieInstructions").innerHTML = "The other reports a pie of $" + pie_report_val ;
       }
       document.getElementById("slider2Section").style.visibility = "visible";
       start_timer(time_bargaining);
@@ -293,7 +298,7 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
       document.getElementById("infoPHP2").innerHTML = value;
     }
 
-    function update_pie_report(value){
+    function update_pie_report_uninf(value){
       pie_report_val =value;
     }
 
@@ -334,6 +339,12 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
 
     function report_pie(pie){
       send_message("pie_report",pie);
+      update_pie_report_inf(pie);
+    }
+
+    function update_pie_report_inf(pie){
+      document.getElementById("pie_report_text").innerHTML = "Pie Size to Report:"
+      document.getElementById("pie_report").innerHTML = pie;
     }
 
 
@@ -499,8 +510,13 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
 
     <!-- pie_size report -->
     <div align="center">
-      <button align="center" id="report2" value=2 onclick="report_pie(this.value)" style="visibility:hidden" class="buttonoranje"> 2 </button>
-      <button align="center" id="report6" value=6 onclick="report_pie(this.value)" style="visibility:hidden" class="buttonoranje"> 6 </button>
+      <button align="center" id="report2" value=2 onclick="report_pie(this.value)" style="visibility:hidden;height=200px;width=200px;" class="buttonoranje"> 2 </button>
+      <button align="center" id="report6" value=6 onclick="report_pie(this.value)" style="visibility:hidden;height=200px;width=200px;" class="buttonoranje"> 6 </button>
+    </div>
+
+    <div align="center">
+      <p id="pie_report_text" style="visibility:hidden;font-size:250px;"> Please report a pie size </p>
+      <p id="pie_report" style="visibility:hidden;font-size:250px;"> -- </p>
     </div>
 
   </div>

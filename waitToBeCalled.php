@@ -63,7 +63,7 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
  	<p align=center> When you are ready to start please click on CONTINUE.</p>
 
 	<br>
-	<p align=center><a href="https://mili2nd.co/cfnb" class="buttonblauw">Continue</a>
+	<p align=center><a href="https://mili2nd.co/aznb" class="buttonblauw">Continue</a>
   <!-- <h1 align="center"> Thank you for your participation.</h1>
   <h2 align="center"> Please remain seated in order to continue with part 3 of the experiment. </h2> -->
 
