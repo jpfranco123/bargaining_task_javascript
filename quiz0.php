@@ -30,7 +30,7 @@ $insNextPage = instructionsNextPage($_SERVER['PHP_SELF'], $ppnr, $part);
   function controleren(form) {
     var answer1=document.forms['form1'].q1.value;
     var answer2=document.forms['form1'].q2.value;
-\
+    
     var nextP = "<?php echo $insNextPage; ?>";
   	if (answer1== "correct" && answer2== "correct") {
       if(nextP=="waittostart.php"){
@@ -47,7 +47,7 @@ $insNextPage = instructionsNextPage($_SERVER['PHP_SELF'], $ppnr, $part);
       //This is the code if you want to show which questions are wrong
       var incorrectQuestions = "";
       var hints = "";
-      if (answer1 != "correct">){
+      if (answer1 != "correct"){
         incorrectQuestions += "1";
         hints = "The informed participant only gets a penalty if he does NOT report a pie-size. As long as the participant presses at least one orange button there will be no penalty." + hints
       }

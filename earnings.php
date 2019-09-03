@@ -65,7 +65,7 @@ updateTableOne("paymentSession","ppnr=$ppnr","payment","$payment");
   </head>
 
   <body>
-  <h1 align="center"> Your Earnings for this part of the experiment are: $ <?php echo ($payment) ;?></h1>
+  <h1 align="center"> Your Earnings for this part of the experiment will be revealed in the next session. </h1>
   <h2 align="center"> Please click on NEXT when you are ready to start Part II of the experiment </h2>
   <div align="center">
     <button align="center" onclick="startNextTrial()" class="buttonblauw"> NEXT </button>

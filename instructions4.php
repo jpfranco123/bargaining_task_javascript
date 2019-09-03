@@ -122,6 +122,10 @@ $chatVisibility= ($showChat == 1 ? "visible" : "hidden");
     var chatHistory = "Other: Hello "
 
     function uninformedPlayer(){
+      ocument.getElementById("pie_report").style.visibility = "hidden";
+      document.getElementById("pie_report_text").style.visibility = "hidden";
+      document.getElementById("report2").style.visibility = "hidden";
+      document.getElementById("report6").style.visibility = "hidden";
       //document.getElementById("canvitas").style.display = "none";
       //document.getElementById("UP").class = "buttonoranje";
       document.getElementById("entirePage").style.visibility = "visible";
@@ -147,6 +151,12 @@ $chatVisibility= ($showChat == 1 ? "visible" : "hidden");
     }
 
     function informedPlayer(){
+      document.getElementById("pie_report_text").style.visibility = "visible";
+      document.getElementById("pie_report_text").innerHTML = "Please report a pie size" ;
+      document.getElementById("pie_report").style.visibility = "visible";
+      document.getElementById("report2").style.visibility = "visible";
+      document.getElementById("report6").style.visibility = "visible";
+
       document.getElementById("entirePage").style.visibility = "visible";
       document.getElementById("pieInstructions").innerHTML = "Pie size is $6";
       var informedpl = $('#IP');
@@ -233,6 +243,12 @@ $chatVisibility= ($showChat == 1 ? "visible" : "hidden");
         clearTimeout(timerDealAlert);
       }
 
+      document.getElementById("pie_report_text").style.visibility = "visible";
+      document.getElementById("pie_report_text").innerHTML = "The informed participant reported a pie size of $6" ;
+      document.getElementById("pie_report").style.visibility = "hidden";
+      document.getElementById("report2").style.visibility = "hidden";
+      document.getElementById("report6").style.visibility = "hidden";
+
 
       document.getElementById("iniOffer").style.visibility = "hidden";
       document.getElementById("slider2Section").style.visibility = "visible";
@@ -316,6 +332,10 @@ $chatVisibility= ($showChat == 1 ? "visible" : "hidden");
 
     if(showChat==1){
         document.onkeyup=enterChat;
+    }
+    
+    function report_pie(pie){
+      document.getElementById("pie_report").innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $" + pie + " &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
     }
 
 
@@ -409,6 +429,14 @@ $chatVisibility= ($showChat == 1 ? "visible" : "hidden");
 
         <p id="infoPHP2" align="center"> <?php echo $valueDeal2; ?> </p>
 
+      </div>
+
+      <div align="center">
+        <!-- <p id="pie_reported_both" style="visibility:hidden;font-size:40px;"> </p> -->
+        <p id="pie_report_text" style="visibility:hidden;font-size:40px;"> The informed participant reported a pie size of $6 </p>
+        <button align="center" id="report2" value=2 onclick="report_pie(this.value)" style="visibility:hidden;height:120px;width:120px;font-size:60px;display: inline-block;" class="buttonoranje"> $2 </button>
+        <p align="center" id="pie_report" style="visibility:hidden;font-size:60px;display: inline-block;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>
+        <button align="center" id="report6" value=6 onclick="report_pie(this.value)" style="visibility:hidden;height:120px;width:120px;font-size:60px;display: inline-block;" class="buttonoranje"> $6 </button>
       </div>
 
       <!-- CHATBOX style="visibility:<?php echo $chatVisibility; ?>" -->

@@ -116,7 +116,7 @@ $insPrevPage=  instructionsPrevPage($_SERVER['PHP_SELF'], $ppnr, $part);
     <div align="center">
       <button align="center" id="report2" value=2 onclick="report_pie(this.value)" style="height:120px;width:120px;font-size:60px;display: inline-block;" class="buttonoranje"> $2 </button>
       <p align="center" id="pie_report" style="font-size:60px;display: inline-block;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>
-      <button align="center" id="report6" value=6 onclick="report_pie(this.value)" style="visibility:hidden;height:120px;width:120px;font-size:60px;display: inline-block;" class="buttonoranje"> $6 </button>
+      <button align="center" id="report6" value=6 onclick="report_pie(this.value)" style="height:120px;width:120px;font-size:60px;display: inline-block;" class="buttonoranje"> $6 </button>
     </div>
     <br>
 

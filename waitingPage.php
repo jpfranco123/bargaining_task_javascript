@@ -25,7 +25,7 @@
     updateTableMore("subjects","ppnr=$ppnr","trial=\"$nextTrial\"");
 
   } else {
-      $texto="This part of the experiment has finalized, please press the button to see your earnings.";
+      $texto="This part of the experiment has finalized, please press the button.";
   }
 ?>
 

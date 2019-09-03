@@ -111,11 +111,11 @@ $correctA2b=$valueDeal2;
 
         <tr><td><br></td></tr>
 
-        <td>How much does the <b>informed participant </b> get?  </td>
+        <td>How much does the <b>informed participant </b> get?  <br>
 
-          <td><input type="radio" name="q1b" value="incorrect"> $1.6 <br><input type="radio" name="q1b" value="incorrect"> $-2.4 <br><input type="radio" name="q1b" value="correct"> Depends on the pie size </td>
+        <input type="radio" name="q1b" value="incorrect"> $1.6 <br><input type="radio" name="q1b" value="incorrect"> $-2.4 <br><input type="radio" name="q1b" value="correct"> Depends on the pie size </td>
 
-          <tr><td><br></td></tr>
+        <tr><td><br></td></tr>
 
       </tr>
 
