@@ -43,7 +43,7 @@ $valueDeal2=mt_rand($minValue/$Steps+1,($maxValue/2)/$Steps)*$Steps*2-1*$Steps;
       }
   	}
   	else {
-  		alert("You did not answer all questions correctly. Please look at the instructions again or raise your hand if you need any help. \n\nHint: The final payoffs are calculated only from the the position of the sliders."
+  		alert("You did not answer all questions correctly. Please look at the instructions again or raise your hand if you need any help."
     );
   		return false;
   	}
@@ -68,7 +68,7 @@ $valueDeal2=mt_rand($minValue/$Steps+1,($maxValue/2)/$Steps)*$Steps*2-1*$Steps;
   		<tr><td><br></td></tr>
 
       <tr>
-  			<td><b> Both participants agree on the chat box to give the uninformed participant $<?php echo $valueDeal1; ?>. In the sliders they are both matched at $<?php echo $valueDeal2; ?> and a deal is made. What is going to be the payoff of the uninformed participant? </b></td>
+  			<td><b> In the sliders they are both matched at $<?php echo $valueDeal2; ?> and a deal is made. What is going to be the payoff of the uninformed participant? </b></td>
   		</tr>
       <tr>
   			<td><input type="radio" name="q1" value="incorrect"> The uninformed participant gets $<?php echo $valueDeal1; ?><br><input type="radio" name="q1" value="incorrect"> The uninformed participant gets $0<br><input type="radio" name="q1" value="correct"> The uninformed participant gets $<?php echo $valueDeal2; ?> </td>

@@ -82,7 +82,8 @@ $correctA2b=$valueDeal2;
       }
 
 
-  		alert("You did not answer all questions correctly (Specifically: " + incorrectQuestions + "). Please look at the instructions again or raise your hand if you need any help. \n\nHint: Amounts on the slider represent the uninformed participant’s payoff. The informed participant’s payoff is equal to the pie size minus the negotiated uninformed participant’s payoff.");
+  		//alert("You did not answer all questions correctly (Specifically: " + incorrectQuestions + "). Please look at the instructions again or raise your hand if you need any help. \n\nHint: Amounts on the slider represent the uninformed participant’s payoff. The informed participant’s payoff is equal to the pie size minus the negotiated uninformed participant’s payoff.");
+      alert("You did not answer all questions correctly. Please look at the instructions again or raise your hand if you need any help. \n\nHint: Amounts on the slider represent the uninformed participant’s payoff. The informed participant’s payoff is equal to the pie size minus the negotiated uninformed participant’s payoff.");
       //TO not show which questions aare wrong:
       //alert("You did not answer all questions correctly. Please look at the instructions again or raise your hand if you need any help. \n\nHint: Amounts on the slider represent the uninformed participant’s payoff. The informed participant’s payoff is equal to the pie size minus the negotiated uninformed participant’s payoff.");
   		return false;

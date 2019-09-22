@@ -81,7 +81,8 @@ $insNextPage = instructionsNextPage($_SERVER['PHP_SELF'], $ppnr, $part);
       }
 
 
-  		alert("You did not answer all questions correctly (Specifically: " + incorrectQuestions + "). Please look at the instructions again or raise your hand if you need any help. \n\nHint: Roles are fixed through the 12 rounds of the experiment. Additionally, the role you get in the first round will remain the same during the whole experiment.");
+  		// alert("You did not answer all questions correctly (Specifically: " + incorrectQuestions + "). Please look at the instructions again or raise your hand if you need any help. \n\nHint: Roles are fixed through the 12 rounds of the experiment. Additionally, the role you get in the first round will remain the same during the whole experiment.");
+      alert("You did not answer all questions correctly. Please look at the instructions again or raise your hand if you need any help. \n\nHint: Roles are fixed through the 12 rounds of the experiment. Additionally, the role you get in the first round will remain the same during the whole experiment.");
       //TO not show which questions aare wrong:
       //alert("You did not answer all questions correctly. Please look at the instructions again or raise your hand if you need any help. \n\nHint: Roles are fixed through the <?php echo $totalTrials; ?>  rounds of the experiment. Additionally, the role you get in the first round will remain the same during the whole experiment.");
   		return false;

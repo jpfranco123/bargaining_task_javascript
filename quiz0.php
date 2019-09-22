@@ -61,7 +61,8 @@ $insNextPage = instructionsNextPage($_SERVER['PHP_SELF'], $ppnr, $part);
       }
 
       }
-      var msg = "You did not answer all questions correctly (Specifically: " + incorrectQuestions + "). Please look at the instructions again or raise your hand if you need any help. \n\nHints: ";
+      //var msg = "You did not answer all questions correctly (Specifically: " + incorrectQuestions + "). Please look at the instructions again or raise your hand if you need any help. \n\nHints: ";
+      var msg = "You did not answer all questions correctly. Please look at the instructions again or raise your hand if you need any help. \n\nHints: ";
 
   		alert(msg + hints);
       //TO not show which questions aare wrong:

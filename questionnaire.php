@@ -92,12 +92,12 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
   		</tr>
   		<tr><td><br></td></tr>
 
-      <td><b>What is your current marital status? </b> </td>
+      <!-- <td><b>What is your current marital status? </b> </td>
       <tr>
         <td><input type="radio" name="mar" value="single"> Single<br><input type="radio" name="mar" value="married"> Married <br><input type="radio" name="mar" value="divorced"> Divorced<br><input type="radio" name="mar" value="livingother">
           Living with another <br> <input type="radio" name="mar" value="separated"> Separated <br> <input type="radio" name="mar" value="widowed"> Widowed <br> <input type="radio" name="mar" value="notsay"> Would rather not say</td>
       </tr>
-      <tr><td><br></td></tr>
+      <tr><td><br></td></tr> -->
 
       <tr>
   			<td><b>Where were you born (country)? </b></td></tr>

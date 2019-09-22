@@ -69,7 +69,8 @@ $correctA2b=$valueDeal2;
           incorrectQuestions += "3";
         }
       }
-      alert("You did not answer all questions correctly (Specifically: " + incorrectQuestions + "). Please look at the instructions again or raise your hand if you need any help. \n\nHint: Bargaining stops only when there is a deal or when time is over. When there is a match at the last moment, and it is kept until the time is over, there is a deal.");
+      //alert("You did not answer all questions correctly (Specifically: " + incorrectQuestions + "). Please look at the instructions again or raise your hand if you need any help. \n\nHint: Bargaining stops only when there is a deal or when time is over. When there is a match at the last moment, and it is kept until the time is over, there is a deal.");
+      alert("You did not answer all questions correctly. Please look at the instructions again or raise your hand if you need any help. \n\nHint: Bargaining stops only when there is a deal or when time is over. When there is a match at the last moment, and it is kept until the time is over, there is a deal.");
 
       //TO not show which questions aare wrong:
   		//alert("You did not answer all questions correctly. Please look at the instructions again or raise your hand if you need any help. \n\nHint: Bargaining stops only when there is a deal or when time is over. When there is a match at the last moment, and it is kept until the time is over, there is a deal.");

@@ -51,33 +51,34 @@ $correctA2b=$valueDeal2;
 
       //This is the code if you want to show which questions are wrong
 
-      var incorrectQuestions = "";
-      var hints = "";
-      if (answer1 != "correct"){
-        incorrectQuestions += "1";
-        hints = "The answer is in the tables. However, feel free to ask the researchers for help, they will be happy to explain the tables to you." + hints
-      }
-      if (answer2 != <?php echo $correctA2a; ?>){
-        if (incorrectQuestions != ""){
-          incorrectQuestions += ", 2";
-        } else {
-          incorrectQuestions += "2";
-        }
-        hints = "The payment to the informed participant will depend on the actual pie size. "  + hints
-      }
-      if (answer3 != <?php echo $correctA2b; ?> ){
-        if (incorrectQuestions != ""){
-          incorrectQuestions += ", 3";
-        } else {
-          incorrectQuestions += "3";
-        }
-        hints = "If an agreement is made, the mediation protocol is NOT implemented. " + hints
-      }
-      var msg = "You did not answer all questions correctly (Specifically: " + incorrectQuestions + "). Please look at the instructions again or raise your hand if you need any help. \n\nHint: "
+      // var incorrectQuestions = "";
+      // var hints = "";
+      // if (answer1 != "correct"){
+      //   incorrectQuestions += "1";
+      //   hints = "The answer is in the tables. However, feel free to ask the researchers for help, they will be happy to explain the tables to you." + hints
+      // }
+      // if (answer2 != <?php echo $correctA2a; ?>){
+      //   if (incorrectQuestions != ""){
+      //     incorrectQuestions += ", 2";
+      //   } else {
+      //     incorrectQuestions += "2";
+      //   }
+      //   hints = "The payment to the informed participant will depend on the actual pie size. "  + hints
+      // }
+      // if (answer3 != <?php echo $correctA2b; ?> ){
+      //   if (incorrectQuestions != ""){
+      //     incorrectQuestions += ", 3";
+      //   } else {
+      //     incorrectQuestions += "3";
+      //   }
+      //   hints = "If an agreement is made, the mediation protocol is NOT implemented. " + hints
+      // }
+      hints = "";
+      hints = hints + "If an agreement is made, the mediation protocol is NOT implemented. " + " \n\n ";
+      hints = hints +  "The payment will only depend on the tables if an agreement is NOT reached on a mediation trial" + " \n\n"  + hints;
+      var msg = "You did not answer all questions correctly. Please raise your hand if you need any help. \n\nHint: "
       alert( msg + hints);
 
-      //TO not show which questions aare wrong:
-  		//alert("You did not answer all questions correctly. Please look at the instructions again or raise your hand if you need any help. \n\nHint: Bargaining stops only when there is a deal or when time is over. When there is a match at the last moment, and it is kept until the time is over, there is a deal.");
   		return false;
   	}
   }
