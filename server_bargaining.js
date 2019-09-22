@@ -61,7 +61,7 @@ function load_game_parameters(){
   lookUp_js("commonParameters","Name='time_barg_normal'","Value","general_vars", "time_barg_normal", "integer");//Time for normal bargaining trials
   lookUp_js("commonParameters","Name='time_barg_mechanism'","Value","general_vars", "time_barg_mechanism", "integer");//Time for mechanism bargaining trials
   lookUp_js("commonParameters","Name='timeForIniOffer'","Value","general_vars", "initial_offer_time", "integer");
-  lookUp_js("commonParameters","Name='pre_initial_offer_time'","Value","general_vars", "pre_initial_offer_time", "integer");
+  //lookUp_js("commonParameters","Name='pre_initial_offer_time'","Value","general_vars", "pre_initial_offer_time", "integer");
   lookUp_js("commonParameters","Name='timeForDeal'","Value", "general_vars", "deal_confirmation_time", "integer");
   lookUp_js("commonParameters","Name='trial_type_report_time'","Value", "general_vars", "trial_type_report_time", "integer");
 }
@@ -306,7 +306,7 @@ function extract_message(ms){
 function start_trial(mp1,mp2){
   send_to_ppnr_notif(mp1,"start");
   send_to_ppnr_notif(mp2,"start");
-  var pre_barg_time = general_vars["initial_offer_time"] + general_vars["pre_initial_offer_time"];
+  var pre_barg_time = general_vars["initial_offer_time"];// + general_vars["pre_initial_offer_time"];
   setTimeout(function(){initial_offer_finalized(mp1,mp2);}, pre_barg_time);
   var timeStarted = new Date().getTime();
   var trial = ppnr_dict["trial"][mp1];
