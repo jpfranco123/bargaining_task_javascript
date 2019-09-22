@@ -422,19 +422,21 @@ function update_trial_type_report(p1, value){
 }
 
 function determine_trial_type(choice1,choice2){
+  var ch1 = choice1;
+  var ch2 = choice2;
   //DISCUSS: If they don't report choice their report is chosen to be mechanism trial!
-  if(choice1==0){
-    choice1 = 2;
+  if(ch1==0){
+    ch1 = 2;
   }
-  if(choice2==0){
-    choice2 = 2;
+  if(ch2==0){
+    ch2 = 2;
   }
 
-  if(choice1 == 1){
+  if(ch1 == 1){
     var trial_type = 1;
-  } else if (choice2 == 1){
+  } else if (ch2 == 1){
     var trial_type = 1;
-  } else if (choice1==2 && choice2 ==2){
+  } else if (ch1==2 && ch2 ==2){
     var trial_type =2;
   } else {
     console.log("trial_choice not recognised");
