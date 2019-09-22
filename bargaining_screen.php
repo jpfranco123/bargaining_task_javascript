@@ -594,9 +594,9 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
     <div class="column" id="trial_type_report_div">
       <!-- <p id="pie_reported_both" style="visibility:hidden;font-size:40px;"> </p> -->
       <p id="trial_type_report_text" style="font-size:40px;"> Do you want to participate in the mechanism? </p>
-      <button align="center" id="report_trial_type1" value=1 onclick="report_trial_type(this.value)" style="height:120px;width:120px;font-size:60px;display: inline-block;" class="buttonblauw"> YES </button>
+      <button align="center" id="report_trial_type1" value=2 onclick="report_trial_type(this.value)" style="height:120px;width:120px;font-size:60px;display: inline-block;" class="buttonblauw"> YES </button>
       <p align="center" id="trial_type_report" style="font-size:60px;display: inline-block;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>
-      <button align="center" id="report_trial_type2" value=2 onclick="report_trial_type(this.value)" style="height:120px;width:120px;font-size:60px;display: inline-block;" class="buttonblauw"> NO </button>
+      <button align="center" id="report_trial_type2" value=1 onclick="report_trial_type(this.value)" style="height:120px;width:120px;font-size:60px;display: inline-block;" class="buttonblauw"> NO </button>
     </div>
     <!-- <div align="center"> -->
     <div class="column" id="pie_report_div">
