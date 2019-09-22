@@ -34,9 +34,9 @@ $insPrevPage=  instructionsPrevPage($_SERVER['PHP_SELF'], $ppnr, $part);
     <p align=center><?php echo $menu; ?></p>
     <H1 align=center> Final Payment Calculation</H1>
 
-    <p> At the end of the experiment <?php echo $totalPayTrials; ?> random rounds will be selected.
+    <p align=center> At the end of the experiment <?php echo $totalPayTrials; ?> random rounds will be selected.
 
-    <p> You will be paid the total amount of money that you earned in those rounds.</p>
+    <p align=center> You will be paid the total amount of money that you earned in those rounds.</p>
 
     <br>
     <p style="float:right"><a href=<?php echo $insNextPage; ?> class="buttonblauw">Continue</a>

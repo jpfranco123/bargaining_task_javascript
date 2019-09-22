@@ -102,7 +102,7 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
 
    var resultsTime = <?php echo $results_time;?>;//5000;
    var pie_report_val = 0;
-   var pre_initial_offer_time = <?php echo $pre_initial_offer_time;?>;//5000;
+   //var pre_initial_offer_time = <?php echo $pre_initial_offer_time;?>;//5000;
 
    //Modifiable variables (in database)
    var robotina = <?php echo $robot; ?>;
