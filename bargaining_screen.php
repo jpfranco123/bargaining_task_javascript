@@ -289,6 +289,9 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
 
       //document.getElementById("slider1Section").style.visibility = "visible";
       document.getElementById("slider2Section").style.visibility = "visible";
+      document.getElementById("trial_type_report_div").style.visibility = "hidden";
+      document.getElementById("pie_report_div").style.visibility = "hidden";
+
       start_timer(time_bargaining);
     }
 
@@ -403,8 +406,14 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
     function report_trial_type(trial_type_rep){
       send_message("trial_type_report",trial_type_rep);
       trial_type_report = trial_type_rep
+      if(trial_type_report==2){
+        var text = "YES";
+      } else{
+        var text = "NO";
+      }
+
       //document.getElementById("trial_type_report_text").innerHTML = "Pie Size to Report:"
-      document.getElementById("trial_type_report").innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $" + trial_type_rep + " &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+      document.getElementById("trial_type_report").innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + text + " &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
     }
 
     function update_pie_report_inf(pie){
