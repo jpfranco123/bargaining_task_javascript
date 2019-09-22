@@ -271,6 +271,7 @@ async function initialise_ppnr(mp1,mp2,ws,mtrial){
   //ppnr_dict["slider_pos"][mp1]= get_slider_initial_val(mp1,mtrial);
   ppnr_dict["trial"][mp1]= mtrial;
   ppnr_dict["reported_pie"][mp1] = 0;
+  ppnr_dict["trial_type_report"][mp1] =0 ;
 
 
   if(mp2 in ppnr_dict["bargaining_started"]){

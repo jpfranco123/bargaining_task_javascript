@@ -399,8 +399,6 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
       document.getElementById("trial_type_report").innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $" + trial_type_rep + " &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
     }
 
-    report_trial_type(this.value)
-
     function update_pie_report_inf(pie){
       pie_report_val = pie;
       document.getElementById("pie_report_text").innerHTML = "Pie Size to Report:"
