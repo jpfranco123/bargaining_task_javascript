@@ -19,8 +19,6 @@ $iknowPie=knowPie($ppnr,$trial);
 
 $thePie=pieSize($ppnr,$trial);
 
-$trial_type = trialType($ppnr,$trial);
-
 updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
 
 ?>
