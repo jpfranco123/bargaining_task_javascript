@@ -2,7 +2,7 @@
 define ("HOST","localhost");
 
 // fill in correct name of database
-define ("DBNAME","bargaining_mechanism_p1");
+define ("DBNAME","bargaining_mechanism_p2");
 // fill in correct loginname/password
 define ("ADMIN","root");
 

@@ -1,3 +1,5 @@
+
+
 // <?php
 //include("commonSlider.inc");
 
@@ -25,7 +27,7 @@ const wss = new WebSocket.Server({ port: 8080 });
    host: "localhost",
    user: "root",
    password: "bargaining_mysql",
-   database: "bargaining_mechanism_p1"
+   database: "bargaining_mechanism_p2"
  });
 
 //var con = mysql.createConnection({
@@ -61,6 +63,7 @@ function load_game_parameters(){
   lookUp_js("commonParameters","Name='timeForIniOffer'","Value","general_vars", "initial_offer_time", "integer");
   lookUp_js("commonParameters","Name='pre_initial_offer_time'","Value","general_vars", "pre_initial_offer_time", "integer");
   lookUp_js("commonParameters","Name='timeForDeal'","Value", "general_vars", "deal_confirmation_time", "integer");
+  lookUp_js("commonParameters","Name='trial_type_report_time'","Value", "general_vars", "trial_type_report_time", "integer");
 }
 
 
@@ -173,6 +176,7 @@ ppnr_dict["deal_timer"]={};
 
 ppnr_dict["reported_pie"]={};
 ppnr_dict["trial_type"]={};
+ppnr_dict["trial_type_report"]={};
 
 var general_vars={};
 
@@ -222,6 +226,8 @@ function process_messsage(ms,ws){
       update_slider(mp1,mvalue);
   } else if (mtype=="pie_report") {
       report_pie_server(mp1, mvalue);
+  } else if (mtype=="trial_type_report") {
+      update_trial_type_report(mp1, mvalue);
   } else if(mtype=="error"){
       error_trial(mp1,mp2);
   } else if(mp1=="monitor"){
@@ -254,7 +260,7 @@ async function initialise_ppnr(mp1,mp2,ws,mtrial){
 
   var condition = `sjnr='${mp1}' AND trial='${mtrial}' `;
   lookUp_js("matching",condition,"informed","ppnr_dict", "know_pie", "integer",mp1);
-  lookUp_js("matching",condition,"trial_type","ppnr_dict", "trial_type", "integer",mp1);//.then(function(type){ppnr_dict["trial_type"][mp1]=trial_type;}); //table_name,condition,name, dictionary, var_to_update, data_type, ppnr_d=0)
+  //lookUp_js("matching",condition,"trial_type","ppnr_dict", "trial_type", "integer",mp1);//.then(function(type){ppnr_dict["trial_type"][mp1]=trial_type;}); //table_name,condition,name, dictionary, var_to_update, data_type, ppnr_d=0)
   lookUp_js("matching",condition,"startvalue","ppnr_dict", "initial_val", "numeric",mp1).then(function(s_value){ppnr_dict["slider_pos"][mp1]=s_value;});
   let promise = lookUp_js("matching",condition,"piesize","ppnr_dict", "pie_size", "integer",mp1);
 
@@ -307,26 +313,44 @@ function start_trial(mp1,mp2){
   //var condition = `sjnr='${mp1}' AND trial='${trial}' `;
   //var condition2 = `ppnr='${mp2}' AND trial='${trial}' `;
   var pie_size = ppnr_dict["pie_size"][mp1];//["6"];//7;
-  var trial_type = ppnr_dict["trial_type"][mp1];//["6"];//7;
+  //var trial_type = ppnr_dict["trial_type"][mp1];//["6"];//7;
   //var pie_size2 = ppnr_dict["pie_size"][mp2];
   //ppnr_dict["pie_size"][mp1];
-  console.log(` this is the trial_type`);
-  console.log(trial_type);
 
   //123: Maybe remove double trial info
-  insertRecord_js("trialInfo","ppnr1, ppnr2, trial, timeStarted, pie, trial_type",` '${mp2}', '${mp1}', '${trial}', '${timeStarted}', '${pie_size}', ${trial_type} `);
-  insertRecord_js("trialInfo","ppnr1, ppnr2, trial, timeStarted, pie, trial_type",` '${mp1}', '${mp2}', '${trial}', '${timeStarted}', '${pie_size}', ${trial_type} `);
+  insertRecord_js("trialInfo","ppnr1, ppnr2, trial, timeStarted, pie",` '${mp2}', '${mp1}', '${trial}', '${timeStarted}', '${pie_size}' `);
+  insertRecord_js("trialInfo","ppnr1, ppnr2, trial, timeStarted, pie",` '${mp1}', '${mp2}', '${trial}', '${timeStarted}', '${pie_size}' `);
   //updateTableOne_js("trialInfo",condition1,"timeStarted",timeStarted);
   //updateTableOne_js("trialInfo",condition2,"timeStarted",timeStarted);
 }
 
+// Calculate the trial type based on the choices (Reports) by the participants and start the trial_type report
 function initial_offer_finalized(p1,p2){
-  send_to_ppnr_notif(p1,"initial_offer_end");
-  send_to_ppnr_notif(p2,"initial_offer_end");
-  ppnr_dict["bargaining_started"][p1]=1;
-  ppnr_dict["bargaining_started"][p2]=1;
-  check_match(p1,p2);
-  timer_room = Math.min(p1,p2);
+
+  // 666
+  var trial_type_report_1 = ppnr_dict["trial_type_report"][p1];
+  var trial_type_report_2 = ppnr_dict["trial_type_report"][p2];
+  var trial_type = determine_trial_type(trial_type_report_1,trial_type_report_2);
+
+  send_to_ppnr_notif(p1,"initial_offer_end", trial_type);
+  send_to_ppnr_notif(p2,"initial_offer_end", trial_type);
+
+  setTimeout(function(){start_bargaining(p1,p2);}, general_vars["trial_type_report_time"]);
+
+  var trial1 = ppnr_dict["trial"][p1];
+  var trial2 = ppnr_dict["trial"][p2];
+  var condition1 = `ppnr1='${p1}' AND trial='${trial1}' `
+  var condition2 = `ppnr1='${p2}' AND trial='${trial2}' `
+  var update1 = `trial_type=${trial_type}, trial_type_report=${trial_type_report_1}`;
+  var update2 = `trial_type=${trial_type}, trial_type_report=${trial_type_report_2}`;
+  updateTableMany_js("trialInfo", condition1, update1);
+  updateTableMany_js("trialInfo", condition2, update2);
+}
+
+
+function start_bargaining(p1,p2){
+  send_to_ppnr_notif(mp1,"start_bargaining");
+  send_to_ppnr_notif(mp2,"start_bargaining");
   // Is it a trial type 1: Normal or 2: mechanism
   if(ppnr_dict["trial_type"][p1]==1){
     var time_trial = general_vars["time_barg_normal"];
@@ -336,6 +360,10 @@ function initial_offer_finalized(p1,p2){
     console.log("Error! trial_type not recognised");
   }
 
+  timer_room = Math.min(p1,p2);
+  ppnr_dict["bargaining_started"][p1]=1;
+  ppnr_dict["bargaining_started"][p2]=1;
+  check_match(p1,p2);
   ppnr_dict["bargaining_timer"][timer_room] = setTimeout(function(){bargaining_time_is_up(p1,p2);}, time_trial);
 }
 
@@ -351,6 +379,7 @@ function send_to_ppnr_notif(p,message, message2 = "None", message3= "None"){
   {console.log("Error when sending messsage to client: " + p + " / " + json_message);}
 
 }
+
 
 // Sends message (dictionary) to ppnr
 function send_to_ppnr_slider(p,s_value){
@@ -386,6 +415,32 @@ function report_pie_server(p1,value){
   var names = ["ppnr1","ppnr2","trial","time","report"];
   var values= [p1,p2,trial,timeUpdate,value];
   insertRecord_js("reported_pies",names,values)
+}
+
+function update_trial_type_report(p1, value){
+  ppnr_dict["trial_type_report"][p1]=value;
+}
+
+function determine_trial_type(choice1,choice2){
+  //DISCUSS: If they don't report choice their report is chosen to be mechanism trial!
+  if(choice1==0){
+    choice1 = 2;
+  }
+  if(choice2==0){
+    choice2 = 2;
+  }
+
+  if(choice1 == 1){
+    var trial_type = 1;
+  } else if (choice2 == 1){
+    var trial_type = 1;
+  } else if (choice1==2 && choice2 ==2){
+    var trial_type =2;
+  } else {
+    console.log("trial_choice not recognised");
+  }
+
+  return trial_type;
 }
 
 //Save and send value
@@ -579,6 +634,7 @@ function bargaining_finalised(p1,p2,payoff1,payoff2, agreement){
   delete ppnr_dict["initial_val"][p1];
   delete ppnr_dict["bargaining_started"][p1];
   delete ppnr_dict["trial_type"][p1];
+  delete ppnr_dict["trial_type_report"][p1];
   delete ppnr_dict["reported_pie"][p1]
 
   delete ppnr_dict["client_id"][p2];
@@ -591,6 +647,7 @@ function bargaining_finalised(p1,p2,payoff1,payoff2, agreement){
   delete ppnr_dict["initial_val"][p2];
   delete ppnr_dict["bargaining_started"][p2];
   delete ppnr_dict["trial_type"][p2];
+  delete ppnr_dict["trial_type_report"][p2];
   delete ppnr_dict["reported_pie"][p2]
 
   timer_room = Math.min(p1,p2);

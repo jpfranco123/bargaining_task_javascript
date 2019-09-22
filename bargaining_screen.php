@@ -83,7 +83,8 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
    var ppnr = <?php echo $ppnr;?>;
    var partner = <?php echo $partner; ?>;
    var trial = <?php echo $trial;?>;
-   var trial_type = <?php echo $trial_type;?>;
+   var trial_type = 0;
+   var trial_type_report = 0;
    var know_pie= <?php echo $iknowPie; ?>;
    var pie_size = <?php echo $thePie; ?>;
    //var time_bargaining =<?php echo $Time; ?>/1000;
@@ -106,11 +107,7 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
    //Modifiable variables (in database)
    var robotina = <?php echo $robot; ?>;
 
-   if(trial_type==1){
-     time_bargaining = time_barg_normal;
-   }else if(trial_type==2){
-     time_bargaining = time_barg_mechanism;
-   }
+
 
 
    connection.onopen = () => {
@@ -162,12 +159,15 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
         window.clearTimeout(almost_deal_timer);
         drawAlertCircle(0);
      } else if(notification=="initial_offer_end"){
-        startBargaining();
+       inform_participant_trial_type(not2);
+        //startBargaining();
      } else if(notification=="payoff"){
         try{window.clearTimeout(almost_deal_timer);} catch(err){}
         show_payoff(not2,not3);
      } else if(notification=="you are connected"){
         //Correct but do nothing.
+     } else if(notification=="start_bargaining"){
+        startBargaining();
      } else if(notification=="pie_report"){
         //Correct but do nothing.
      } else {
@@ -187,8 +187,8 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
       update_my_slider(start_value);
       update_other_slider(other_start_value);
 
-      start_pre_initial_offer()
-      //startInitialOffer();
+      //start_pre_initial_offer()
+      startInitialOffer();
 
       if(robotina==1){
         robotina1();
@@ -196,14 +196,37 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
     }
 
     // We inform participants here about what type of trial is is (Mechanism vs normal)
-    function start_pre_initial_offer(){
+    function inform_participant_trial_type(trial_type_local){
+      trial_type = trial_type_local
+
+      // Hide pie_reporting mechanism
+      // document.getElementById("report2").style.visibility = "hidden";
+      // document.getElementById("report6").style.visibility = "hidden";
+      // document.getElementById("pie_report").style.visibility = "hidden";
+      // document.getElementById("pie_report_text").style.visibility = "hidden";
+      document.getElementById("pie_report_div").style.visibility = "hidden";
+      document.getElementById("trial_type_report_div").style.visibility = "hidden";
+
+      document.getElementById("slider1Section").style.visibility = "hidden";
+
       if(trial_type==1){
-        document.getElementById("waitingPageTexto").innerHTML = "Normal Bargaining Trial" ;
+        time_bargaining = time_barg_normal;
+        //document.getElementById("waitingPageTexto").innerHTML = "Normal Bargaining Trial" ;
+        document.getElementById("iniOffer").innerHTML = "Normal Bargaining Trial" ;
       }else if(trial_type==2){
-        document.getElementById("waitingPageTexto").innerHTML = "Mediation Trial"
+        time_bargaining = time_barg_mechanism;
+        document.getElementById("iniOffer").innerHTML = "Mediation Trial"
       }
-      setTimeout(function(){ startInitialOffer(); }, pre_initial_offer_time);
+      //setTimeout(function(){ startBargaining(); }, trial_type_report_time);
     }
+    // function start_pre_initial_offer(){
+    //   if(trial_type==1){
+    //     document.getElementById("waitingPageTexto").innerHTML = "Normal Bargaining Trial" ;
+    //   }else if(trial_type==2){
+    //     document.getElementById("waitingPageTexto").innerHTML = "Mediation Trial"
+    //   }
+    //   setTimeout(function(){ startInitialOffer(); }, pre_initial_offer_time);
+    // }
 
     function startInitialOffer(){
       $(window).trigger('resize');//This is the only way I found to solve an annoying bug in which sliders show up small
@@ -212,15 +235,20 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
       if(know_pie){
         document.getElementById("pieInstructions").innerHTML = "Pie size is $" + pie_size ;
 
-        document.getElementById("report2").style.visibility = "visible";
-        document.getElementById("report6").style.visibility = "visible";
+        // document.getElementById("report2").style.visibility = "visible";
+        // document.getElementById("report6").style.visibility = "visible";
+        //
+        // document.getElementById("pie_report_text").style.visibility = "visible";
+        // document.getElementById("pie_report").style.visibility = "visible";
 
-        document.getElementById("pie_report_text").style.visibility = "visible";
-        document.getElementById("pie_report").style.visibility = "visible";
+        document.getElementById("pie_report_div").style.visibility = "visible";
+
 
       } else{
         document.getElementById("pieInstructions").innerHTML = "";
       }
+
+      document.getElementById("trial_type_report_div").style.visibility = "visible";
 
       document.getElementById("slider2Section").style.visibility = "hidden";
       document.getElementById("waitingPage").style.display = "none";
@@ -236,22 +264,22 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
 
     function startBargaining(){
       document.getElementById("iniOffer").style.visibility = "hidden";
-      if(know_pie){
-        document.getElementById("report2").style.visibility = "hidden";
-        document.getElementById("report6").style.visibility = "hidden";
-        document.getElementById("pie_report").style.visibility = "hidden";
-      } else{
-        document.getElementById("pie_report_text").style.visibility = "visible";
-      }
-
+      // if(know_pie){
+      //   //document.getElementById("report2").style.visibility = "hidden";
+      //   //document.getElementById("report6").style.visibility = "hidden";
+      //   //document.getElementById("pie_report").style.visibility = "hidden";
+      // } else{
+      //   //document.getElementById("pie_report_text").style.visibility = "visible";
+      // }
       if(pie_report_val == 0){
-        document.getElementById("pie_report_text").innerHTML = "No pie reported by the informed participant." ;
+        document.getElementById("reported_pie_other").innerHTML = "No pie reported by the informed participant." ;
       } else{
-        document.getElementById("pie_report_text").innerHTML = "The informed participant reported a pie size of $" + pie_report_val ;
+        document.getElementById("reported_pie_other").innerHTML = "The informed participant reported a pie size of $" + pie_report_val ;
       }
-      document.getElementById("pie_report_text").style.visibility = "visible";
 
+      document.getElementById("reported_pie_other").style.visibility = "visible";
 
+      document.getElementById("slider1Section").style.visibility = "visible";
       document.getElementById("slider2Section").style.visibility = "visible";
       start_timer(time_bargaining);
     }
@@ -363,6 +391,15 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
       send_message("pie_report",pie);
       update_pie_report_inf(pie);
     }
+
+    function report_trial_type(trial_type_rep){
+      send_message("trial_type_report",trial_type_rep);
+      trial_type_report = trial_type_rep
+      //document.getElementById("trial_type_report_text").innerHTML = "Pie Size to Report:"
+      document.getElementById("trial_type_report").innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $" + trial_type_rep + " &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+    }
+
+    report_trial_type(this.value)
 
     function update_pie_report_inf(pie){
       pie_report_val = pie;
@@ -500,19 +537,21 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
     <h1 id="iniOffer">  </h1>
 
     <!-- Slider 1 -->
-    <h2 class="participantTitles"> You </h2>
-    <div class="leftOfSlider" > <?php echo $minValue; ?> </div>
-    <div class="divSlider" > <?php echo $maxValue; ?> </div>
-    <div class="rightOfSlider" align="center" >
+    <div id="slider1Section" >
+      <h2 class="participantTitles"> You </h2>
+      <div class="leftOfSlider" > <?php echo $minValue; ?> </div>
+      <div class="divSlider" > <?php echo $maxValue; ?> </div>
+      <div class="rightOfSlider" align="center" >
 
-      <input onChange="send_my_updated_slider(this.value)" type="range" id="slider1" class="slider" value=<?php echo $start_value;?> min=<?php echo $minValue; ?> max=<?php echo $maxValue; ?> step=<?php echo $Steps;?> list=tickmarks>
-      <datalist id=tickmarks>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-      </datalist>
+        <input onChange="send_my_updated_slider(this.value)" type="range" id="slider1" class="slider" value=<?php echo $start_value;?> min=<?php echo $minValue; ?> max=<?php echo $maxValue; ?> step=<?php echo $Steps;?> list=tickmarks>
+        <datalist id=tickmarks>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </datalist>
+      </div>
     </div>
 
     <p id="infoPHP1" align="center"> Waiting for Connection... </p>
@@ -532,15 +571,26 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
     </div>
 
     <!-- pie_size report -->
-    <div align="center">
+    <div class="row">
+
+    <p id="reported_pie_other" style="visibility:hidden;font-size:40px;"> ... </p>
+
+
+    <div class="column" id="trial_type_report_div">
+      <!-- <p id="pie_reported_both" style="visibility:hidden;font-size:40px;"> </p> -->
+      <p id="trial_type_report_text" style="visibility:hidden;font-size:40px;"> Do you want to participate in the mechanism? </p>
+      <button align="center" id="report_trial_type1" value=1 onclick="report_trial_type(this.value)" style="visibility:hidden;height:120px;width:120px;font-size:60px;display: inline-block;" class="buttonblauw"> YES </button>
+      <p align="center" id="trial_type_report" style="visibility:hidden;font-size:60px;display: inline-block;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>
+      <button align="center" id="report_trial_type2" value=2 onclick="report_trial_type(this.value)" style="visibility:hidden;height:120px;width:120px;font-size:60px;display: inline-block;" class="buttonblauw"> NO </button>
+    </div>
+    <!-- <div align="center"> -->
+    <div class="column" id="pie_report_div">
       <!-- <p id="pie_reported_both" style="visibility:hidden;font-size:40px;"> </p> -->
       <p id="pie_report_text" style="visibility:hidden;font-size:40px;"> Please report a pie size </p>
       <button align="center" id="report2" value=2 onclick="report_pie(this.value)" style="visibility:hidden;height:120px;width:120px;font-size:60px;display: inline-block;" class="buttonoranje"> $2 </button>
       <p align="center" id="pie_report" style="visibility:hidden;font-size:60px;display: inline-block;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>
       <button align="center" id="report6" value=6 onclick="report_pie(this.value)" style="visibility:hidden;height:120px;width:120px;font-size:60px;display: inline-block;" class="buttonoranje"> $6 </button>
     </div>
-
-
   </div>
 
   <div id="waitingPage" style="display:none" class="textWaiting">
@@ -550,58 +600,7 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
   <script>
     //console.log("I am here");
     window.onload = enter_room();
-    // 66: Video
-    // //Video v3
-    // var recordingPlayer = document.getElementById('videito');
-    // console.log("este es el recordingPlayer");
-    // console.log(recordingPlayer);
-    //
-    // //Dimensions of the video
-    // function scaleVideos() {
-    //     var videos = document.querySelectorAll('video'),
-    //         length = videos.length,
-    //         video;
-    //     var minus = 130;
-    //     var windowHeight = 700;
-    //     var windowWidth = 600;
-    //     var windowAspectRatio = windowWidth / windowHeight;
-    //     var videoAspectRatio = 4 / 3;
-    //     var blockAspectRatio;
-    //     var tempVideoWidth = 0;
-    //     var maxVideoWidth = 0;
-    //
-    //     //Relocates and scales video panes according to number of videos
-    //     for (var i = length; i > 0; i--) {
-    //         blockAspectRatio = i * videoAspectRatio / Math.ceil(length / i);
-    //         if (blockAspectRatio <= windowAspectRatio) {
-    //             tempVideoWidth = videoAspectRatio * windowHeight / Math.ceil(length / i);
-    //         } else {
-    //             tempVideoWidth = windowWidth / i;
-    //         }
-    //         if (tempVideoWidth > maxVideoWidth)
-    //             maxVideoWidth = tempVideoWidth;
-    //     }
-    //     for (var i = 0; i < length; i++) {
-    //         video = videos[i];
-    //         if (video)
-    //             video.width = maxVideoWidth - minus;
-    //     }
-    // }
 
-    // <!--
-    //   <div id="videoSection" style="visibility:<?php echo $videoVisibility; ?>"  >
-    //     <!-- Video Conference -->
-    //     <!--
-    //     <h2 class="insideVideo"> Video Conference </h2>
-    //     -->
-    //
-    //     <!-- local/remote videos container -->
-    //     <!-- Fit video in container -->
-    //     <div class="insideVideo" id="videos-container">
-    //       <video id="videito" controls muted></video>
-    //     </div>
-    //   </div>
-    // -->
   </script>
 
 
