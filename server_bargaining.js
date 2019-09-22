@@ -332,8 +332,8 @@ function initial_offer_finalized(p1,p2){
   var trial_type_report_1 = ppnr_dict["trial_type_report"][p1];
   var trial_type_report_2 = ppnr_dict["trial_type_report"][p2];
   var trial_type = determine_trial_type(trial_type_report_1,trial_type_report_2);
-  ppnr_dict["trial_type"][p1];
-  ppnr_dict["trial_type"][p2];
+  ppnr_dict["trial_type"][p1] = trial_type;
+  ppnr_dict["trial_type"][p2] = trial_type;
 
   send_to_ppnr_notif(p1,"initial_offer_end", trial_type);
   send_to_ppnr_notif(p2,"initial_offer_end", trial_type);
