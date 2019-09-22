@@ -202,19 +202,26 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
       // document.getElementById("report6").style.visibility = "hidden";
       // document.getElementById("pie_report").style.visibility = "hidden";
       // document.getElementById("pie_report_text").style.visibility = "hidden";
-      document.getElementById("pie_report_div").style.visibility = "hidden";
-      document.getElementById("trial_type_report_div").style.visibility = "hidden";
+      // document.getElementById("pie_report_div").style.visibility = "hidden";
+      // document.getElementById("trial_type_report_div").style.visibility = "hidden";
+      //
+      // document.getElementById("slider1Section").style.visibility = "hidden";
+      // document.getElementById("infoPHP1").style.visibility = "hidden";
 
-      document.getElementById("slider1Section").style.visibility = "hidden";
+      document.getElementById("waitingPage").style.display = "block";
+      document.getElementById("waitingPage").style.visibility = "visible";
+      document.getElementById("entirePage").style.display = "none";
 
       if(trial_type==1){
         time_bargaining = time_barg_normal;
         //document.getElementById("waitingPageTexto").innerHTML = "Normal Bargaining Trial" ;
-        document.getElementById("iniOffer").innerHTML = "Normal Bargaining Trial" ;
+        document.getElementById("waitingPageTexto").innerHTML = "Normal Bargaining Trial" ;
       }else if(trial_type==2){
         time_bargaining = time_barg_mechanism;
-        document.getElementById("iniOffer").innerHTML = "Mediation Trial"
+        document.getElementById("waitingPageTexto").innerHTML = "Mediation Trial"
       }
+
+
       //setTimeout(function(){ startBargaining(); }, trial_type_report_time);
     }
     // function start_pre_initial_offer(){
@@ -261,6 +268,10 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
     }
 
     function startBargaining(){
+      document.getElementById("waitingPage").style.display = "none";
+      document.getElementById("entirePage").style.display = "block";
+      document.getElementById("entirePage").style.visibility = "visible";
+
       document.getElementById("iniOffer").style.visibility = "hidden";
       // if(know_pie){
       //   //document.getElementById("report2").style.visibility = "hidden";
@@ -274,10 +285,9 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
       } else{
         document.getElementById("reported_pie_other").innerHTML = "The informed participant reported a pie size of $" + pie_report_val ;
       }
-
       document.getElementById("reported_pie_other").style.visibility = "visible";
 
-      document.getElementById("slider1Section").style.visibility = "visible";
+      //document.getElementById("slider1Section").style.visibility = "visible";
       document.getElementById("slider2Section").style.visibility = "visible";
       start_timer(time_bargaining);
     }
@@ -548,9 +558,9 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
           <option value="5">5</option>
         </datalist>
       </div>
-    </div>
 
-    <p id="infoPHP1" align="center"> Waiting for Connection... </p>
+      <p id="infoPHP1" align="center"> Waiting for Connection... </p>
+    </div>
 
     <!-- Slider 2 -->
     <div id="slider2Section" >
