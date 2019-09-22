@@ -350,8 +350,8 @@ function initial_offer_finalized(p1,p2){
 
 
 function start_bargaining(p1,p2){
-  send_to_ppnr_notif(mp1,"start_bargaining");
-  send_to_ppnr_notif(mp2,"start_bargaining");
+  send_to_ppnr_notif(p1,"start_bargaining");
+  send_to_ppnr_notif(p2,"start_bargaining");
   // Is it a trial type 1: Normal or 2: mechanism
   if(ppnr_dict["trial_type"][p1]==1){
     var time_trial = general_vars["time_barg_normal"];
