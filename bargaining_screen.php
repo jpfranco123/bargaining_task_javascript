@@ -286,6 +286,8 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
         document.getElementById("reported_pie_other").innerHTML = "The informed participant reported a pie size of $" + pie_report_val ;
       }
       document.getElementById("reported_pie_other").style.visibility = "visible";
+      document.getElementById("reported_pie_other").style.display = "block";
+
 
       //document.getElementById("slider1Section").style.visibility = "visible";
       document.getElementById("slider2Section").style.visibility = "visible";
@@ -531,7 +533,20 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
 
 
 </script>
+
+<style>
+html {
+    width: 80%;
+    transform: scale(1.25)
+    transform-origin: 0 0;
+}
+</style>
+<!-- style="width:50%;transform:scale(2); transform-origin: 0 0" -->
+
 </head>
+
+
+
 
 <body>
   <div id="entirePage">
@@ -586,25 +601,22 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
     </div>
 
     <!-- pie_size report -->
+    <p id="reported_pie_other" style="display:none;font-size:40px;"> ... </p>
     <div class="row">
-
-    <p id="reported_pie_other" style="visibility:hidden;font-size:40px;"> ... </p>
-
-
-    <div class="column" id="trial_type_report_div">
+    <div class="column" id="trial_type_report_div" style="border:4px solid #378de5;">
       <!-- <p id="pie_reported_both" style="visibility:hidden;font-size:40px;"> </p> -->
-      <p id="trial_type_report_text" style="font-size:40px;"> Do you want to participate in the mechanism? </p>
+      <p align="center" id="trial_type_report_text" style="font-size:40px;"> Do you want to participate in the mechanism? </p>
       <button align="center" id="report_trial_type1" value=2 onclick="report_trial_type(this.value)" style="height:120px;width:120px;font-size:60px;display: inline-block;" class="buttonblauw"> YES </button>
       <p align="center" id="trial_type_report" style="font-size:60px;display: inline-block;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>
       <button align="center" id="report_trial_type2" value=1 onclick="report_trial_type(this.value)" style="height:120px;width:120px;font-size:60px;display: inline-block;" class="buttonblauw"> NO </button>
     </div>
     <!-- <div align="center"> -->
-    <div class="column" id="pie_report_div">
+    <div class="column" id="pie_report_div" style="border:4px solid #fb9e25;">
       <!-- <p id="pie_reported_both" style="visibility:hidden;font-size:40px;"> </p> -->
-      <p id="pie_report_text" style="font-size:40px;"> Please report a pie size </p>
-      <button align="center" id="report2" value=2 onclick="report_pie(this.value)" style="height:120px;width:120px;font-size:60px;display: inline-block;" class="buttonoranje"> $2 </button>
+      <p align="center" id="pie_report_text" style="font-size:40px;"> Please report a pie size </p>
+      <button align="center" id="report2" value=2 onclick="report_pie(this.value)" style="height:120px;width:120px;font-size:45px;display: inline-block;" class="buttonoranje"> $2 </button>
       <p align="center" id="pie_report" style="font-size:60px;display: inline-block;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>
-      <button align="center" id="report6" value=6 onclick="report_pie(this.value)" style="height:120px;width:120px;font-size:60px;display: inline-block;" class="buttonoranje"> $6 </button>
+      <button align="center" id="report6" value=6 onclick="report_pie(this.value)" style="height:120px;width:120px;font-size:45px;display: inline-block;" class="buttonoranje"> $6 </button>
     </div>
   </div>
 
