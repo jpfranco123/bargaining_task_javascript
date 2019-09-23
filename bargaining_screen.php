@@ -234,7 +234,9 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
     // }
 
     function startInitialOffer(){
-      $(window).trigger('resize');//This is the only way I found to solve an annoying bug in which sliders show up small
+      document.getElementById("waitingPage").style.display = "none";
+      document.getElementById("slider2Section").style.display = "none";
+      //This is the only way I found to solve an annoying bug in which sliders show up small
       //66:Video: Start Recording.
       console.log("do I know pie: " + know_pie);
       if(know_pie){
@@ -250,17 +252,16 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
       } else{
         document.getElementById("pieInstructions").innerHTML = "";
       }
-      document.getElementById("slider2Section").style.display = "none";
+
       document.getElementById("trial_type_report_div").style.visibility = "visible";
 
       document.getElementById("slider2Section").style.visibility = "hidden";
-      document.getElementById("waitingPage").style.display = "none";
+
 
       document.getElementById("iniOffer").innerHTML = " &nbsp &nbsp Place your initial offer";
-
-      document.getElementById("entirePage").style.display = "block";
       document.getElementById("entirePage").style.visibility = "visible";
-
+      document.getElementById("entirePage").style.display = "block";
+      $(window).trigger('resize');
 
       start_timer(time_initial_offer);
     }
@@ -566,11 +567,11 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
       </div>
     </div>
 
-    <h1 id="iniOffer">  </h1>
+    <h1 id="iniOffer" align="left">  </h1>
 
     <!-- Slider 1 -->
     <div id="slider1Section" >
-      <h2 class="participantTitles"> You </h2>
+      <h2 class="participantTitles" align="left"> You </h2>
       <div class="leftOfSlider" > <?php echo $minValue; ?> </div>
       <div class="divSlider" > <?php echo $maxValue; ?> </div>
       <div class="rightOfSlider" align="center" >
@@ -590,7 +591,7 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
 
     <!-- Slider 2 -->
     <div id="slider2Section" >
-      <h2 class="participantTitles"> Other </h2>
+      <h2 class="participantTitles" align="left"> Other </h2>
       <div class="leftOfSlider" > <?php echo $minValue; ?> </div>
       <div class="divSlider" > <?php echo $maxValue; ?> </div>
       <div class="rightOfSlider" align="center" >
@@ -607,9 +608,9 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
     <div class="row">
     <div class="column" id="trial_type_report_div" style="visibility:hidden;border:4px solid #378de5;">
       <!-- <p id="pie_reported_both" style="visibility:hidden;font-size:40px;"> </p> -->
-      <p align="center" id="trial_type_report_text" style="font-size:40px;"> Do you want to participate in the mechanism? </p>
+      <p align="center" id="trial_type_report_text" style="font-size:40px;"> Do you want to participate in the mediation process? </p>
       <div align="center">
-        <button align="left" id="report_trial_type1" value=2 onclick="report_trial_type(this.value)" style="height:120px;width:120px;font-size:45px;display: inline-block;" class="buttonblauw"> YES </button>
+        <button align="left" id="report_trial_type1" value=2 onclick="report_trial_type(this.value)" style="height:120px;width:120px;font-size:45px;display: inline-block;" class="buttonblauw"> <p align="center"> YES </p> </button>
         <p align="center" id="trial_type_report" style="font-size:60px;display: inline-block;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>
         <button align="right" id="report_trial_type2" value=1 onclick="report_trial_type(this.value)" style="height:120px;width:120px;font-size:45px;display: inline-block;" class="buttonblauw"> NO </button>
       </div>
