@@ -270,7 +270,7 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
       document.getElementById("entirePage").style.display = "block";
       document.getElementById("reported_pie_other").style.display = "block";
       $(window).trigger('resize');
-      
+
       document.getElementById("entirePage").style.visibility = "visible";
 
       document.getElementById("iniOffer").style.visibility = "hidden";
@@ -537,11 +537,11 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
 </script>
 
 <style>
-html {
+/* html {
     width: 125%;
     transform: scale(0.8);
     transform-origin: 0 0;
-}
+} */
 </style>
 <!-- style="width:50%;transform:scale(2); transform-origin: 0 0" -->
 
@@ -551,7 +551,7 @@ html {
 
 
 <body>
-  <div id="entirePage">
+  <div id="entirePage" width ="100%" height = "80%" align="center" >
 
     <div class="divTitle" >
       <div id="pieInstructions">
