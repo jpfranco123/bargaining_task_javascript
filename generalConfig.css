@@ -242,8 +242,8 @@ td.doseButton {
   flex-wrap: nowrap;
 }
 
-.flex-container > div {
+/* .flex-container > div {
   width: 100%;
   margin: 10px;
   text-align: center;
-}
+} */
