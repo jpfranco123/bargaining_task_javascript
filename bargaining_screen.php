@@ -269,14 +269,18 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
     }
 
     function startBargaining(){
+      document.getElementById("trial_type_report_div").style.visibility = "hidden";
+      document.getElementById("pie_report_div").style.visibility = "hidden";
       document.getElementById("waitingPage").style.display = "none";
+      document.getElementById("iniOffer").style.visibility = "hidden";
+
       document.getElementById("entirePage").style.display = "block";
+      document.getElementById("slider2Section").style.display = "block";
       document.getElementById("reported_pie_other").style.display = "block";
       $(window).trigger('resize');
 
       document.getElementById("entirePage").style.visibility = "visible";
 
-      document.getElementById("iniOffer").style.visibility = "hidden";
       // if(know_pie){
       //   //document.getElementById("report2").style.visibility = "hidden";
       //   //document.getElementById("report6").style.visibility = "hidden";
@@ -290,14 +294,8 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
         document.getElementById("reported_pie_other").innerHTML = "The informed participant reported a pie size of $" + pie_report_val ;
       }
       document.getElementById("reported_pie_other").style.visibility = "visible";
-
-
-
       //document.getElementById("slider1Section").style.visibility = "visible";
       document.getElementById("slider2Section").style.visibility = "visible";
-      document.getElementById("slider2Section").style.display = "block";
-      document.getElementById("trial_type_report_div").style.visibility = "hidden";
-      document.getElementById("pie_report_div").style.visibility = "hidden";
 
       start_timer(time_bargaining);
     }
