@@ -607,7 +607,7 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
     <!-- pie_size report -->
     <!-- "row">class="column"  -->
     <p align="center" id="reported_pie_other" style="display:none;font-size:40px;"> ... </p>
-    <div align="center" class=".flex-container">
+    <div align="center" class=".row">
     <div align="center" class=".column" id="trial_type_report_div" style="visibility:hidden;border:4px solid #378de5;">
       <!-- <p id="pie_reported_both" style="visibility:hidden;font-size:40px;"> </p> -->
       <p align="center" id="trial_type_report_text" style="font-size:40px;"> Do you want to participate in the mediation process? </p>
