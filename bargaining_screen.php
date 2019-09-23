@@ -252,7 +252,7 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
       } else{
         document.getElementById("pieInstructions").innerHTML = "";
       }
-
+      document.getElementById("slider2Section").style.display = "none";
       document.getElementById("trial_type_report_div").style.visibility = "visible";
 
       document.getElementById("slider2Section").style.visibility = "hidden";
@@ -291,6 +291,7 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
 
       //document.getElementById("slider1Section").style.visibility = "visible";
       document.getElementById("slider2Section").style.visibility = "visible";
+      document.getElementById("slider2Section").style.display = "block";
       document.getElementById("trial_type_report_div").style.visibility = "hidden";
       document.getElementById("pie_report_div").style.visibility = "hidden";
 
@@ -537,7 +538,7 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
 <style>
 html {
     width: 80%;
-    transform: scale(1.25)
+    transform: scale(1.25);
     transform-origin: 0 0;
 }
 </style>
@@ -601,7 +602,7 @@ html {
     </div>
 
     <!-- pie_size report -->
-    <p id="reported_pie_other" style="display:none;font-size:40px;"> ... </p>
+    <p align="center" id="reported_pie_other" style="display:none;font-size:40px;"> ... </p>
     <div class="row">
     <div class="column" id="trial_type_report_div" style="border:4px solid #378de5;">
       <!-- <p id="pie_reported_both" style="visibility:hidden;font-size:40px;"> </p> -->
