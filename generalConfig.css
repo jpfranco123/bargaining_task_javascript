@@ -233,7 +233,7 @@ td.doseButton {
 /* Create two equal columns that sits next to each other */
 .column {
   flex: 40%;
-  padding: 10%;
+  /* padding: 10%; */
   /* height: 300px; /* Should be removed. Only for demonstration */
 }
 
