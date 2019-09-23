@@ -234,7 +234,7 @@ td.doseButton {
 .column {
   flex: 40%;
   padding: 10%;
-  /* height: 300px; /* Should be removed. Only for demonstration */ */ */
+  /* height: 300px; /* Should be removed. Only for demonstration */
 }
 
 .flex-container {
@@ -243,7 +243,7 @@ td.doseButton {
 }
 
 .flex-container > div {
-  width: 40%;
-  margin: 10%;
+  width: 100%;
+  margin: 10px;
   text-align: center;
 }
