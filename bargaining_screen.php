@@ -268,6 +268,9 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
     function startBargaining(){
       document.getElementById("waitingPage").style.display = "none";
       document.getElementById("entirePage").style.display = "block";
+      document.getElementById("reported_pie_other").style.display = "block";
+      $(window).trigger('resize');
+      
       document.getElementById("entirePage").style.visibility = "visible";
 
       document.getElementById("iniOffer").style.visibility = "hidden";
@@ -284,7 +287,7 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
         document.getElementById("reported_pie_other").innerHTML = "The informed participant reported a pie size of $" + pie_report_val ;
       }
       document.getElementById("reported_pie_other").style.visibility = "visible";
-      document.getElementById("reported_pie_other").style.display = "block";
+
 
 
       //document.getElementById("slider1Section").style.visibility = "visible";
@@ -605,9 +608,11 @@ html {
     <div class="column" id="trial_type_report_div" style="visibility:hidden;border:4px solid #378de5;">
       <!-- <p id="pie_reported_both" style="visibility:hidden;font-size:40px;"> </p> -->
       <p align="center" id="trial_type_report_text" style="font-size:40px;"> Do you want to participate in the mechanism? </p>
-      <button align="center" id="report_trial_type1" value=2 onclick="report_trial_type(this.value)" style="height:120px;width:120px;font-size:45px;display: inline-block;" class="buttonblauw"> YES </button>
-      <p align="center" id="trial_type_report" style="font-size:60px;display: inline-block;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>
-      <button align="center" id="report_trial_type2" value=1 onclick="report_trial_type(this.value)" style="height:120px;width:120px;font-size:45px;display: inline-block;" class="buttonblauw"> NO </button>
+      <div align="center">
+        <button align="left" id="report_trial_type1" value=2 onclick="report_trial_type(this.value)" style="height:120px;width:120px;font-size:45px;display: inline-block;" class="buttonblauw"> YES </button>
+        <p align="center" id="trial_type_report" style="font-size:60px;display: inline-block;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>
+        <button align="right" id="report_trial_type2" value=1 onclick="report_trial_type(this.value)" style="height:120px;width:120px;font-size:45px;display: inline-block;" class="buttonblauw"> NO </button>
+      </div>
     </div>
     <!-- <div align="center"> -->
     <div class="column" id="pie_report_div" style="visibility:hidden;border:4px solid #fb9e25;">
