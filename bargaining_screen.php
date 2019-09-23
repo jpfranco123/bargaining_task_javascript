@@ -251,6 +251,7 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
         document.getElementById("pie_report_div").style.visibility = "visible";
       } else{
         document.getElementById("pieInstructions").innerHTML = "";
+        document.getElementById("pie_report_div").style.display = "none";
       }
 
       document.getElementById("trial_type_report_div").style.visibility = "visible";
@@ -604,9 +605,10 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
     </div>
 
     <!-- pie_size report -->
+    <!-- "row">class="column"  -->
     <p align="center" id="reported_pie_other" style="display:none;font-size:40px;"> ... </p>
-    <div class="row">
-    <div class="column" id="trial_type_report_div" style="visibility:hidden;border:4px solid #378de5;">
+    <div class=".flex-container">
+    <div id="trial_type_report_div" style="visibility:hidden;border:4px solid #378de5;">
       <!-- <p id="pie_reported_both" style="visibility:hidden;font-size:40px;"> </p> -->
       <p align="center" id="trial_type_report_text" style="font-size:40px;"> Do you want to participate in the mediation process? </p>
       <div align="center">
@@ -616,7 +618,7 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
       </div>
     </div>
     <!-- <div align="center"> -->
-    <div class="column" id="pie_report_div" style="visibility:hidden;border:4px solid #fb9e25;">
+    <div id="pie_report_div" style="visibility:hidden;border:4px solid #fb9e25;">
       <!-- <p id="pie_reported_both" style="visibility:hidden;font-size:40px;"> </p> -->
       <p align="center" id="pie_report_text" style="font-size:40px;"> Please report a pie size </p>
       <div align="center">

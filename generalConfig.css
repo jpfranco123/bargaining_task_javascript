@@ -236,3 +236,14 @@ td.doseButton {
   padding: 10%;
   /* height: 300px; /* Should be removed. Only for demonstration */ */ */
 }
+
+.flex-container {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.flex-container > div {
+  width: 40%;
+  margin: 10%;
+  text-align: center;
+}
