@@ -272,15 +272,15 @@ async function initialise_ppnr(mp1,mp2,ws,mtrial){
   //ppnr_dict["slider_pos"][mp1]= get_slider_initial_val(mp1,mtrial);
   ppnr_dict["trial"][mp1]= mtrial;
   ppnr_dict["reported_pie"][mp1] = 0;
-  ppnr_dict["trial_type_report"][mp1] =0 ;
+  ppnr_dict["trial_type_report"][mp1] =0;
 
 
   if(mp2 in ppnr_dict["bargaining_started"]){
-    if(ppnr_dict["other_ppnr"][mp2] == mp1){ // Cofirming that the other participant acknlowledges this ppnr as his opponent
+    if(ppnr_dict["other_ppnr"][mp2] == mp1 && ppnr_dict["trial"][mp2]== mtrial ){ // Cofirming that the other participant acknlowledges this ppnr as his opponent
       let results = await promise;
       start_trial(mp1,mp2);
     } else {
-      console.log("Matching doesn't match: Participant " + mp2 + " doesn't recognise " + mp1 + " as oponent.");
+      console.log("Matching doesn't match: Participant " + mp2 + " doesn't recognise " + mp1 + " as oponent. OR . Trial numbers don't match.");
     }
   }
 
