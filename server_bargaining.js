@@ -447,7 +447,8 @@ function determine_trial_type(choice1,choice2){
     console.log("trial_choice not recognised");
   }
   var rand = Math.random();
-  console.log("ran_number_drawn" + rand);
+  console.log("ran_number_drawn"  + rand);
+  console.log("prob_mech_choice_selec "  + prob_mech_choice_selec);
   var prob = general_vars["prob_mech_choice_selec"];
   // If the random number (uniform between 0 and 1) is greater than the probability the selected mechanism choice is implemented
   // then change the trial_type to the other.
