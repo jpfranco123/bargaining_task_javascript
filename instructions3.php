@@ -110,7 +110,7 @@ $insPrevPage=  instructionsPrevPage($_SERVER['PHP_SELF'], $ppnr, $part);
 
     <p> <b> During the first <?php echo $timeForIniOffer/1000; ?>  seconds, participants select their initial offers</b>. During this period, your slider will not be seen by the other participant. Note that the initial location of the cursors is random. </p>
 
-    <p> Additionally, during this period the informed player decides whether to report a pie size of $6 or $2 to the uninformed participant by clicking in one of 2 orange buttons: </p>
+    <p> Additionally, during this period the informed participant decides whether to report a pie size of $6 or $2 to the uninformed participant by clicking in one of 2 orange buttons: </p>
 
     <br>
     <div align="center">
@@ -120,7 +120,7 @@ $insPrevPage=  instructionsPrevPage($_SERVER['PHP_SELF'], $ppnr, $part);
     </div>
     <br>
 
-    <p> <b>The informed participant MUST click on an orange button. </b> If the informed participant doesn't report a pie-size, then $0.3 will be subtracted from their final payment.</p>
+    <p> <b>The informed participant MUST click on an orange button. </b> If the informed participant doesn't report a pie-size, then $0.3 will be substracted from their final payment.</p>
 
     <p> <b> In the following <?php echo $time_barg_normal/1000; ?> seconds you will bargain with the other participant. </b> Clicking the mouse on a different part of the slider changes the value of the slider. An <b>agreement</b> is reached when <b>both sliders are in the same place for <?php echo $timeForDeal/1000; ?> second<?php echo ($timeForDeal == 1000 ? "" : "s"); ?> </b> or if <b> both sliders are matching when the time is over.</b></p>
 
