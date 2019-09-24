@@ -36,7 +36,7 @@ $insNextPage=  instructionsNextPage($_SERVER['PHP_SELF'], $ppnr, $part);
 
     <p> You are <b>not allowed to use your cellphone </b> at any moment during the experiment. If you haven’t turned it off yet, please do so at this moment and put it away.</p>
 
-    <p> Your earnings depend on your decisions and the decisions of other participants. Your earnings will be paid to you privately at the end of today's session.</p>
+    <p> Your payment depends on your decisions and the decisions of other participants. Your payment will be paid to you privately after the session.</p>
 
     <br>
     <p align=center><a href=<?php echo $insNextPage; ?> class="buttonblauw">Continue</a>

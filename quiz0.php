@@ -97,7 +97,7 @@ $insNextPage = instructionsNextPage($_SERVER['PHP_SELF'], $ppnr, $part);
       <tr><td><br></td></tr>
 
       <tr>
-        <td><b>Does the uninformed participant see the pie size reported by the informed player?</b></td>
+        <td><b>Does the uninformed participant see the pie size reported by the informed participant?</b></td>
       </tr>
       <tr>
         <td><input type="radio" name="q2" value="correct"> Yes <br><input type="radio" name="q2" value="incorrect"> No <br><input type="radio" name="q2" value="incorrect"> Only after the bargaining. </td>

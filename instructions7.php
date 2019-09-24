@@ -34,24 +34,24 @@ $insPrevPage=  instructionsPrevPage($_SERVER['PHP_SELF'], $ppnr, $part);
     <p align=center><?php echo $menu; ?></p>
     <H1 align=center> Mediation </H1>
 
-    <p><b>There will be 2 types of trials:</b></p>
+    <p><b>There will be 2 types of rounds:</b></p>
 
-    <p> On 40 trials you will be playing the normal bargaining task presented previously.</p>
+    <p> On 40 rounds you will be playing the normal bargaining task presented previously.</p>
 
-    <p> On the other 40 trials you will be playing a modified version of the bargaining task called the mediation task. It differs from the original task in that you will only have 7 seconds to reach an agreement and if no agreement is made, the trial is over and a mediation protocol is imposed. The rules of the mediation protocol are shown below.</p>
+    <p> On the other 40 rounds you will be playing a modified version of the bargaining task called the mediation task. It differs from the original task in that you will only have 7 seconds to reach an agreement and if no agreement is made, the round is over and a mediation protocol is implemented. The rules of the mediation protocol are shown below.</p>
 
-    <p> Before each trial you will be informed whether the trial is a <b>normal bargaining trial</b> or a <b>mediation trial</b>.
+    <p> Before each round you will be informed whether the round is a <b>normal bargaining round</b> or a <b>mediation round</b>.
 
     <br>
 
     <h2> Mediation protocol </h2>
 
-    <p> For this type of trials, if no agreement is made, mediation is imposed. Under the mediation protocol the payoff to each participant will depend on:
+    <p> For this type of rounds, if no agreement is reached, mediation is implemented. Under the mediation protocol the payment to each participant will depend on:
 
     <p> (1) the reported pie-size by the informed participant and </p>
-    <p> (2) an indirect pie-size estimation. </p>
+    <p> (2) an indirect pie-size estimation by an algorithm. </p>
 
-    <p> For (2) we will guess whether the pie size of each trial was either $2 or $6 by applying a statistical algorithm to the data of the slider movements and the measures of physiological activity.</p>
+    <p> For (2) we will guess whether the pie size of each round was either $2 or $6 by applying a statistical algorithm using the data of the slider movements and the data collected via the electrodes and the camera.</p>
 
     <p> The payments for the informed and uninformed participants are summarised in the tables 1, 2 and 3. </p>
 

@@ -65,7 +65,7 @@ $insPrevPage=  instructionsPrevPage($_SERVER['PHP_SELF'], $ppnr, $part);
 
     <p> <b> The other participant (the uninformed participant) is not informed of the pie size.</b> During each round, participants bargain over the uninformed participant’s payment.  </p>
 
-    <p>You and the other participant negotiate by moving a cursor on a slider that represent values from $<?php echo $minValue; ?> to $<?php echo $maxValue; ?>. <b> Amounts on the slider represent the uninformed participant’s payment. </b>  You can try this below: </p>
+    <p>You and the other participant negotiate by moving a slider that represents values from $<?php echo $minValue; ?> to $<?php echo $maxValue; ?>. <b> Amounts on the slider represent the uninformed participant’s payment. </b>  You can try this below: </p>
 
     <h2 class="participantTitles"> You </h2>
     <div class="leftOfSlider" > <?php echo $minValue; ?> </div>

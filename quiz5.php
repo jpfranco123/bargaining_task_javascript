@@ -102,7 +102,7 @@ $correctA2b=$valueDeal2;
   		<tr><td><br></td></tr>
 
       <tr>
-        <td><b> You are in a mediation trial. An agreement is NOT reached and the time ends. The informed participant reported a pie size of $2 and the algorithm predicts a pie-size of $6.</b></td>
+        <td><b> You are in a mediation round. An agreement is NOT reached and the time ends. The informed participant reported a pie size of $2 and the algorithm predicts a pie-size of $6.</b></td>
       </tr>
       <tr>
 

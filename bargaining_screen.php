@@ -215,10 +215,10 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
       if(trial_type==1){
         time_bargaining = time_barg_normal;
         //document.getElementById("waitingPageTexto").innerHTML = "Normal Bargaining Trial" ;
-        document.getElementById("waitingPageTexto").innerHTML = "Normal Bargaining Trial" ;
+        document.getElementById("waitingPageTexto").innerHTML = "Normal Task Round" ;
       }else if(trial_type==2){
         time_bargaining = time_barg_mechanism;
-        document.getElementById("waitingPageTexto").innerHTML = "Mediation Trial"
+        document.getElementById("waitingPageTexto").innerHTML = "Mediation Task Round";
       }
 
 
@@ -304,9 +304,9 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
       disable_sliders(1);
 
       if(agreement==0 && trial_type==2){
-        var text=`<br>The pie size was: $ ${pie_size} <br> <br> Your earnings will be determined based on the results of the mediation.`;
+        var text=`<br>The pie size was: $ ${pie_size} <br> <br> Your payment will be determined based on the results of the mediation.`;
       } else {
-        var text=`<br>The pie size was: $ ${pie_size} <br> <br> Your earnings are: $ ${payoff}`;
+        var text=`<br>The pie size was: $ ${pie_size} <br> <br> Your payment for this round is: $ ${payoff}`;
       }
 
 
@@ -316,7 +316,7 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
       document.getElementById("waitingPageTexto").innerHTML = text;
       document.getElementById("waitingPage").style.display = "block";
 
-      setTimeout(function(){ finalise_trial("Please Wait for the next trial to start."); }, resultsTime);
+      setTimeout(function(){ finalise_trial("Please wait for the next round to start."); }, resultsTime);
     }
 
     // 66: Check waitingPage.php

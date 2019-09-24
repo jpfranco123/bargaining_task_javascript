@@ -68,7 +68,7 @@ $valueDeal2=mt_rand($minValue/$Steps+1,($maxValue/2)/$Steps)*$Steps*2-1*$Steps;
   		<tr><td><br></td></tr>
 
       <tr>
-  			<td><b> In the sliders they are both matched at $<?php echo $valueDeal2; ?> and a deal is made. What is going to be the payoff of the uninformed participant? </b></td>
+  			<td><b> In the sliders participants are both matched at $<?php echo $valueDeal2; ?> and an agreement is reached. What is going to be the payment of the uninformed participant? </b></td>
   		</tr>
       <tr>
   			<td><input type="radio" name="q1" value="incorrect"> The uninformed participant gets $<?php echo $valueDeal1; ?><br><input type="radio" name="q1" value="incorrect"> The uninformed participant gets $0<br><input type="radio" name="q1" value="correct"> The uninformed participant gets $<?php echo $valueDeal2; ?> </td>

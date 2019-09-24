@@ -36,9 +36,9 @@ $insPrevPage=  instructionsPrevPage($_SERVER['PHP_SELF'], $ppnr, $part);
 
     <h2>Payment</h2>
 
-    <p>If a deal is made, the informed participant’s payment is equal to the pie size minus the negotiated uninformed participant’s payment. If the agreement exceeds the pie size, the payment of the informed participant will be negative. </p>
+    <p>If an agreement is reached, the informed participant’s payment is equal to the pie size minus the negotiated uninformed participant’s payment. If the uninformed participant's payment exceeds the pie size, the payment of the informed participant will be negative. </p>
 
-    <p>If no deal has been made after <?php echo ($time_barg_normal/1000); ?> seconds of bargaining, both participants get $0. </p>
+    <p>If no agreement has been reacehd after <?php echo ($time_barg_normal/1000); ?> seconds of bargaining, both participants get $0. </p>
 
 
     <h2>Roles and Rounds</h2>

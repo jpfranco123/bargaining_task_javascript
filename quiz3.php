@@ -107,7 +107,7 @@ $correctA2b=$valueDeal2;
         <tr><td><br></td></tr>
 
       <tr>
-        <td><b> The pie size is $<?php echo $lowValuePie; ?>. Both participants match the cursor on $<?php echo $valueDeal2; ?> when the timer shows 1 second left, and do not change their offer afterwards.</b></td>
+        <td><b> The pie size is $<?php echo $lowValuePie; ?>. Both participants match the slider on $<?php echo $valueDeal2; ?> when the timer shows 1 second left, and do not change their offer afterwards.</b></td>
       </tr>
       <tr>
 
