@@ -90,9 +90,9 @@ async function lookUp_js(table_name,condition,name, dictionary, var_to_update, d
 
   let results = await promise;
 
-  if (data_type="integer"){
+  if (data_type=="integer"){
       results_c = parseInt(results);
-  } else if(data_type="numeric"){
+  } else if(data_type=="numeric"){
       console.log("converting to number");
       results_c = Number(results);
   } else {
