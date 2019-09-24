@@ -74,7 +74,7 @@ $correctA2b=$valueDeal2;
       //   hints = "If an agreement is made, the mediation protocol is NOT implemented. " + hints
       // }
       hints = "";
-      hints = hints + " If BOTH participants decide to participate in the mediation (that is, choose 'YES') then there is a chance of <?php echo $prob_mech_choice_selec*100; ?>% that the mediation task is selected and a chance of <?php echo (1-$prob_mech_choice_selec)*100; ?>% that the normal task is selected." + " \n\n ";
+      hints = hints + "If an agreement is made, the mediation protocol is NOT implemented. " + " \n\n ";
       hints = hints +  "The payment will only depend on the tables if an agreement is NOT reached on a mediation trial" + " \n\n"  + hints;
       var msg = "You did not answer all questions correctly. Please raise your hand if you need any help. \n\nHint: "
       alert( msg + hints);
@@ -102,31 +102,37 @@ $correctA2b=$valueDeal2;
   		<tr><td><br></td></tr>
 
       <tr>
-  			<td><b> During the initial offer you and the other participant both answered 'YES' to the question of "Do you want to participate in the mediation process?". The task selected for the round will be: </b></td>
+        <td><b> You are in a mediation round. An agreement is NOT reached and the time ends. The informed participant reported a pie size of $2 and the algorithm predicts a pie-size of $6.</b></td>
+      </tr>
+      <tr>
+
+      <tr><td><br></td></tr>
+
+        <td>How much money does the <b>uninformed participant</b> get? <input type="text" name="q1a" size=2 AUTOCOMPLETE="OFF"></td>
+
+        <tr><td><br></td></tr>
+
+        <td>How much does the <b>informed participant </b> get?  <br>
+
+        <input type="radio" name="q1b" value="incorrect"> $1.6 <br><input type="radio" name="q1b" value="incorrect"> $-2.4 <br><input type="radio" name="q1b" value="correct"> Depends on the pie size </td>
+
+        <tr><td><br></td></tr>
+
+      </tr>
+
+
+
+      <tr>
+  			<td><b> You are in a mediation trial. An agreement is reached before the time ends. If the informed participant reported a pie size of $6 and the algorithm predicts a pie-size of $6, what will be the payment of the uninformed participant? </b></td>
   		</tr>
       <tr>
-  			<td><input type="radio" name="q2" value="incorrect"> Mediation <br><input type="radio" name="q2" value="incorrect"> Normal <br><input type="radio" name="q2" value="correct"> Cannot say with certainty. </td>
+  			<td><input type="radio" name="q2" value="incorrect"> Depends on the pie size <br><input type="radio" name="q2" value="correct"> Depends on the final agreement values <br><input type="radio" name="q2" value="incorrect"> $1.73 </td>
   		</tr>
 
         <tr><td><br></td></tr>
 
-      <tr>
-        <td><b> During the initial offer you answered 'NO' to the question of "Do you want to participate in the mediation process?". The task selected for the round will </b></td>
-      </tr>
-      <tr>
-        <td><input type="radio" name="q2" value="incorrect"> be with <?php echo $prob_mech_choice_selec*100; ?>% chance the mediation task <br><input type="radio" name="q2" value="correct"> be with <?php echo $prob_mech_choice_selec*100; ?>% chance the normal task <br><input type="radio" name="q2" value="incorrect"> be the mediation task <br><input type="radio" name="q2" value="incorrect"> be the normal task </td>
-      </tr>
 
-        <tr><td><br></td></tr>
 
-        <tr>
-          <td><b> During the initial offer both participants answered 'NO' to the question of "Do you want to participate in the mediation process?". The task selected for the round will </b></td>
-        </tr>
-        <tr>
-          <td><input type="radio" name="q2" value="incorrect"> be with <?php echo $prob_mech_choice_selec*100; ?>% chance the mediation task <br><input type="radio" name="q2" value="correct"> be with <?php echo $prob_mech_choice_selec*100; ?>% chance the normal task <br><input type="radio" name="q2" value="incorrect"> be with 90% chance the normal task <br><input type="radio" name="q2" value="incorrect"> be the normal task </td>
-        </tr>
-
-          <tr><td><br></td></tr>
 
   		<tr><td><br></td></tr>
   		<tr>

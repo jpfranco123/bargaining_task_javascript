@@ -70,7 +70,7 @@ $correctA2b=$valueDeal2;
         }
       }
       //alert("You did not answer all questions correctly (Specifically: " + incorrectQuestions + "). Please look at the instructions again or raise your hand if you need any help. \n\nHint: Bargaining stops only when there is a deal or when time is over. When there is a match at the last moment, and it is kept until the time is over, there is a deal.");
-      alert("You did not answer all questions correctly. Please look at the instructions again or raise your hand if you need any help. \n\nHint: Bargaining stops only when there is a deal or when time is over. When there is a match at the last moment, and it is kept until the time is over, there is a deal.");
+      alert("You did not answer all questions correctly. Please look at the instructions again or raise your hand if you need any help. \n\nHint: Bargaining stops only when there is an agreement or when time is over. When there is a match at the last moment, and it is kept until the time is over, there is an agreeement.");
 
       //TO not show which questions aare wrong:
   		//alert("You did not answer all questions correctly. Please look at the instructions again or raise your hand if you need any help. \n\nHint: Bargaining stops only when there is a deal or when time is over. When there is a match at the last moment, and it is kept until the time is over, there is a deal.");
@@ -97,7 +97,7 @@ $correctA2b=$valueDeal2;
   		<tr><td><br></td></tr>
 
       <tr>
-  			<td><b>The pie size is $<?php echo $highValuePie; ?>. After five seconds of bargaining both participants match on $<?php echo $valueDeal1; ?>. One second later the informed participant changes his offer to $<?php echo $valueDeal1+0.5; ?>. What is going to happen? </b></td>
+  			<td><b>The pie size is $<?php echo $highValuePie; ?>. After five seconds of bargaining both participants match at $<?php echo $valueDeal1; ?>. One second later the informed participant changes his offer to $<?php echo $valueDeal1+0.5; ?>. What is going to happen? </b></td>
   		</tr>
       <tr>
   			<td><input type="radio" name="q1" value="incorrect"> Both participants get $0<br><input type="radio" name="q1" value="incorrect"> The uninformed participant gets $<?php echo $valueDeal1; ?> and the informed participant gets $<?php echo $highValuePie-$valueDeal1; ?><br>
@@ -107,7 +107,7 @@ $correctA2b=$valueDeal2;
         <tr><td><br></td></tr>
 
       <tr>
-        <td><b> The pie size is $<?php echo $lowValuePie; ?>. Both participants match the slider on $<?php echo $valueDeal2; ?> when the timer shows 1 second left, and do not change their offer afterwards.</b></td>
+        <td><b> The pie size is $<?php echo $lowValuePie; ?>. Both participants match the slider at $<?php echo $valueDeal2; ?> when the timer shows 1 second left, and do not change their offer afterwards.</b></td>
       </tr>
       <tr>
 
