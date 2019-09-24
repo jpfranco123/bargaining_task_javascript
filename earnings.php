@@ -66,7 +66,7 @@ updateTableOne("paymentSession","ppnr=$ppnr","payment","$payment");
 
   <body>
   <h1 align="center"> Your Earnings for this part of the experiment will be revealed in the "collect your earnings" session. </h1>
-  <h2 align="center"> This session has finalized, please wait for instructions from one of the researchers." </h2>
+  <h2 align="center"> This session has finalized, please wait for instructions from one of the experimenters. </h2>
   <!-- <div align="center">
     <button align="center" onclick="startNextTrial()" class="buttonblauw"> NEXT </button>
   </div> -->
