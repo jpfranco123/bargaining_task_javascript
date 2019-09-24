@@ -122,7 +122,8 @@ $correctA2b=$valueDeal2;
         <td><b> During the initial offer you answered 'NO' to the question of "Do you want to participate in the mediation process?". The task selected for the round will </b></td>
       </tr>
       <tr>
-        <td><input type="radio" name="q3" value="incorrect"> be with <?php echo $prob_mech_choice_selec*100; ?>% chance the mediation task <br><input type="radio" name="q2" value="correct"> be with <?php echo $prob_mech_choice_selec*100; ?>% chance the normal task <br><input type="radio" name="q2" value="incorrect"> be the mediation task <br><input type="radio" name="q2" value="incorrect"> be the normal task </td>
+        <td><input type="radio" name="q3" value="incorrect"> be with <?php echo $prob_mech_choice_selec*100; ?>% chance the mediation task <br><input type="radio" name="q3" value="correct"> be with <?php echo $prob_mech_choice_selec*100; ?>% chance the normal task <br>
+          <input type="radio" name="q3" value="incorrect"> be the mediation task <br><input type="radio" name="q3" value="incorrect"> be the normal task </td>
       </tr>
 
         <tr><td><br></td></tr>
@@ -131,7 +132,8 @@ $correctA2b=$valueDeal2;
           <td><b> During the initial offer both participants answered 'NO' to the question of "Do you want to participate in the mediation process?". The task selected for the round will </b></td>
         </tr>
         <tr>
-          <td><input type="radio" name="q4" value="incorrect"> be with <?php echo $prob_mech_choice_selec*100; ?>% chance the mediation task <br><input type="radio" name="q2" value="correct"> be with <?php echo $prob_mech_choice_selec*100; ?>% chance the normal task <br><input type="radio" name="q2" value="incorrect"> be with 90% chance the normal task <br><input type="radio" name="q2" value="incorrect"> be the normal task </td>
+          <td><input type="radio" name="q4" value="incorrect"> be with <?php echo $prob_mech_choice_selec*100; ?>% chance the mediation task <br>
+            <input type="radio" name="q4" value="correct"> be with <?php echo $prob_mech_choice_selec*100; ?>% chance the normal task <br><input type="radio" name="q4" value="incorrect"> be with 90% chance the normal task <br><input type="radio" name="q4" value="incorrect"> be the normal task </td>
         </tr>
 
           <tr><td><br></td></tr>
