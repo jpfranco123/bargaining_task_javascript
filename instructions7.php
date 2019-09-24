@@ -51,7 +51,7 @@ $insPrevPage=  instructionsPrevPage($_SERVER['PHP_SELF'], $ppnr, $part);
     <p> (1) the reported pie-size by the informed participant and </p>
     <p> (2) an indirect pie-size estimation by an algorithm. </p>
 
-    <p> For (2) we will guess whether the pie size of each round was either $2 or $6 by applying a statistical algorithm using the data of the slider movements and the data collected via the electrodes and the camera.</p>
+    <p> For (2) we will guess whether the pie size of each round was either $2 or $6 by applying a statistical algorithm using the data of the informed participant's pie-size report, the slider movements and the data collected via the electrodes and the camera.</p>
 
     <p> The payments for the informed and uninformed participants are summarised in the tables 1, 2 and 3. </p>
 
