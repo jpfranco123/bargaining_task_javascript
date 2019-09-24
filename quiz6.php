@@ -76,7 +76,7 @@ $correctA2b=$valueDeal2;
       // }
       hints = "";
       hints = hints + "If BOTH participants decide to participate in the mediation (that is, choose 'YES') then there is a chance of <?php echo $prob_mech_choice_selec*100; ?>% that the mediation task is selected and a chance of <?php echo (1-$prob_mech_choice_selec)*100; ?>% that the normal task is selected." + " \n\n ";
-      hints = hints +  "If ANY of the two aprticipants (could be one or both) choose not to participate in the mediation (that is, choose 'NO')  then there is a chance of <?php echo $prob_mech_choice_selec*100; ?>% that the normal task is selected and a chance of <?php echo (1-$prob_mech_choice_selec)*100; ?>% that the mediation task is selected." + " \n\n"  + hints;
+      hints = hints +  "If ANY of the two participants (could be one or both) choose not to participate in the mediation (that is, choose 'NO')  then there is a chance of <?php echo $prob_mech_choice_selec*100; ?>% that the normal task is selected and a chance of <?php echo (1-$prob_mech_choice_selec)*100; ?>% that the mediation task is selected." + " \n\n"  + hints;
       var msg = "You did not answer all questions correctly. Please raise your hand if you need any help. \n\nHint: "
       alert( msg + hints);
 

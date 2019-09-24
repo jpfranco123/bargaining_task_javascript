@@ -75,7 +75,7 @@ $correctA2b=$valueDeal2;
       // }
       hints = "";
       hints = hints + "If an agreement is made, the mediation protocol is NOT implemented. " + " \n\n ";
-      hints = hints +  "The payment will only depend on the tables if an agreement is NOT reached on a mediation trial" + " \n\n"  + hints;
+      hints = hints +  "The payment will only depend on the tables if an agreement is NOT reached on a mediation round" + " \n\n"  + hints;
       var msg = "You did not answer all questions correctly. Please raise your hand if you need any help. \n\nHint: "
       alert( msg + hints);
 

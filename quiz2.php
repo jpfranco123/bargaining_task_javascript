@@ -109,7 +109,7 @@ $correctA2b=$valueDeal2;
   		<tr><td><br></td></tr>
 
   		<tr>
-  			<td><b>The pie size is $<?php echo $highValuePie; ?>. Sliders were matched in $<?php echo $valueDeal1; ?>. </b></td>
+  			<td><b>The pie size is $<?php echo $highValuePie; ?>. Sliders were matched at $<?php echo $valueDeal1; ?>. </b></td>
       </tr>
   		<tr>
 
@@ -125,7 +125,7 @@ $correctA2b=$valueDeal2;
   		<tr><td><br></td></tr>
 
       <tr>
-        <td><b> The pie size is $<?php echo $lowValuePie; ?>. Sliders were matched in $<?php echo $valueDeal2; ?>. </b></td>
+        <td><b> The pie size is $<?php echo $lowValuePie; ?>. Sliders were matched at $<?php echo $valueDeal2; ?>. </b></td>
       </tr>
       <tr>
 

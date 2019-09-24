@@ -108,7 +108,7 @@ $insPrevPage=  instructionsPrevPage($_SERVER['PHP_SELF'], $ppnr, $part);
     <p align=center><?php echo $menu; ?></p>
     <H1 align=center> Basics 2 </H1>
 
-    <p> <b> During the first <?php echo $timeForIniOffer/1000; ?>  seconds, participants select their initial offers</b>. During this period, your slider will not be seen by the other participant. Note that the initial location of the cursors is random. </p>
+    <p> <b> During the first <?php echo $timeForIniOffer/1000; ?>  seconds, participants select their initial offers</b>. During this period, your slider will not be seen by the other participant. Note that the initial location of the sliders is random. </p>
 
     <p> Additionally, during this period the informed participant decides whether to report a pie size of $6 or $2 to the uninformed participant by clicking in one of 2 orange buttons: </p>
 

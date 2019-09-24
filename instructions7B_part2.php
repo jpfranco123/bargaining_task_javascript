@@ -34,12 +34,12 @@ $insPrevPage=  instructionsPrevPage($_SERVER['PHP_SELF'], $ppnr, $part);
     <p align=center><?php echo $menu; ?></p>
     <H1 align=center> Mediation or Normal task? </H1>
 
-    <p><b> In order to select which task to perform each participant will have to decide whether they want to paricipate in the mediation task. </b></p>
+    <p><b> In order to select which task to perform, each participant will have to decide whether they want to paricipate in the mediation task. </b></p>
 
-    <p> Each round during the initial offer screen participants will be asked to choose between two options by clicking on one of two buttons: </p>
+    <p> Each round, during the initial offer screen, participants will be asked to choose between two options by clicking on one of two buttons: </p>
 
     <div class="row">
-    <div class="column" id="pie_report_div" style="width:50%;visibility:hidden;border:4px solid #fb9e25;">
+    <div class="column" id="pie_report_div" style="width:50%;border:4px solid #fb9e25;">
       <!-- <p id="pie_reported_both" style="visibility:hidden;font-size:40px;"> </p> -->
       <p align="center" id="pie_report_text" style="font-size:40px;"> Please report a pie size </p>
       <div align="center">
