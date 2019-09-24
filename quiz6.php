@@ -37,8 +37,8 @@ $correctA2b=$valueDeal2;
     var answer1=document.forms['form1'].q1.value;
     var answer2=document.forms['form1'].q2.value;
     var answer3=document.forms['form1'].q3.value;
-    var answer3=document.forms['form1'].q3.value;
-  	if (answer1== "0.3" && answer2== "correct" && answer3== "correct" && answer3== "correct") {
+    var answer3=document.forms['form1'].q4.value;
+  	if (answer1== "0.3" && answer2== "correct" && answer3== "correct" && answer4== "correct") {
       if("<?php echo $insNextPage; ?>"=="baselineRecording.php"){
           alert("Correct!\nYou have finished the instructions and the quiz questions.");
           return true;
@@ -133,7 +133,7 @@ $correctA2b=$valueDeal2;
         </tr>
         <tr>
           <td><input type="radio" name="q4" value="incorrect"> be with <?php echo $prob_mech_choice_selec*100; ?>% chance the mediation task <br>
-            <input type="radio" name="q4" value="correct"> be with <?php echo $prob_mech_choice_selec*100; ?>% chance the normal task <br><input type="radio" name="q4" value="incorrect"> be with 90% chance the normal task <br><input type="radio" name="q4" value="incorrect"> be the normal task </td>
+          <input type="radio" name="q4" value="correct"> be with <?php echo $prob_mech_choice_selec*100; ?>% chance the normal task <br><input type="radio" name="q4" value="incorrect"> be with 90% chance the normal task <br><input type="radio" name="q4" value="incorrect"> be the normal task </td>
         </tr>
 
           <tr><td><br></td></tr>
