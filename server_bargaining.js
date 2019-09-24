@@ -64,7 +64,7 @@ function load_game_parameters(){
   //lookUp_js("commonParameters","Name='pre_initial_offer_time'","Value","general_vars", "pre_initial_offer_time", "integer");
   lookUp_js("commonParameters","Name='timeForDeal'","Value", "general_vars", "deal_confirmation_time", "integer");
   lookUp_js("commonParameters","Name='trial_type_report_time'","Value", "general_vars", "trial_type_report_time", "integer");
-  lookUp_js("commonParameters","Name='prob_mech_choice_selected'","Value", "general_vars", "prob_mech_choice_selected", "numeric");
+  lookUp_js("commonParameters","Name='prob_mech_choice_selec'","Value", "general_vars", "prob_mech_choice_selec", "numeric");
 }
 
 
@@ -447,7 +447,7 @@ function determine_trial_type(choice1,choice2){
     console.log("trial_choice not recognised");
   }
   var rand = Math.random();
-  var prob = general_vars["prob_mech_choice_selected"];
+  var prob = general_vars["prob_mech_choice_selec"];
   // If the random number (uniform between 0 and 1) is greater than the probability the selected mechanism choice is implemented
   // then change the trial_type to the other.
   if(rand > prob){
