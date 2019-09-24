@@ -64,6 +64,7 @@ function load_game_parameters(){
   //lookUp_js("commonParameters","Name='pre_initial_offer_time'","Value","general_vars", "pre_initial_offer_time", "integer");
   lookUp_js("commonParameters","Name='timeForDeal'","Value", "general_vars", "deal_confirmation_time", "integer");
   lookUp_js("commonParameters","Name='trial_type_report_time'","Value", "general_vars", "trial_type_report_time", "integer");
+  lookUp_js("commonParameters","Name='prob_mech_choice_selected'","Value", "general_vars", "prob_mech_choice_selected", "numeric");
 }
 
 
@@ -425,6 +426,7 @@ function update_trial_type_report(p1, value){
 }
 
 function determine_trial_type(choice1,choice2){
+  var trial_type = 0;
   var ch1 = choice1;
   var ch2 = choice2;
   //DISCUSS: If they don't report choice their report is chosen to be mechanism trial!
@@ -444,7 +446,17 @@ function determine_trial_type(choice1,choice2){
   } else {
     console.log("trial_choice not recognised");
   }
-
+  var rand = Math.random();
+  var prob = general_vars["prob_mech_choice_selected"];
+  // If the random number (uniform between 0 and 1) is greater than the probability the selected mechanism choice is implemented
+  // then change the trial_type to the other.
+  if(rand > prob){
+    if(trial_type==1){
+      trial_type = 2;
+    }else if (trial_type ==2){
+      trial_type = 1;
+    }
+  }
   return trial_type;
 }
 
