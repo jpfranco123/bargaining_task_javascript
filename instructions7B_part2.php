@@ -25,6 +25,20 @@ $insPrevPage=  instructionsPrevPage($_SERVER['PHP_SELF'], $ppnr, $part);
   <link rel="stylesheet" type="text/css" href="beleggensns.css" />
   <link rel="stylesheet" type="text/css" href="buttons.css" />
   <link rel="stylesheet" href="generalConfigInstruct.css">
+  <script>
+  function report_trial_type(trial_type_rep){
+    send_message("trial_type_report",trial_type_rep);
+    trial_type_report = trial_type_rep
+    if(trial_type_report==2){
+      var text = "YES";
+    } else{
+      var text = "NO";
+    }
+
+    //document.getElementById("trial_type_report_text").innerHTML = "Pie Size to Report:"
+    document.getElementById("trial_type_report").innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + text + " &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+  }
+  </script>
 
 </HEAD>
 
@@ -41,11 +55,11 @@ $insPrevPage=  instructionsPrevPage($_SERVER['PHP_SELF'], $ppnr, $part);
     <div class="row">
     <div class="column" id="pie_report_div" style="width:50%;border:4px solid #fb9e25;">
       <!-- <p id="pie_reported_both" style="visibility:hidden;font-size:40px;"> </p> -->
-      <p align="center" id="pie_report_text" style="font-size:40px;"> Please report a pie size </p>
+      <p align="center" id="trial_type_report_text" style="font-size:40px;"> Do you want to participate in the mediation process? </p>
       <div align="center">
-        <button align="left" id="report2" value=2 onclick="report_pie(this.value)" style="height:120px;width:120px;font-size:60px;display: inline-block;" class="buttonoranje"> $2 </button>
-        <p align="center" id="pie_report" style="font-size:60px;display: inline-block;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>
-        <button align="right" id="report6" value=6 onclick="report_pie(this.value)" style="height:120px;width:120px;font-size:60px;display: inline-block;" class="buttonoranje"> $6 </button>
+        <button align="left" id="report_trial_type1" value=2 onclick="report_trial_type(this.value)" style="height:120px;width:140px;font-size:45px;display: inline-block;" class="buttonblauw"> YES </button>
+        <p align="center" id="trial_type_report" style="font-size:60px;display: inline-block;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>
+        <button align="right" id="report_trial_type2" value=1 onclick="report_trial_type(this.value)" style="height:120px;width:140px;font-size:45px;display: inline-block;" class="buttonblauw"> NO </button>
       </div>
     </div>
   </div>

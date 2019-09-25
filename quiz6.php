@@ -95,7 +95,7 @@ $correctA2b=$valueDeal2;
   <tr><td colspan=2>
   <p align=center><?php echo $menu; ?></p>
 
-  <H1 align=center>Quiz Questions V</H1>
+  <H1 align=center>Quiz Questions VI</H1>
 
 
   <form name="form1" action=<?php echo $insNextPage; ?> onsubmit="return controleren(this)">
