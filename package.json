@@ -18,6 +18,6 @@
   "homepage": "https://github.com/jpfranco123/bargaining_task_javascript#readme",
   "dependencies": {
     "mysql": "^2.17.1",
-    "ws": "^6.2.1"
+    "ws": "^7.4.6"
   }
 }
