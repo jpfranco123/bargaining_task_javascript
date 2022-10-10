@@ -4,11 +4,11 @@ include("commonSlider.inc");
 
 //Generate ppnr and see if he/she has already been signed in
 $table_name="subjects";
-$connection = @mysql_connect(HOST,ADMIN, WWOORD) or die(mysql_error());
-$db = @mysql_select_db(DBNAME,$connection)or die(mysql_error());
+$connection = @mysqli_connect(HOST,ADMIN, WWOORD) or die("Cannot connect to the database server");
+$db = @mysqli_select_db($connection, DBNAME) or die(mysqli_error($connection));
 $sql="SELECT * FROM $table_name ORDER BY ppnr DESC";
-$result=@mysql_query($sql,$connection) or die("Couldn't execute query ".$sql);
-if ($row=mysql_fetch_array($result)) {
+$result=@mysqli_query($connection, $sql) or die("Couldn't execute query ".$sql);
+if ($row=mysqli_fetch_array($result)) {
 	$pp2=$row['ppnr']+1;
 } else {
 	$pp2=1;

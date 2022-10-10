@@ -2,10 +2,10 @@
   include("commonSlider.inc");
 
   $table_name="subjects";
-  $connection = @mysql_connect(HOST,ADMIN, WWOORD) or die(mysql_error());
-  $db = @mysql_select_db(DBNAME,$connection) or die(mysql_error());
+  $connection = @mysqli_connect(HOST,ADMIN, WWOORD) or die("Cannot connect to the database server");
+  $db = @mysqli_select_db($connection, DBNAME) or die(mysqli_error($connection));
   $sql3="SELECT * FROM $table_name ORDER BY `ppnr` ASC";
-  $result=@mysql_query($sql3,$connection) or die("Couldn't execute query ".$sql3);
+  $result=@mysqli_query($connection,$sql3) or die("Couldn't execute query ".$sql3);
 
   $tabel="<table class=rond align=center width=1000><tr class=oneven><th><b>Subject<b></th><th><b>Partner<b></th><th><b>Currentpage<b></th><th><b>Trial<b></th><th><b>Barg E <b></th><th><b>SP E<b></th> <th><b>SPOther E<b></th> <th><b>Total Earnings<b></th><th><b>IP<b></th><tr>";
 
@@ -13,7 +13,7 @@
 
   $i=0;
   $numberOfSPOtherFilled = 0;
-  while ($row=mysql_fetch_array($result)) {
+  while ($row=mysqli_fetch_array($result)) {
 
     $ppnummer=$row['ppnr'];
     //$tafelnummer=$row['tafelnummer'];

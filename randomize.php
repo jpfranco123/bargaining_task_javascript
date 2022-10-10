@@ -2,16 +2,16 @@
     include("commonSlider.inc");
 
     $table_name="matching";
-    $connection = @mysql_connect(HOST,ADMIN, WWOORD) or die(mysql_error());
-    $db = @mysql_select_db(DBNAME,$connection) or die(mysql_error());
+    $connection = @mysqli_connect(HOST,ADMIN, WWOORD) or die("Cannot connect to the database server");
+    $db = @mysqli_select_db($connection, DBNAME) or die(mysqli_error($connection));
 
     $query="TRUNCATE TABLE $table_name";
-    mysql_query($query);
+    mysqli_query($connection, $query);
 
     //Empties the matching table for Social Preferences (matchingSP)
     $table_nameSP="matchingSP";
     $querySP="TRUNCATE TABLE $table_nameSP";
-    mysql_query($querySP);
+    mysqli_query($connection, $querySP);
 
     $nbmg2=floor($NPlayers/$mgroupsize);
     $ppnummer=array();
@@ -49,8 +49,8 @@
             $arie2=array();
             $arie3=array();
             $sql="SELECT * FROM matching WHERE trial='$i' AND mgroup='$j' ORDER BY trial ASC";
-            $result=@mysql_query($sql,$connection) or die("Couldn't execute query ".$sql);
-            while ($row=mysql_fetch_array($result)){
+            $result=@mysqli_query($connection, $sql) or die("Couldn't execute query ".$sql);
+            while ($row=mysqli_fetch_array($result)){
                 array_push($arie1, $row['randomnr']);
                 array_push($arie2, $row['sjnr']);
                 //Even are informed, uneven are uninformed

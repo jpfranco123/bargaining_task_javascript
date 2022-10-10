@@ -8,25 +8,25 @@
 	$table_name7="socialPref";
 	$table_name8="timeMarks";
 
-	$connection = @mysql_connect(HOST,ADMIN, WWOORD) or die(mysql_error());
-	$db = @mysql_select_db(DBNAME,$connection) or die(mysql_error());
+	$connection = @mysqli_connect(HOST,ADMIN, WWOORD) or die("Cannot connect to the database server");
+	$db = @mysqli_select_db($connection, DBNAME) or die(mysqli_error($connection));
     $query1="TRUNCATE TABLE $table_name1";
-    mysql_query($query1);
+    mysqli_query($connection, $query1);
 
     $query3="TRUNCATE TABLE $table_name3";
-    mysql_query($query3);
+    mysqli_query($connection, $query3);
     $query4="TRUNCATE TABLE $table_name4";
-    mysql_query($query4);
+    mysqli_query($connection, $query4);
     $query5="TRUNCATE TABLE $table_name5";
-    mysql_query($query5);
+    mysqli_query($connection, $query5);
 		$query6="TRUNCATE TABLE $table_name6";
-		mysql_query($query6);
+		mysqli_query($connection, $query6);
 
 		$query7="TRUNCATE TABLE $table_name7";
-		mysql_query($query7);
+		mysqli_query($connection, $query7);
 
 		$query8="TRUNCATE TABLE $table_name8";
-		mysql_query($query8);
+		mysqli_query($connection, $query8);
 
 	//Sets the startexp to 0 (false)
 	updateTableOne("commonParameters","Name='startexp' ","Value","0");
