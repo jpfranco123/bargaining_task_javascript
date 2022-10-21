@@ -68,6 +68,7 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
   //Websocket set up.
   //const url = 'ws:/130.56.248.241:8080'
   const url = 'ws:/localhost:8080'
+  //const url = `wss://${window.location.host}/ws`; // When deploying on a server, also set appropriate /ws location handling/proxy forwarding
   const connection = new WebSocket(url);
 
 
