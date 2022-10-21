@@ -18,6 +18,7 @@ $other_start_value=startValue($partner,$trial);
 $iknowPie=knowPie($ppnr,$trial);
 
 $thePie=pieSize($ppnr,$trial);
+$treatment = readCommonParameter("treatment");
 
 updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
 
@@ -65,8 +66,8 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
 <script>
 
   //Websocket set up.
-  const url = 'ws:/130.56.248.241:8080'
-  //const url = 'ws:/localhost:8080'
+  //const url = 'ws:/130.56.248.241:8080'
+  const url = 'ws:/localhost:8080'
   const connection = new WebSocket(url);
 
 
@@ -94,6 +95,10 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
    var almost_deal_timer;
 
    var resultsTime = 5000;
+   var stage = 0;
+   var treatment = <?php echo $treatment;?>;
+   console.log(treatment);
+  
 
    //Modifiable variables (in database)
    var robotina = <?php echo $robot; ?>;
@@ -129,7 +134,40 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
         try{mvalue2=message_dict["value2"];} catch(err){console.log("Error when parsing value 2 form notifcation from server: " + ms);}
         process_notification(mvalue,mvalue2);
      } else if (mtype=="slider"){
-        update_other_slider(mvalue);
+
+      // case 1 is base case. case 2 hide initial offer. case 3 hide initial demand. case 4 hide both initial offer and demand
+        switch (treatment){
+
+          case 1:
+            update_other_slider(mvalue);
+            break;
+          
+          case 2:
+            update_other_slider(mvalue);
+            if (stage == 2) {
+            document.getElementById("slider2Section").style.visibility = "visible";
+            }
+            break;
+
+          case 3:
+            update_other_slider(mvalue);
+            if (stage == 2) {
+            document.getElementById("slider2Section").style.visibility = "visible";
+            }
+            break;
+
+          case 4:
+            update_other_slider(mvalue);
+            if (stage == 2) {
+            document.getElementById("slider2Section").style.visibility = "visible";
+            break;
+
+          //default:
+            //update_other_slider(mvalue);
+            
+        }
+        
+      }
      } else {
         console.log("Type of Messsage from Server not recognised: " + ms);
      }
@@ -146,6 +184,7 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
         drawAlertCircle(0);
      } else if(notification=="initial_offer_end"){
         startBargaining();
+        stage = 2;
      } else if(notification=="payoff"){
         try{window.clearTimeout(almost_deal_timer);} catch(err){}
         show_payoff(not2);
@@ -198,9 +237,42 @@ updateTableOne("subjects","ppnr=$ppnr","currentpage",$_SERVER['PHP_SELF']);
     }
 
     function startBargaining(){
-      document.getElementById("iniOffer").style.visibility = "hidden";
-      document.getElementById("slider2Section").style.visibility = "visible";
-      start_timer(time_bargaining);
+      switch (treatment) {
+        case 1:
+          document.getElementById("iniOffer").style.visibility = "hidden";
+          document.getElementById("slider2Section").style.visibility = "visible";
+          start_timer(time_bargaining);
+          break;
+        
+        case 2:
+          document.getElementById("iniOffer").style.visibility = "hidden";
+          if  (know_pie) {
+            document.getElementById("slider2Section").style.visibility = "visible";
+          }
+          start_timer(time_bargaining);
+          break;
+
+        case 3:
+          document.getElementById("iniOffer").style.visibility = "hidden";
+          if  (know_pie == false) {
+          document.getElementById("slider2Section").style.visibility = "visible";
+          }
+          start_timer(time_bargaining);
+          break;
+
+        case 4:
+          document.getElementById("iniOffer").style.visibility = "hidden";
+          start_timer(time_bargaining);
+          break;
+
+        //default:
+          //document.getElementById("iniOffer").style.visibility = "hidden";
+          //document.getElementById("slider2Section").style.visibility = "visible";
+          //start_timer(time_bargaining);
+          //break;
+
+      }
+
     }
 
     function show_payoff(payoff){

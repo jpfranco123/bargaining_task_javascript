@@ -59,7 +59,8 @@ VALUES
 	('SPe','10'),
 	('SPg','3'),
 	('SPs','1'),
-	('SPt','2');
+	('SPt','2'),
+	('treatment','1');
 
 /*!40000 ALTER TABLE `commonParameters` ENABLE KEYS */;
 UNLOCK TABLES;

@@ -36,6 +36,7 @@ if($robot==0){
 	$robotValue="Choose one";
 }
 
+if (isset($_REQUEST['treatment']))		{$nieuwtreatment=$_REQUEST['treatment'];} 		else {$nieuwtreatment=$treatment;}
 if (isset($_REQUEST['mgroupsize']))		{$nieuwmgroupsize=$_REQUEST['mgroupsize'];} 		else {$nieuwmgroupsize=$mgroupsize;}
 if (isset($_REQUEST['NPlayers'])) 		{$nieuwNPlayers=$_REQUEST['NPlayers'];} 			else {$nieuwNPlayers=$NPlayers;}
 if (isset($_REQUEST['maxValue'])) 			{$nieuwPie=$_REQUEST['maxValue'];} 						else {$nieuwPie=$maxValue;}
@@ -67,6 +68,7 @@ if (isset($_REQUEST['SPt']))	{$nieuwSPt=$_REQUEST['SPt'];} 		else {$nieuwSPt=$SP
 
 if (isset($_REQUEST['send'])) {
 	//updateTableMore("commonparameters","$koers==60", "treatment='$nieuwtreatment', numbersubj='$nieuwnumbersubj', grgrootte='$nieuwgroupsize', subgrsize='$nieuwsubgrsize', koers='$nieuwkoers', showupfee='$nieuwshowupfee', mpcr='$nieuwmpcr', numberblock='$nieuwnumberblock', numberround='$nieuwnumberround'");
+	updateTableOne("commonParameters","Name='treatment'","Value",$nieuwtreatment);
 	updateTableOne("commonParameters","Name='mgroupsize'","Value",$nieuwmgroupsize);
 	updateTableOne("commonParameters","Name='NPlayers'","Value",$nieuwNPlayers);
 	updateTableOne("commonParameters","Name='maxValue'","Value",$nieuwPie);
@@ -114,6 +116,7 @@ if (isset($_REQUEST['send'])) {
 function funktie() {
 
 
+	if(document.form1.tjektreatment.checked){document.form1.treatment.disabled=false;}else{document.form1.treatment.disabled=true;}
 	if(document.form1.tjekA.checked){document.form1.mgroupsize.disabled=false;}else{document.form1.mgroupsize.disabled=true;}
 	if(document.form1.tjekB.checked){document.form1.NPlayers.disabled=false;}else{document.form1.NPlayers.disabled=true;}
 	if(document.form1.tjekC.checked){document.form1.maxValue.disabled=false;}else{document.form1.maxValue.disabled=true;}
@@ -177,7 +180,7 @@ if (is_int(grgrootte)==true && is_int(totrounds1)==true && is_int(numbersubj)==t
 
 function emptycheck() {
 //check the variables!!!!
-if(confirm("All unsaved data will be lost.\nMake sure that you exported the data!\nAre you sure you want to continue?")){
+if (confirm("All unsaved data will be lost.\nMake sure that you exported the data!\nAre you sure you want to continue?")){
     			return true;
     				} else {
     					return false;
@@ -207,6 +210,10 @@ if(confirm("All unsaved data will be lost.\nMake sure that you exported the data
 <table class=rond align=center width=100% height=500>
 
 	<tr><td colspan=3><BR><B>All tasks</B></td>
+	</tr>
+
+	<tr><td><input type="checkbox" name=tjektreatment value="ON" onclick="funktie()"></td>
+		<td align=right bgcolor=<?php echo $mycolor; ?>>Treatment:</td><td><input type="number" name="treatment" min="1" max="4" step="1" value=<?php echo $treatment; ?> size=2 AUTOCOMPLETE="OFF" disabled></td>
 	</tr>
 
 	<tr><td><input type="checkbox" name=tjekA value="ON" onclick="funktie()"></td>
