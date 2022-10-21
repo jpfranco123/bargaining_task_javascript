@@ -68,13 +68,13 @@ function startValue($ppnumber, $trial)
 //example: $startexperiment=readCommonParameter("startexperiment");
 function readCommonParameter($name)
 {
-    $table_name = "commonparameters";
+    $table_name = "commonParameters";
     $connection = @mysqli_connect(HOST, ADMIN, WWOORD) or die("Cannot connect to the database server");
     $db = @mysqli_select_db($connection, DBNAME) or die(mysqli_error($connection));
     $sql = "SELECT * FROM $table_name WHERE (name='$name')";
     $result = @mysqli_query($connection, $sql) or die("Couldn't execute query " . $sql);
     if ($row = mysqli_fetch_array($result)) {
-        $value = $row['value'];
+        $value = $row['Value'];
     }
     return $value;
 }
@@ -275,6 +275,7 @@ function startpage($title) {
     </script>
 </head>
 <body>
+
 <?php
 }
 
